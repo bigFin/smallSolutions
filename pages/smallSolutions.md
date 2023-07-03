@@ -15,7 +15,8 @@
 		- OCI project
 	- Send It - data collection platform
 	- ## NepalCanDo
-	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis for
+	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
+	-
 - # Links
 	- twitter
 	- github, gitlab
