@@ -24,6 +24,11 @@
 			- ![image.png](../assets/image_1688402961916_0.png)
 			-
 	- Send It - data collection platform
+	- Automated postharvest processing system
+		- ![image.png](../assets/image_1688402997529_0.png)
+		- ![image.png](../assets/image_1688403030659_0.png)
+		-
+		-
 	- ## NepalCanDo
 	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
 	-
