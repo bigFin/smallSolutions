@@ -20,6 +20,8 @@
 		- Field
 		- OCI project @ U of G
 			- ![image.png](../assets/image_1688402919781_0.png)
+			- ![image.png](../assets/image_1688402936559_0.png)
+			- ![image.png](../assets/image_1688402961916_0.png)
 			-
 	- Send It - data collection platform
 	- ## NepalCanDo
