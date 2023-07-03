@@ -1,2 +1,0 @@
-- Small Solutions to large challenges
--
