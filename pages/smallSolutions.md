@@ -8,6 +8,7 @@
 	- Photobiology
 	- ## [[plantlet finishing chambers]]
 		- ![image.png](../assets/image_1688402619785_0.png)
+		- ![image.png](../assets/image_1688402679852_0.png)
 		- ![image.png](../assets/image_1688402600355_0.png)
 		-
 	- ## [[people counters]]
