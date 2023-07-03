@@ -9,6 +9,7 @@
 	- ## [[plantlet finishing chambers]]
 		- ![image.png](../assets/image_1688402619785_0.png)
 		- ![image.png](../assets/image_1688402822715_0.png)
+		- ![image.png](../assets/image_1688402896671_0.png)
 		- ![image.png](../assets/image_1688402600355_0.png)
 		-
 	- ## [[people counters]]
@@ -17,7 +18,9 @@
 	- Beneficial microbes
 		- Greenhouse
 		- Field
-		- OCI project
+		- OCI project @ U of G
+			- ![image.png](../assets/image_1688402919781_0.png)
+			-
 	- Send It - data collection platform
 	- ## NepalCanDo
 	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
