@@ -1,0 +1,24 @@
+public:: true
+
+- Hello world!
+- Design
+	- 1970s USA governmental design - NASA, EPA, Dept of Labour, NOAA
+	- Federal Graphics Improvement Program
+- # Project highlights
+	- Photobiology
+	- ## [[plantlet finishing chambers]]
+	- ## [[people counters]]
+	- Modular Agricultural Controller
+	- Plant Tissue Culture
+	- Beneficial microbes
+		- Greenhouse
+		- Field
+		- OCI project
+	- Send It - data collection platform
+	- NepalCanDo
+	-
+- Links
+	- twitter
+	- github, gitlab
+	- Donate cash or crypto to feed me and pay my student loans
+-
