@@ -1,16 +1,16 @@
+- ![image.png](../assets/image_1688402515733_0.png)
 - # Hello World!
 	- Welcome to Small Solutions
 	- Witness the fitness
 	- Ride the wave
 	- Experience the sensation
-- ![image.png](../assets/image_1688402515733_0.png)
 - # Finlay Small
   ![F.A.A. Small Resume 230630.pdf](../assets/F.A.A._Small_Resume_230630_1688423464005_0.pdf)
 - # Project highlights
 	- ## [[Avenue Intelligence - People Counters]] 
 	  www.avenueintelligence.com
-	  LoraWAN, ARM® Cortex® M0+ Core and SX1262
-	  Infrastructure on Linux (AWS), Docker
+	  ARM® Cortex® M0+ Core and SX1262
+	  Infrastructure on Linux (AWS), Docker, LoRaWAN
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
 	- ## [[MAC 🌱 Modular Agriculture Controller]]
