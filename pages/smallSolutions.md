@@ -11,7 +11,7 @@
 	  www.avenueintelligence.com
 	  LoraWAN, ARM® Cortex® M0+ Core and SX1262
 	  Infrastructure on Linux (AWS), Docker
-		- ![image.png](../assets/image_1688423776023_0.png)
+		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
 	- ## [[MAC 🌱 Modular Agriculture Controller]]
 		- ![image.png](../assets/image_1688423559948_0.png)
