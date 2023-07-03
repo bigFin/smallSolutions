@@ -3,7 +3,7 @@
 	- Witness the fitness
 	- Ride the wave
 	- Experience the sensation
--
+- ![image.png](../assets/image_1688402515733_0.png)
 - # Project highlights
 	- Photobiology
 	- ## [[plantlet finishing chambers]]
