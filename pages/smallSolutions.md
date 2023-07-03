@@ -14,7 +14,8 @@
 		- Field
 		- OCI project
 	- Send It - data collection platform
-	- NepalCanDo
+	- ## NepalCanDo
+	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis for
 - # Links
 	- twitter
 	- github, gitlab
