@@ -19,7 +19,8 @@
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## [[Analytical Chemistry Lab 2023]]
 	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
-		-
+		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
+		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 		-
 	- ## Automated postharvest processing system
 	  Precision postharvest automation - optimising for maximum CO2 efflux
