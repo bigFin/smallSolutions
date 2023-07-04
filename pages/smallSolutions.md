@@ -4,31 +4,28 @@
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - # Project highlights
-	- ## [[Inline real time spectroscopy November 2017 - present]]
+	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Avenue Intelligence - People Counters - 2023 - present]] 
+	- ## [[Avenue Intelligence - People Counters]] 
 	  www.avenueintelligence.com
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
-	- ## [[MAC 🌱 Modular Agriculture Controller - 2021 to present]]
+	- ## [[MAC 🌱 Modular Agriculture Controller]]
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
 	  ESP32 based agricultural controller
 		- ![image.png](../assets/image_1688423559948_0.png)
-	- ## Analytical Chemistry 2022
-	  Set up chemistry laboratory, workflows, data systems, qualifications (IQOQPQ).
-	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC.
-	  ![image.png](../assets/image_1688425117268_0.png)
-	  ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
-	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
-	  ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
-	- ## Automated postharvest processing system 2023
+	- ## [[Analytical Chemistry Lab 2023]]
+	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
+		-
+		-
+	- ## Automated postharvest processing system
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
-	- ## [[Plantlet Finishing Chambers]] November 2020 - November 2022
+	- ## [[Plantlet Finishing Chambers]] 
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
 	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 	  ![image.png](../assets/image_1688402619785_0.png)
@@ -38,7 +35,7 @@
 	  ![image.png](../assets/image_1688424351757_0.png)
 	  ![20210602_093135.jpg](../assets/20210602_093135_1688425663509_0.jpg)
 	  ![image.png](../assets/image_1688425567525_0.png)
-	- ## Plant Tissue Culture 2019 - 2023
+	- ## Plant Tissue Culture
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- Finding the best surface sterilising agent
 		  ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
