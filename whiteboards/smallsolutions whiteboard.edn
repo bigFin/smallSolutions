@@ -8,7 +8,7 @@
 :block/properties 
 {}
 :block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
-{:block/created-at 1688434769864
+{:block/created-at 1688434832621
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -17,7 +17,7 @@
 :rotation 0
 :collapsed false
 :borderRadius 8
-:index 1
+:index 2
 :scale [1 1]
 :refs ["64a36b59-305f-45fa-b8cb-7984b551432c"]
 :pageId "64a3772a-31c6-4108-bd43-a0ec9849db7b"
@@ -36,12 +36,12 @@
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
 :nonce 1688434471550}}
-:block/updated-at 1688434769864} 
-{:block/created-at 1688434769864
+:block/updated-at 1688434832621} 
+{:block/created-at 1688434832621
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
-{:index 2
+{:index 3
 :scale [1 1]
 :type "html"
 :size [600 1]
@@ -51,12 +51,12 @@
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :nonce 1688434496856
 :html "<ul>\n  <li>\n    <a href=\"\">image.png</a>\n  </li>\n</ul>"}}
-:block/updated-at 1688434769864} 
-{:block/created-at 1688434769864
+:block/updated-at 1688434832621} 
+{:block/created-at 1688434832621
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
-{:index 3
+{:index 4
 :scale [1 1]
 :type "image"
 :assetId "00101340-1a0b-11ee-a17f-497fe74f4498"
@@ -70,61 +70,33 @@
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :nonce 1688434504513
 :clipping 0}}
-:block/updated-at 1688434769864} 
-{:block/content "Resume\nhttps://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing"
+:block/updated-at 1688434832621} 
+{:block/content "Resume\nid:: 64a377be-900e-4551-a982-b5045cabe689\nhttps://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing"
 :block/format :markdown
 :block/left 
 {:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"}
 :block/parent 
 {:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
 :block/properties 
-{}
+{:id "64a377be-900e-4551-a982-b5045cabe689"}
 :block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"} 
-{:block/created-at 1688434769864
-:block/properties 
-{:ls-type :whiteboard-shape
-:logseq.tldraw.shape 
-{:blockType "B"
-:stroke ""
-:rotation 0
-:collapsed false
-:borderRadius 8
-:index 4
-:scale [1 1]
-:pageId "64a377be-900e-4551-a982-b5045cabe689"
-:scaleLevel "md"
-:fill ""
-:compact true
-:isAutoResizing true
-:type "logseq-portal"
-:size [400.00000000000006 88.99062324386706]
-:strokeType "line"
-:strokeWidth 2
-:opacity 1
-:id "41f8c950-1a0b-11ee-a17f-497fe74f4498"
-:noFill false
-:point [86.02631571448745 635.0172022262357]
-:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:collapsedHeight 0
-:nonce 1688434614967}}
-:block/updated-at 1688434769864} 
-{:block/created-at 1688434769864
+{:block/created-at 1688434832621
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
 {:blockType "P"
 :stroke ""
-:collapsed false
+:collapsed true
 :borderRadius 8
-:index 5
+:index 6
 :scale [1 1]
 :pageId "Inline real time spectroscopy"
 :scaleLevel "md"
 :fill ""
 :compact false
-:isAutoResizing true
+:isAutoResizing false
 :type "logseq-portal"
-:size [400 92.98927730966116]
+:size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -132,10 +104,65 @@
 :noFill false
 :point [98.23986835318362 791.7670806137053]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 92.98927730966116
+:nonce 1688434690225}}
+:block/updated-at 1688434832621} 
+{:block/created-at 1688434832621
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "Avenue Intelligence - People Counters"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "9cb45350-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:isLocked false
+:point [89.67749135312528 907.9078080158852]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 92.98934876283728
+:nonce 1688434767227}}
+:block/updated-at 1688434832621} 
+{:block/created-at 1688434832621
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 5
+:scale [1 1]
+:pageId "64a377be-900e-4551-a982-b5045cabe689"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 88.99062324386706]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "afe1d740-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:point [90.91171227173402 651.3109598711881]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
-:nonce 1688434690224}}
-:block/updated-at 1688434769864} 
-{:block/created-at 1688434769863
+:nonce 1688434799358}}
+:block/updated-at 1688434832621} 
+{:block/created-at 1688434832621
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -145,24 +172,24 @@
 :borderRadius 8
 :index 0
 :scale [1 1]
-:pageId "Avenue Intelligence - People Counters"
+:pageId "Inline real time spectroscopy"
 :scaleLevel "md"
 :fill ""
 :compact false
 :isAutoResizing true
 :type "logseq-portal"
-:size [400 92.98934876283728]
+:size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
-:id "9cb45350-1a0b-11ee-a17f-497fe74f4498"
+:id "c2819a20-1a0b-11ee-a17f-497fe74f4498"
 :noFill false
 :isLocked false
-:point [340.0557899958394 977.5251682984965]
+:point [281.1868655985025 795.5666747067278]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
-:nonce 1688434767111}}
-:block/updated-at 1688434769863})
+:nonce 1688434830530}}
+:block/updated-at 1688434832621})
 :pages (
 {:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :block/properties 
@@ -178,8 +205,8 @@
 :type "image"
 :src "../assets/image_1688434504233_0.png"
 :size [995 968]}]
-:shapes-index ("9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "41f8c950-1a0b-11ee-a17f-497fe74f4498" "6ec54ad0-1a0b-11ee-a17f-497fe74f4498")}}
-:block/updated-at 1688434769867
+:shapes-index ("c2819a20-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "6ec54ad0-1a0b-11ee-a17f-497fe74f4498")}}
+:block/updated-at 1688434832621
 :block/created-at 1688434390941
 :block/type "whiteboard"
 :block/name "smallsolutions whiteboard"
