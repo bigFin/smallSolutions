@@ -41,16 +41,16 @@
 		- ![image.png](../assets/image_1688437593680_0.png)
 	- ## [[Automated postharvest processing system 🍃 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
-	- ## [[Plantlet Finishing Chambers 🌱 2021-2022]] 
+	- ## [[Plantlet Finishing Chambers 🌿 2021-2022]] 
 	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
 	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
 	  Influxdb and Grafana, Docker, Linux.
 		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	- ## [[Plant Tissue Culture Method Development 2019-2023]] 🌿
+	- ## [[Plant Tissue Culture Method Development 🌱 2019-2023]] 
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
-	- ## [[Beneficial microbes]]
+	- ## [[Beneficial microbes 🦠 2015 - 2022]]
 		- Greenhouse
 		- Field
 		- [[OCI project @ U of G 2020-2022]]
@@ -59,7 +59,7 @@
 		  ![CGC2022_Nesbitt_Poster.pdf](../assets/CGC2022_Nesbitt_Poster_1688426861132_0.pdf)
 		  ![image.png](../assets/image_1688427157248_0.png)
 		  ![image.png](../assets/image_1688427187744_0.png)
-	- ## Send It - data collection platform
+	- ## Send It - data collection platform 🔢 2022
 	  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
 	- ## [[Lab G - Photobiology 2019-2020]]
 	  We built a laboratory to study the effect of light quality on plant growth and development
