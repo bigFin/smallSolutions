@@ -18,8 +18,8 @@
 	  ESP32 based agricultural controller
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## Analytical Chemistry 2022
-	  Set up 
-	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
+	  Set up chemistry laboratory, workflows, data systems, qualifications (IQOQPQ).
+	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC.
 	  ![image.png](../assets/image_1688425117268_0.png)
 	  ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
 	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
