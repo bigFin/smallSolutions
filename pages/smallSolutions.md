@@ -7,10 +7,10 @@
 		- ### Technology 🤖
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
-			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
-		- ### Science 🔬
 			- Data science: R, Tableau, PowerBI
 			- Reporting: Markdown, Office
+			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
+		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
 			- Design of experiments: media optimization, photobiology, R&D, process improvement
@@ -22,6 +22,7 @@
 - # Project highlights
 	- ## [[Inline real time spectroscopy 🌈]] 
 	  Process control driven by real time monitoring of solvent saturation in extraction
+	- ##
 	- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
 	  [avenueintelligence.com](https://avenueintelligence.com/)
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
