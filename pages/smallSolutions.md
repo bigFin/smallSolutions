@@ -23,11 +23,11 @@
 	  ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
 	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
 	  ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
-	- ## Automated postharvest processing system 
+	- ## Automated postharvest processing system July 2023 - November 2023
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
-	- ## [[Plantlet Finishing Chambers]] 
+	- ## [[Plantlet Finishing Chambers]] November 2021 - 
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
 	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 	  ![image.png](../assets/image_1688402619785_0.png)
