@@ -55,7 +55,8 @@
 		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
 		- ### NepalCanDo Agroecology fieldwork in Nepal, and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
-	- ## [[Wageningen UR 2012-2013]]
+	- ## [[Wageningen UR 2012-2013]] Netherlands
+	  International exchange program
 	-
 - # Links
 	- twitter
