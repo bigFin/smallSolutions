@@ -1,8 +1,8 @@
 - # bigFin/Prismatic
+# [](https://github.com/bigFin/Prismatic#prismatic-is-open-source-software--hardware-for-photobiology-research) Prismatic is open-source software / hardware for photobiology research
 - ![Infographic Prismatic V1 AKA FinMax](https://github.com/bigFin/Prismatic/raw/master/infoGraphic8.jpg?raw=true)
--
-## [](https://github.com/bigFin/Prismatic#what-is-prismatic) What is Prismatic?
-- Prismatic is a modular, wifi programmable, multi-channel LED light that gives you precise control over the the spectrum you give your plants. Connect with your phone or computer, the web-based scheduling system lets you create simple and advanced programs.
+- ## [](https://github.com/bigFin/Prismatic#what-is-prismatic) What is Prismatic?
+- Prismatic is a modular, wifi programmable, multi-channel LED light that gives you precise control over ghthe the spectrum you give your plants. Connect with your phone or computer, the web-based scheduling system lets you create simple and advanced programs.
 - I built Prismatic to optimize light spectrum for organogenesis and regeneration in tissue culture, but it can be used for any precision lighting, photobiology, specialty plant growth, or plant propagation situation.
 - ## [](https://github.com/bigFin/Prismatic#prismatic-v2-coming-march-2019) Prismatic V2 Coming March 2019
 ### [](https://github.com/bigFin/Prismatic#pulse-a-multi-channel-led-driver) Pulse: a multi-channel LED driver
