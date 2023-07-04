@@ -40,7 +40,8 @@
 	  ![image.png](../assets/image_1688425567525_0.png)
 	- ## Plant Tissue Culture
 	  Meristem tip dissection to eliminate pathogens from genetic library
-		- Rub a dub dub, ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
+		- Finding the best surface sterilising agent
+		  ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
 		- 2 weeks post dissection
 		  ![image.png](../assets/image_1688426235943_0.png)
 		- 3 weeks post dissection
