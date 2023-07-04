@@ -1,0 +1,4 @@
+- Precision postharvest automation - optimising for maximum CO2 efflux
+- ![image.png](../assets/image_1688402997529_0.png)
+- ![image.png](../assets/image_1688403030659_0.png)
+-
