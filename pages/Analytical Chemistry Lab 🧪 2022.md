@@ -1,5 +1,5 @@
 - Lab design, equipment procurement, set up, qualifications (IQOQ)
-- Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
+- Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC (PQ)
 - ![image.png](../assets/image_1688425117268_0.png)
 - ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
 - ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
