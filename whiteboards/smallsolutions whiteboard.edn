@@ -1,0 +1,92 @@
+{:blocks (
+{:block/content "Small Solutions"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+:block/parent 
+{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+:block/properties 
+{}
+:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
+{:block/created-at 1688434515165
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 0
+:scale [1 1]
+:pageId "64a3772a-31c6-4108-bd43-a0ec9849db7b"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 40.96508324336379]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "ec72dd90-1a0a-11ee-a17f-497fe74f4498"
+:noFill false
+:point [57.93509156598401 101.2840250654437]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 0
+:nonce 1688434471504}}
+:block/updated-at 1688434515165} 
+{:block/created-at 1688434504313
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 1
+:scale [1 1]
+:type "html"
+:size [600 1]
+:id "fb9efd80-1a0a-11ee-a17f-497fe74f4498"
+:isLocked false
+:point [282.66484392362486 264.94593256883104]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:nonce 1688434496856
+:html "<ul>\n  <li>\n    <a href=\"\">image.png</a>\n  </li>\n</ul>"}}
+:block/updated-at 1688434504313} 
+{:block/created-at 1688434508629
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 2
+:scale [1 1]
+:type "image"
+:assetId "00101340-1a0b-11ee-a17f-497fe74f4498"
+:size [497.5 484]
+:opacity 1
+:id "00108870-1a0b-11ee-a17f-497fe74f4498"
+:isAspectRatioLocked true
+:isLocked false
+:objectFit "fill"
+:point [7.045060782802409 143.86038542158872]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:nonce 1688434504513
+:clipping 0}}
+:block/updated-at 1688434508629})
+:pages (
+{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:block/properties 
+{:ls-type :whiteboard-page
+:logseq.tldraw.page 
+{:id "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:name "smallsolutions whiteboard"
+:bindings 
+{}
+:nonce 1
+:assets [
+{:id "00101340-1a0b-11ee-a17f-497fe74f4498"
+:type "image"
+:src "../assets/image_1688434504233_0.png"
+:size [995 968]}]
+:shapes-index ("ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498")}}
+:block/updated-at 1688434515165
+:block/created-at 1688434390941
+:block/type "whiteboard"
+:block/name "smallsolutions whiteboard"
+:block/original-name "smallsolutions whiteboard"})}
