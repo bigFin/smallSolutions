@@ -1,4 +1,3 @@
--
 - Finding the best surface sterilising agent
   ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
 - 2 weeks post dissection
