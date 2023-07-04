@@ -9,12 +9,12 @@
 			- Firmware: C++ on ESP32/ESP8266
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
+			- Data science: R, Tableau, PowerBI
+			- Reporting: Markdown, Office
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
 			- Design of experiments: media optimization, photobiology, R&D, process improvement
 			- Plant breeding: organic agriculture, climate change, and low external input environments
-			- Data science: R, Tableau, PowerBI
-			- Reporting: Markdown, Office
 		- ### Design 📐
 			- Hardware: PCB Design KiCad, Eagle
 			- Manufacturing industrial electronics, bioreactors, environmental control systems
