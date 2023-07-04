@@ -4,6 +4,10 @@
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 	- ## Skills
+		- ### Industrial ⚙️
+			- AWS and On Premises server deployment
+			- Automation, custom ESP32 based hardware
+			- Low-power, long range sensor networks on LoRaWAN 📡
 		- ### Technology 🤖
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
@@ -19,10 +23,6 @@
 			- Hardware: PCB Design KiCad, Eagle
 			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
-		- ### Industrial ⚙️
-			- AWS and On Premises server deployment
-			- Automation, custom ESP32 based hardware
-			- Low-power, long range sensor networks on LoRaWAN 📡
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline real time spectroscopy 🌈]] 
