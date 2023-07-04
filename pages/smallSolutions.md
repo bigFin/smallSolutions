@@ -78,7 +78,7 @@
 - # Education
 	- ## [[M.Sc Plant Breeding and Physiology 🌵 U of Guelph 2017]]
 		- ### Masters thesis
-		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
+		  Prospecting drought tolerant wild plants with improved microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
 		- ### NepalCanDo Agroecology fieldwork in Nepal 🇳🇵
 		  and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
@@ -89,19 +89,10 @@
 	- Donate cash or crypto to feed me and pay my student loans
 - ## [[Wisdom]]
 - # Site todo
-	- NOW Introduction
-	  :LOGBOOK:
-	  CLOCK: [2023-07-03 Mon 10:25:56]
-	  CLOCK: [2023-07-03 Mon 10:25:59]
-	  :END:
 	- NOW Design
 	  :LOGBOOK:
 	  CLOCK: [2023-07-03 Mon 10:24:39]
 	  :END:
 		- 1970s USA governmental design - NASA, EPA, Dept of Labour, NOAA
 		- Federal Graphics Improvement Program
-	- NOW Project highlights
-	  :LOGBOOK:
-	  CLOCK: [2023-07-03 Mon 10:24:48]
-	  :END:
 - [[smallsolutions whiteboard]]
