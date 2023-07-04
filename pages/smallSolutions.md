@@ -3,8 +3,8 @@
 	- Resume
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - # Project highlights
-	- ## [[Inline Realtime Spectroscopy]]
-	  Process control driven by realtime Monitoring solvent saturation in realtime
+	- ## [[Inline real time spectroscopy]]
+	  Process control driven by real time monitoring of solvent saturation in extraction
 	- ## [[Avenue Intelligence - People Counters]] 
 	  www.avenueintelligence.com
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
