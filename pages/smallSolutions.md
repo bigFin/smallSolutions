@@ -26,6 +26,8 @@
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ## [[Plantlet Finishing Chambers 2021-2022]]
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
+	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
+	  Influxdb and Grafana, Docker, Linux.
 	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 	- ## [[Plant Tissue Culture Method Development 2019-2023]]
 	  Meristem tip dissection to eliminate pathogens from genetic library
