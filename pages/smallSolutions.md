@@ -62,10 +62,7 @@
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
 	- ### [[Beneficial microbes 🦠]
-		- Greenhouse
-		- 2013-2015 Greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
-		- Field
-			- 2013-2015 Field t
+		- 2013-2015 Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
 		- [[OCI project @ U of G 2020-2022]]
 		  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
 		  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
