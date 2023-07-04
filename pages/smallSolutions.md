@@ -56,7 +56,7 @@
 		- ### NepalCanDo Agroecology fieldwork in Nepal, and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands
-	  International exchange program
+	  International exchange program was a informativenessn experience.
 	-
 - # Links
 	- twitter
