@@ -17,8 +17,10 @@
 			- Plant breeding: organic agriculture, climate change, and low external input environments
 		- ### Design 📐
 			- Hardware: PCB Design KiCad, Eagle
-			- Manufacturing industrial electronics, bioreactors, environmental control systems
+			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
+		- ### Industrial
+			- Manufacturing industrial electronics
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline real time spectroscopy 🌈]] 
