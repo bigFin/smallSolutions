@@ -9,7 +9,7 @@
 			- Automation, custom ESP32 based hardware
 			- Low-power, long range sensor networks on LoRaWAN 📡
 		- ### Technology 🤖
-			- Software: Linux (on premises, AWS), Docker, Python
+			- Software: Linux, Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
 			- Data science: R, Tableau, PowerBI
 			- Reporting: Markdown, Logseq, Office
