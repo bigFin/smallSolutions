@@ -39,17 +39,17 @@
 		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 		- ![image.png](../assets/image_1688437593680_0.png)
-	- ## [[Automated postharvest processing system 2023]] 
+	- ## [[Automated postharvest processing system 🍃 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
-	- ## [[Plantlet Finishing Chambers 2021-2022]]
+	- ## [[Plantlet Finishing Chambers 🌱 2021-2022]] 
 	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
 	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
 	  Influxdb and Grafana, Docker, Linux.
-	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	- ## [[Plant Tissue Culture Method Development 2019-2023]]
+		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
+	- ## [[Plant Tissue Culture Method Development 2019-2023]] 🌿
 	  Meristem tip dissection to eliminate pathogens from genetic library
-	  3 weeks post dissection
-	  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
+		- 3 weeks post dissection
+		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
 	- ## [[Beneficial microbes]]
 		- Greenhouse
 		- Field
