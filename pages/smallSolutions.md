@@ -16,6 +16,7 @@
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
 	  ESP32 based agricultural controller. Custom PCB designed in KiCAD
+	  Datalogging and dashboarding with Influxdb and Grafana
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## [[Analytical Chemistry Lab 2023]]
 	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
