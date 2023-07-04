@@ -8,21 +8,21 @@
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
-		- ### Science
+		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
 			- Design of experiments: media optimization, photobiology, R&D, process improvement
 			- Plant breeding: organic agriculture, climate change, and low external input environments
 			- Data science: R, Tableau, PowerBI
 			- Reporting: Markdown, Office
-		- ### Design
+		- ### Design 📐
 			- Hardware: PCB Design KiCad, Eagle
 			- Manufacturing industrial electronics, bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
-	- ## [[Inline real time spectroscopy]]
+	- ## [[Inline real time spectroscopy]] 
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Avenue Intelligence - People Counters 2023]] 
+	- ## [[Avenue Intelligence 🚶 People Counters 2023]] 
 	  [avenueintelligence.com](https://avenueintelligence.com/)
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
