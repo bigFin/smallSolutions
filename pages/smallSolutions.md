@@ -97,4 +97,4 @@
 		- 1970s USA governmental design - NASA, EPA, Dept of Labour, NOAA
 		- Federal Graphics Improvement Program
 - [[smallsolutions whiteboard]]
-- This site was grown with love and [Logseq](https://logseq.com/)
+- This website was grown with love and [Logseq](https://logseq.com/)
