@@ -25,7 +25,7 @@
 	- ## [[Automated postharvest processing system 2023]]
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ## [[Plantlet Finishing Chambers 2021-2022]]
-	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
+	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
 	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
 	  Influxdb and Grafana, Docker, Linux.
 	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
