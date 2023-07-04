@@ -22,7 +22,7 @@
 - # Project highlights
 	- ## [[Inline real time spectroscopy 🌈]] 
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Avenue Intelligence 🚶 People Counters 2023]] 
+	- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
 	  [avenueintelligence.com](https://avenueintelligence.com/)
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
@@ -39,7 +39,7 @@
 		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 		- ![image.png](../assets/image_1688437593680_0.png)
-	- ## [[Automated postharvest processing system 2023]]
+	- ## [[Automated postharvest processing system 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ## [[Plantlet Finishing Chambers 2021-2022]]
 	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
