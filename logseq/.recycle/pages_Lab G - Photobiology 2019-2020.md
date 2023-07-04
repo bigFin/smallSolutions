@@ -1,0 +1,4 @@
+- We built a custom laboratory to study the effect of light quality on plant growth and development
+- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
+- ![20191001_120528.jpg](../assets/20191001_120528_1688426576223_0.jpg)
+- ![image (2).png](../assets/image_(2)_1688427672718_0.png)
