@@ -25,22 +25,22 @@
 	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
 	  ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
 	- ## Automated postharvest processing system
-	  Precision postharvest automation - optimizing
+	  Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
 	- ## [[Plantlet Finishing Chambers]] 
-	  Custom bioreactor system for tissue culture micropropagation
-		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-		- ![image.png](../assets/image_1688402619785_0.png)
-		- ![image.png](../assets/image_1688402822715_0.png)
-		- ![image.png](../assets/image_1688424512297_0.png)
-		- ![image.png](../assets/image_1688402896671_0.png)
-		- ![image.png](../assets/image_1688424351757_0.png)
-		- ![20210602_093135.jpg](../assets/20210602_093135_1688425663509_0.jpg)
-		- ![image.png](../assets/image_1688425567525_0.png)
+	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
+	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
+	  ![image.png](../assets/image_1688402619785_0.png)
+	  ![image.png](../assets/image_1688402822715_0.png)
+	  ![image.png](../assets/image_1688424512297_0.png)
+	  ![image.png](../assets/image_1688402896671_0.png)
+	  ![image.png](../assets/image_1688424351757_0.png)
+	  ![20210602_093135.jpg](../assets/20210602_093135_1688425663509_0.jpg)
+	  ![image.png](../assets/image_1688425567525_0.png)
 	- ## Plant Tissue Culture
 	  Meristem tip dissection to eliminate pathogens from genetic library
-		- ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
+		- Rub a dub dub, ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
 		- 2 weeks post dissection
 		  ![image.png](../assets/image_1688426235943_0.png)
 		- 3 weeks post dissection
