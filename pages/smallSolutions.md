@@ -68,12 +68,13 @@
 	- ## Tissue Culture Photobiology 🌈 2017-2022
 		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
-	- ## [[M.Sc Plant Breeding and Physiology - U of Guelph]]
+	- ## [[M.Sc Plant Breeding and Physiology 🌵 U of Guelph 2017]]
 		- ### Masters thesis
 		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
-		- ### NepalCanDo Agroecology fieldwork in Nepal, and volunteer work in 2015 earthquake
+		- ### NepalCanDo Agroecology fieldwork in Nepal 🇳🇵
+		  and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
-	- ## [[Wageningen UR 2012-2013]] Netherlands
+	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
 	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to learn the best of both worlds and apply it for our future.
 - # Links
 	- twitter
