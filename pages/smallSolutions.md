@@ -86,7 +86,6 @@
 	- github, gitlab
 	- Donate cash or crypto to feed me and pay my student loans
 - ## [[Wisdom]]
--
 - # Site todo
 	- NOW Introduction
 	  :LOGBOOK:
