@@ -1,13 +1,13 @@
 - ![image.png](../assets/image_1688402515733_0.png)
 - # Finlay Small
-	- Resume
+	- ## Resume
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 	- ## Skills
 		- ### Technology
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
-			- Enjoyer of Linux, nvim, tmux (peep my [configs](https://github.com/bigFin/dotfiles/tree/sway))
+			- Enjoyer of Linux, nvim, tmux ( [dotfiles](https://github.com/bigFin/dotfiles/tree/sway))
 		- ### Science
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
