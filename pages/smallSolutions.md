@@ -3,6 +3,12 @@
 	- Resume
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
+	- ## Skills
+		- ### Technology
+			- Software: Linux (on premises, AWS), Docker, Python
+			- Firmware: C++ on ESP32/ESP8266
+			- Hardware: PCB Design KiCad, Eagle
+		-
 - # Project highlights
 	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
@@ -59,11 +65,6 @@
 		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands
 	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to learn the best of both worlds and apply it for our future.
-- # Skills
-	- # Technology
-		- Hardware: PCB Design KiCad, Eagle
-		- Firmware: C++ on ESP32/ESP8
-		- Software: Linux (on premises, AWS), Docker, Python,
 - # Links
 	- twitter
 	- github, gitlab
