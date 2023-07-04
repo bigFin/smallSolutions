@@ -23,19 +23,8 @@
 		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 		-
 	- ## [[Automated postharvest processing system 2023]]
-	- Precision postharvest automation - optimising for maximum CO2 efflux
-	  ![image.png](../assets/image_1688402997529_0.png)
-	  ![image.png](../assets/image_1688403030659_0.png)
-	- ## [[Plantlet Finishing Chambers]] 
-	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
-	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	  ![image.png](../assets/image_1688402619785_0.png)
-	  ![image.png](../assets/image_1688402822715_0.png)
-	  ![image.png](../assets/image_1688424512297_0.png)
-	  ![image.png](../assets/image_1688402896671_0.png)
-	  ![image.png](../assets/image_1688424351757_0.png)
-	  ![20210602_093135.jpg](../assets/20210602_093135_1688425663509_0.jpg)
-	  ![image.png](../assets/image_1688425567525_0.png)
+	  Precision postharvest automation - optimising for maximum CO2 efflux
+	- ## [[Plantlet Finishing Chambers]]
 	- ## Plant Tissue Culture
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- Finding the best surface sterilising agent
