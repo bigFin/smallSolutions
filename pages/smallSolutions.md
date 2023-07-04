@@ -46,7 +46,7 @@
 	- ## [[Lab G - Photobiology 2019-2020]]
 	  We built a laboratory to study the effect of light quality on plant growth and development
 	  ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
-	  ![](https://cdn.shopify.com/s/files/1/0030/2582/9954/files/logo-seo_1200x1200.png?v=1613725838)
+		- ![image.png](../assets/image_1688437748035_0.png)
 	- ## Tissue Culture Photobiology 2017-2022
 		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
