@@ -26,8 +26,7 @@
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ## [[Plantlet Finishing Chambers 2021-2022]]
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
-		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-		-
+	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 	- ## [[Plant Tissue Culture Method Development 2019-2023]]
 	  Meristem tip dissection to eliminate pathogens from genetic library
 	  3 weeks post dissection
@@ -35,15 +34,6 @@
 	- ## Beneficial microbes
 		- Greenhouse
 		- Field
-		- OCI project @ U of G 2020-2022
-			- Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
-			  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
-			  ![CGC2022_Nesbitt_Poster.pdf](../assets/CGC2022_Nesbitt_Poster_1688426861132_0.pdf)
-			- ![image.png](../assets/image_1688402919781_0.png)
-			- ![image.png](../assets/image_1688402936559_0.png)
-			- ![image.png](../assets/image_1688402961916_0.png)
-			- ![image.png](../assets/image_1688427157248_0.png)
-			- ![image.png](../assets/image_1688427187744_0.png)
 	- ## Send It - data collection platform
 	- ## Photobiology lab 2019-2020
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
