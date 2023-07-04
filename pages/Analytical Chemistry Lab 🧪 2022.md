@@ -1,4 +1,4 @@
-- Set up lab
+- Lab design, equipment procurement, set up, qualifications (IQOQ)
 - Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
 - ![image.png](../assets/image_1688425117268_0.png)
 - ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
