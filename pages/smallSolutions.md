@@ -22,8 +22,8 @@
 		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 		-
-	- ## Automated postharvest processing system
-	  Precision postharvest automation - optimising for maximum CO2 efflux
+	- ## [[Automated postharvest processing system 2023]]
+	- Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
 	- ## [[Plantlet Finishing Chambers]] 
