@@ -40,10 +40,10 @@
 		- ### [[Prismatic - Tissue Culture Photobiology 🌈 2017]]
 		  Multi-channel LED system for photobiology research. Built on ESP8266.
 		  https://github.com/bigFin/Prismatic
-			- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
+			- 2022 Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
-			- Joint project: light intensity effects on regeneration after droplet vitrification and cryopreservation
-			-
+			- Industrial project: light intensity effects on regeneration after droplet vitrification and cryopreservation
+			- Ongoing research
 	- ## Past Projects
 		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
