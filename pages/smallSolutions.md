@@ -56,7 +56,7 @@
 		- ### NepalCanDo Agroecology fieldwork in Nepal, and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands
-	  International exchange program was a informativenessn experience.
+	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to
 	-
 - # Links
 	- twitter
