@@ -20,18 +20,18 @@
 			- Manufacturing industrial electronics, bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
-	- ## Ongoing
-		- ## [[Inline real time spectroscopy 🌈]] 
+	- ## Ongoing Projects
+		- ### [[Inline real time spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation in extraction
-		- ## [[Medicinal mushrooms research - U of Guelph 2023]]
+		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 		  Developing custom bioreactors for research on medicinal mushrooms
-		- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
+		- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
 		  [avenueintelligence.com](https://avenueintelligence.com/)
 		  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 		  Infrastructure on Linux (AWS), Docker
 			- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 			-
-		- ## [[MAC Modular Agriculture Controller 🌱 2023]]
+		- ### [[MAC Modular Agriculture Controller 🌱 2023]]
 		  HVAC and lighting controls based on plant biofeedback
 		  Advanced real time canopy segmentation from thermal camera
 		  ESP32 based agricultural controller. Custom PCB designed in KiCAD
@@ -43,18 +43,18 @@
 			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 			- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 			- ![image.png](../assets/image_1688437593680_0.png)
-	- ## [[Automated postharvest processing system 🍃 2023]] 
+	- ### [[Automated postharvest processing system 🍃 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
-	- ## [[Plantlet Finishing Chambers 🌿 2021-2022]] 
+	- ### [[Plantlet Finishing Chambers 🌿 2021-2022]] 
 	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
 	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
 	  Influxdb and Grafana, Docker, Linux.
 		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	- ## [[Plant Tissue Culture Method Development 🌱 2019-2023]] 
+	- ### [[Plant Tissue Culture Method Development 🌱 2019-2023]] 
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
-	- ## [[Beneficial microbes 🦠 2015 - 2022]]
+	- ### [[Beneficial microbes 🦠 2015 - 2022]]
 		- Greenhouse
 		- Field
 		- [[OCI project @ U of G 2020-2022]]
@@ -63,13 +63,13 @@
 		  ![CGC2022_Nesbitt_Poster.pdf](../assets/CGC2022_Nesbitt_Poster_1688426861132_0.pdf)
 		  ![image.png](../assets/image_1688427157248_0.png)
 		  ![image.png](../assets/image_1688427187744_0.png)
-	- ## [[Send It - data collection platform 🔢 2021-2023]]
+	- ### [[Send It - data collection platform 🔢 2021-2023]]
 	  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
-	- ## [[Lab G - Photobiology 🌈 2019-2020]] 
+	- ### [[Lab G - Photobiology 🌈 2019-2020]] 
 	  We built a laboratory to study the effect of light quality on plant growth and development
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 		- ![image.png](../assets/image_1688437748035_0.png)
-	- ## Tissue Culture Photobiology 🌈 2017-2022
+	- ### Tissue Culture Photobiology 🌈 2017-2022
 		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 	- ## [[M.Sc Plant Breeding and Physiology 🌵 U of Guelph 2017]]
