@@ -1,6 +1,7 @@
 - ![image.png](../assets/image_1688402515733_0.png)
 - # Finlay Small
-  ![F.A.A. Small Resume 230630.pdf](../assets/F.A.A._Small_Resume_230630_1688423464005_0.pdf)
+	- Resume
+	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - # Project highlights
 	- ## [[Avenue Intelligence - People Counters]] 
 	  www.avenueintelligence.com
