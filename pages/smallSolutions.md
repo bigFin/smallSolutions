@@ -12,18 +12,18 @@
 	  Infrastructure on Linux (AWS), Docker
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
-	- ## [[MAC 🌱 Modular Agriculture Controller]]
+	- ## [[MAC 🌱 Modular Agriculture Controller - November 2021 to present]]
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
 	  ESP32 based agricultural controller
 		- ![image.png](../assets/image_1688423559948_0.png)
-	- ## Analytical Chemistry
+	- ## Analytical Chemistry January - November, 2022
 	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
 	  ![image.png](../assets/image_1688425117268_0.png)
 	  ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
 	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
 	  ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
-	- ## Automated postharvest processing system
+	- ## Automated postharvest processing system 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
