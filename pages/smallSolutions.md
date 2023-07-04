@@ -61,7 +61,9 @@
 	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to learn the best of both worlds and apply it for our future.
 - # Skills
 	- # Technology
-		-
+		- Hardware: PCB Design KiCad, Eagle
+		- Firmware: C++ on ESP32/ESP8
+		- Software: Linux (on premises, AWS), Docker, Python,
 - # Links
 	- twitter
 	- github, gitlab
