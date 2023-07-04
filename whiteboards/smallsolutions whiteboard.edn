@@ -2,9 +2,9 @@
 {:block/content "Small Solutions"
 :block/format :markdown
 :block/left 
-{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
 :block/parent 
-{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
 :block/properties 
 {}
 :block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
@@ -186,28 +186,24 @@
 :block/left 
 {:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"}
 :block/parent 
-{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
 :block/properties 
 {:id "64a377be-900e-4551-a982-b5045cabe689"}
 :block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"})
 :pages (
-{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"
 :block/properties 
-{:ls-type :whiteboard-page
-:logseq.tldraw.page 
-{:id "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:name "smallsolutions whiteboard"
-:bindings 
-{}
-:nonce 1
-:assets [
-{:id "00101340-1a0b-11ee-a17f-497fe74f4498"
-:type "image"
-:src "../assets/image_1688434504233_0.png"
-:size [995 968]}]
-:shapes-index ("d673f4b0-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "ea55d480-1a0b-11ee-a17f-497fe74f4498")}}
-:block/updated-at 1688435004386
+{:heading 2}
+:block/journal? false
+:block/refs [
+{:db/id 202}]
+:file/last-modified-at #inst "2023-07-04T02:00:17.789-00:00"
+:block/properties-order ()
 :block/created-at 1688434390941
+:block/content "## [[Inline real time spectroscopy November 2017 - present]]\nProcess control driven by real time monitoring of solvent saturation in extraction"
+:block/path-refs [
+{:db/id 27} 
+{:db/id 202}]
 :block/type "whiteboard"
 :block/name "smallsolutions whiteboard"
 :block/original-name "smallsolutions whiteboard"})}
