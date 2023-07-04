@@ -30,7 +30,7 @@
 		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 		  Developing custom bioreactors for research on medicinal mushrooms
 		- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
-		  [avenueintelligence.com](https://avenueintelligence.com/)
+		  Co-Founder of [avenueintelligence.com](https://avenueintelligence.com/) 
 		  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 		  Infrastructure on Linux (AWS), Docker
 			- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
