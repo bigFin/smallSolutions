@@ -7,7 +7,7 @@
 		- ### Technology
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
-			- Enjoyer of Linux, nvim, tmux ( [dotfiles](https://github.com/bigFin/dotfiles/tree/sway))
+			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway))
 		- ### Science
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
