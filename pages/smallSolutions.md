@@ -27,7 +27,7 @@
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	  ![image.png](../assets/image_1688402997529_0.png)
 	  ![image.png](../assets/image_1688403030659_0.png)
-	- ## [[Plantlet Finishing Chambers]] November 2021 - 
+	- ## [[Plantlet Finishing Chambers]] November 2020 - November 2022
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
 	  ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 	  ![image.png](../assets/image_1688402619785_0.png)
@@ -37,7 +37,7 @@
 	  ![image.png](../assets/image_1688424351757_0.png)
 	  ![20210602_093135.jpg](../assets/20210602_093135_1688425663509_0.jpg)
 	  ![image.png](../assets/image_1688425567525_0.png)
-	- ## Plant Tissue Culture
+	- ## Plant Tissue Culture April 2019 - January 2023
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- Finding the best surface sterilising agent
 		  ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
