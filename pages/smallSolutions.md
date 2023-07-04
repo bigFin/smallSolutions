@@ -4,9 +4,9 @@
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - # Project highlights
-	- ## [[Inline real time spectroscopy]]
+	- ## [[Inline real time spectroscopy November 2017 - present]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Avenue Intelligence - People Counters]] 
+	- ## [[Avenue Intelligence - People Counters - January 2023 - present]] 
 	  www.avenueintelligence.com
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
