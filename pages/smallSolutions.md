@@ -22,7 +22,8 @@
 - # Project highlights
 	- ## [[Inline real time spectroscopy 🌈]] 
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ##
+	- ## [[Medicinal mushrooms research - U of Guelph 2023]]
+	  Developing custom bioreactors for research on medicinal mushrooms
 	- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
 	  [avenueintelligence.com](https://avenueintelligence.com/)
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
