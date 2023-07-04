@@ -52,8 +52,9 @@
 		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
 			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
-			- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
-			- ![image.png](../assets/image_1688437593680_0.png)
+			  ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
+			  ![image.png](../assets/image_1688437593680_0.png)
+			-
 	- ### [[Automated postharvest processing system 🍃 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ### [[Plantlet Finishing Chambers 🌿 2021-2022]] 
@@ -70,13 +71,13 @@
 		- [[OCI project @ U of G 2020-2022]]
 		  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
 		  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
-			- ![image.png](../assets/image_1688441712215_0.png)
+		  ![image.png](../assets/image_1688441712215_0.png)
 	- ### [[Send It - data collection platform 🔢 2021-2023]]
 	  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
 	- ### [[Lab G - Photobiology 🌈 2019-2020]] 
 	  We built a laboratory to study the effect of light quality on plant growth and development
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
-		- ![image.png](../assets/image_1688437748035_0.png)
+		  ![image.png](../assets/image_1688437748035_0.png)
 - # Education
 	- ## [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
 		- ### Masters thesis 
