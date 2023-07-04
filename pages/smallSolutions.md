@@ -59,6 +59,9 @@
 		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands
 	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to learn the best of both worlds and apply it for our future.
+- # Skills
+	- # Technology
+		-
 - # Links
 	- twitter
 	- github, gitlab
