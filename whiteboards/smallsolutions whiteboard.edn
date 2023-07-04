@@ -8,7 +8,7 @@
 :block/properties 
 {}
 :block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
-{:block/created-at 1688434832621
+{:block/created-at 1688434867609
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -26,7 +26,7 @@
 :compact true
 :isAutoResizing false
 :type "logseq-portal"
-:size [320.6117649421228 49.51457825652838]
+:size [320.6117649421228 60]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
@@ -35,9 +35,9 @@
 :point [57.93509156598401 92.7345300522791]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
-:nonce 1688434471550}}
-:block/updated-at 1688434832621} 
-{:block/created-at 1688434832621
+:nonce 1688434471551}}
+:block/updated-at 1688434867609} 
+{:block/created-at 1688434867609
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -49,10 +49,10 @@
 :isLocked false
 :point [282.66484392362486 264.94593256883104]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:nonce 1688434496856
+:nonce 1688434496857
 :html "<ul>\n  <li>\n    <a href=\"\">image.png</a>\n  </li>\n</ul>"}}
-:block/updated-at 1688434832621} 
-{:block/created-at 1688434832621
+:block/updated-at 1688434867609} 
+{:block/created-at 1688434867609
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -68,9 +68,9 @@
 :objectFit "fill"
 :point [7.045060782802409 143.86038542158872]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:nonce 1688434504513
+:nonce 1688434504514
 :clipping 0}}
-:block/updated-at 1688434832621} 
+:block/updated-at 1688434867609} 
 {:block/content "Resume\nid:: 64a377be-900e-4551-a982-b5045cabe689\nhttps://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing"
 :block/format :markdown
 :block/left 
@@ -80,34 +80,7 @@
 :block/properties 
 {:id "64a377be-900e-4551-a982-b5045cabe689"}
 :block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"} 
-{:block/created-at 1688434832621
-:block/properties 
-{:ls-type :whiteboard-shape
-:logseq.tldraw.shape 
-{:blockType "P"
-:stroke ""
-:collapsed true
-:borderRadius 8
-:index 6
-:scale [1 1]
-:pageId "Inline real time spectroscopy"
-:scaleLevel "md"
-:fill ""
-:compact false
-:isAutoResizing false
-:type "logseq-portal"
-:size [400 40]
-:strokeType "line"
-:strokeWidth 2
-:opacity 1
-:id "6ec54ad0-1a0b-11ee-a17f-497fe74f4498"
-:noFill false
-:point [98.23986835318362 791.7670806137053]
-:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:collapsedHeight 92.98927730966116
-:nonce 1688434690225}}
-:block/updated-at 1688434832621} 
-{:block/created-at 1688434832621
+{:block/created-at 1688434889743
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -130,12 +103,12 @@
 :id "9cb45350-1a0b-11ee-a17f-497fe74f4498"
 :noFill false
 :isLocked false
-:point [89.67749135312528 907.9078080158852]
+:point [90.89889153041986 903.0223706282522]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 92.98934876283728
-:nonce 1688434767227}}
-:block/updated-at 1688434832621} 
-{:block/created-at 1688434832621
+:nonce 1688434767230}}
+:block/updated-at 1688434889743} 
+{:block/created-at 1688434867609
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -160,9 +133,9 @@
 :point [90.91171227173402 651.3109598711881]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
-:nonce 1688434799358}}
-:block/updated-at 1688434832621} 
-{:block/created-at 1688434832621
+:nonce 1688434799363}}
+:block/updated-at 1688434867609} 
+{:block/created-at 1688434892368
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -178,18 +151,81 @@
 :compact false
 :isAutoResizing true
 :type "logseq-portal"
+:size [400 92.98927730966116]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "d673f4b0-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:isLocked false
+:point [91.55332096284883 767.3641469250324]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 0
+:nonce 1688434864052}}
+:block/updated-at 1688434892368} 
+{:block/created-at 1688434889870
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 6
+:scale [1 1]
+:pageId "Avenue Intelligence - People Counters"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing true
+:type "logseq-portal"
 :size [400 40]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
-:id "c2819a20-1a0b-11ee-a17f-497fe74f4498"
+:id "e5c2dee0-1a0b-11ee-a17f-497fe74f4498"
 :noFill false
 :isLocked false
-:point [281.1868655985025 795.5666747067278]
+:point [200.911059602134 922.6700342009781]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :collapsedHeight 0
-:nonce 1688434830530}}
-:block/updated-at 1688434832621})
+:nonce 1688434889678}}
+:block/updated-at 1688434889870} 
+{:block/created-at 1688434889781
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:stroke ""
+:index 7
+:scale [1 1]
+:fill ""
+:type "line"
+:strokeType "line"
+:strokeWidth 1
+:opacity 1
+:label ""
+:id "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
+:fontWeight 400
+:noFill true
+:point [338.58 943.02]
+:fontSize 20
+:handles 
+{:start 
+{:id "start"
+:canBind true
+:point [0 0]
+:bindingId "e5c305f1-1a0b-11ee-a17f-497fe74f4498"}
+:end 
+{:id "end"
+:canBind true
+:point [9.22 3.87]
+:bindingId "e5c305f2-1a0b-11ee-a17f-497fe74f4498"}}
+:decorations 
+{:end "arrow"}
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:nonce 1688434889681
+:italic false}}
+:block/updated-at 1688434889781})
 :pages (
 {:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :block/properties 
@@ -198,15 +234,30 @@
 {:id "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :name "smallsolutions whiteboard"
 :bindings 
-{}
+{:e5c305f1-1a0b-11ee-a17f-497fe74f4498 
+{:id "e5c305f1-1a0b-11ee-a17f-497fe74f4498"
+:type "line"
+:fromId "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
+:toId "9cb45350-1a0b-11ee-a17f-497fe74f4498"
+:handleId "start"
+:point [0.5 0.5]
+:distance 4}
+:e5c305f2-1a0b-11ee-a17f-497fe74f4498 
+{:id "e5c305f2-1a0b-11ee-a17f-497fe74f4498"
+:type "line"
+:fromId "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
+:toId "e5c2dee0-1a0b-11ee-a17f-497fe74f4498"
+:handleId "end"
+:point [0.5 0.5]
+:distance 4}}
 :nonce 1
 :assets [
 {:id "00101340-1a0b-11ee-a17f-497fe74f4498"
 :type "image"
 :src "../assets/image_1688434504233_0.png"
 :size [995 968]}]
-:shapes-index ("c2819a20-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "6ec54ad0-1a0b-11ee-a17f-497fe74f4498")}}
-:block/updated-at 1688434832621
+:shapes-index ("d673f4b0-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "e5c2dee0-1a0b-11ee-a17f-497fe74f4498" "e5c305f0-1a0b-11ee-a17f-497fe74f4498")}}
+:block/updated-at 1688434892368
 :block/created-at 1688434390941
 :block/type "whiteboard"
 :block/name "smallsolutions whiteboard"
