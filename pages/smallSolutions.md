@@ -44,6 +44,7 @@
 		  ![image.png](../assets/image_1688427157248_0.png)
 		  ![image.png](../assets/image_1688427187744_0.png)
 	- ## Send It - data collection platform
+	  I developed a custom data collection app using PowerApps that facilitated plant health data collection.
 	- ## [[Lab G - Photobiology 2019-2020]]
 	  We built a laboratory to study the effect of light quality on plant growth and development
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
