@@ -37,6 +37,9 @@
 		  ESP32 based agricultural controller. Custom PCB designed in KiCAD
 		  Datalogging and dashboarding with Influxdb and Grafana
 			- ![image.png](../assets/image_1688423559948_0.png)
+		- ### Tissue Culture Photobiology 🌈 2017-2022
+			- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
+			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 	- ## Past Projects
 		- ### [[Analytical Chemistry Lab 🧪 2023]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
@@ -69,9 +72,7 @@
 	  We built a laboratory to study the effect of light quality on plant growth and development
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 		- ![image.png](../assets/image_1688437748035_0.png)
-	- ### Tissue Culture Photobiology 🌈 2017-2022
-		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
-		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
+- # Education
 	- ## [[M.Sc Plant Breeding and Physiology 🌵 U of Guelph 2017]]
 		- ### Masters thesis
 		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
