@@ -26,7 +26,7 @@
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline realtime spectroscopy 🌈]] 
-		  Process control driven by real time monitoring of solvent saturation in extraction
+		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
 		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 		  Developing custom bioreactors for research on medicinal mushrooms
 		- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
