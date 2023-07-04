@@ -24,7 +24,10 @@
 		-
 	- ## [[Automated postharvest processing system 2023]]
 	  Precision postharvest automation - optimising for maximum CO2 efflux
-	- ## [[Plantlet Finishing Chambers]]
+	- ## [[Plantlet Finishing Chambers 2021-2022]]
+	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
+		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
+		-
 	- ## Plant Tissue Culture
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- Finding the best surface sterilising agent
