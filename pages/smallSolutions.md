@@ -19,8 +19,10 @@
 			- Hardware: PCB Design KiCad, Eagle
 			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
-		- ### Industrial
+		- ### Industrial ⚙️
+			- AWS and On Premises deployment
 			- Manufacturing industrial electronics
+			- Low-power, long range sensor networks on
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline real time spectroscopy 🌈]] 
