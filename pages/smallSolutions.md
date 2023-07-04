@@ -51,9 +51,10 @@
 		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 	- ## [[M.Sc Plant Breeding and Physiology - U of Guelph]]
-	-
-	- ## NepalCanDo
-	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
+		- ### Masters thesis
+		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
+		- ### NepalCanDo
+	- ## [[Wageningen UR 2012-2013]]
 	-
 - # Links
 	- twitter
