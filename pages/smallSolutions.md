@@ -8,10 +8,13 @@
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
 			- Hardware: PCB Design KiCad, Eagle
+			- Manufacturing
+			- Design and
 		- ### Science
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
-			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC
+			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
 			- Plant breeding: organic agriculture, climate change, and low external input environments
+			-
 - # Project highlights
 	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
