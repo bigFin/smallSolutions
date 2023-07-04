@@ -7,7 +7,7 @@
 	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
 	- ## [[Avenue Intelligence - People Counters 2023]] 
-	  www.avenueintelligence.com
+	  [avenueintelligence.com](https://avenueintelligence.com/)
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
