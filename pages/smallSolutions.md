@@ -81,7 +81,7 @@
 		  and volunteer work in 2015 earthquake
 		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
-	  International exchange program was a transformative experience. This is where my first introduction to the fusion of biotech and organic agriculture, to learn the best of both worlds and apply it for our future.
+	  International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.
 - # Links
 	- twitter
 	- github, gitlab
