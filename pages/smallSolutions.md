@@ -65,7 +65,7 @@
 	  2019-2023 Meristem tip dissection to eliminate pathogens from genetic library
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
-	- ### [[Beneficial microbes 🦠]
+	- ### [[Beneficial microbes 🦠]]
 		- 2013-2015 Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
 		- [[OCI project @ U of G 2020-2022]]
 		  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
