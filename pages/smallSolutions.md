@@ -10,7 +10,8 @@
 			- Hardware: PCB Design KiCad, Eagle
 		- ### Science
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
-			- Plant breeding for organic,
+			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC
+			- Plant breeding: organic agriculture, climate change, and low external input environments
 - # Project highlights
 	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
