@@ -78,8 +78,8 @@
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 		- ![image.png](../assets/image_1688437748035_0.png)
 - # Education
-	- ## [[M.Sc Plant Breeding and Physiology 🌵 U of Guelph 2017]]
-		- ### Masters thesis 🇨🇦🇳🇵
+	- ## [[M.Sc Plant Breeding and Physiology 🇨🇦🇳🇵 U of Guelph 2017]]
+		- ### Masters thesis 
 		  Prospecting drought tolerant wild plants, with improved microbial symbiosis, to enhance sustainable agriculture in the mid-hills of Nepal
 		- ### NepalCanDo Agroecology fieldwork in Nepal 🇳🇵
 		  and volunteer work in 2015 earthquake
