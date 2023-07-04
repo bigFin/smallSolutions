@@ -21,7 +21,7 @@
 			- 3D modelling with Fusion360 for 3D printing components
 		- ### Industrial ⚙️
 			- AWS and On Premises deployment
-			- Automation  ESP32
+			- Automation, custom and industrial equipment, custom ESP32 based hardware
 			- Low-power, long range sensor networks on LoRaWAN
 - # Project highlights
 	- ## Ongoing Projects
