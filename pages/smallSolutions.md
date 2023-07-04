@@ -14,19 +14,20 @@
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
 	- ## [[MAC 🌱 Modular Agriculture Controller]]
-		- HVAC and lighting controls based on plant biofeedback
-		- Advanced real time canopy segmentation from thermal camera
-		- ESP32 based agricultural controller
+	  HVAC and lighting controls based on plant biofeedback
+	  Advanced real time canopy segmentation from thermal camera
+	  ESP32 based agricultural controller
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## Analytical Chemistry
 	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
-		- ![image.png](../assets/image_1688425117268_0.png)
-		- ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
-		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
-		- ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
+	  ![image.png](../assets/image_1688425117268_0.png)
+	  ![20220705_113812.jpg](../assets/20220705_113812_1688425280982_0.jpg)
+	  ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg)
+	  ![25f6a6d4-2a57-4a57-849c-eab5e3987406.png](../assets/25f6a6d4-2a57-4a57-849c-eab5e3987406_1688425132618_0.png)
 	- ## Automated postharvest processing system
-		- ![image.png](../assets/image_1688402997529_0.png)
-		- ![image.png](../assets/image_1688403030659_0.png)
+	  Precision postharvest automation - optimizing
+	  ![image.png](../assets/image_1688402997529_0.png)
+	  ![image.png](../assets/image_1688403030659_0.png)
 	- ## [[Plantlet Finishing Chambers]] 
 	  Custom bioreactor system for tissue culture micropropagation
 		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
