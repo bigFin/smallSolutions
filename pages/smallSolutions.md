@@ -25,7 +25,7 @@
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
 	- ## Ongoing Projects
-		- ### [[Inline real time spectroscopy 🌈]] 
+		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation in extraction
 		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 		  Developing custom bioreactors for research on medicinal mushrooms
