@@ -20,9 +20,9 @@
 			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 		- ### Industrial ⚙️
-			- AWS and On Premises deployment
+			- AWS and On Premises server deployment
 			- Automation, custom ESP32 based hardware
-			- Low-power, long range sensor networks on LoRaWAN
+			- Low-power, long range sensor networks on LoRaWAN 📡
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline real time spectroscopy 🌈]] 
