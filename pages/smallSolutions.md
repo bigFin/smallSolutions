@@ -61,11 +61,11 @@
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
-	- ### [[Beneficial microbes 🦠 2015 - 2022]]
+	- ### [[Beneficial microbes 🦠]
 		- Greenhouse
-			- 2013-2015 Greenhouse trials to evaluate microbes and formulations to suppress fungal diseases in grasses
+		- 2013-2015 Greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
 		- Field
-			- 2013-2015
+			- 2013-2015 Field t
 		- [[OCI project @ U of G 2020-2022]]
 		  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
 		  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
