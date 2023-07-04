@@ -20,27 +20,29 @@
 			- Manufacturing industrial electronics, bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
-	- ## [[Inline real time spectroscopy 🌈]] 
-	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Medicinal mushrooms research - U of Guelph 2023]]
-	  Developing custom bioreactors for research on medicinal mushrooms
-	- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
-	  [avenueintelligence.com](https://avenueintelligence.com/)
-	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
-	  Infrastructure on Linux (AWS), Docker
-		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
-		-
-	- ## [[MAC Modular Agriculture Controller 🌱 2023]]
-	  HVAC and lighting controls based on plant biofeedback
-	  Advanced real time canopy segmentation from thermal camera
-	  ESP32 based agricultural controller. Custom PCB designed in KiCAD
-	  Datalogging and dashboarding with Influxdb and Grafana
-		- ![image.png](../assets/image_1688423559948_0.png)
-	- ## [[Analytical Chemistry Lab 🧪 2023]] 
-	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
-		- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
-		- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
-		- ![image.png](../assets/image_1688437593680_0.png)
+	- ## Ongoing
+		- ## [[Inline real time spectroscopy 🌈]] 
+		  Process control driven by real time monitoring of solvent saturation in extraction
+		- ## [[Medicinal mushrooms research - U of Guelph 2023]]
+		  Developing custom bioreactors for research on medicinal mushrooms
+		- ## [[Avenue Intelligence - People Counters 🚶 2023]] 
+		  [avenueintelligence.com](https://avenueintelligence.com/)
+		  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
+		  Infrastructure on Linux (AWS), Docker
+			- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
+			-
+		- ## [[MAC Modular Agriculture Controller 🌱 2023]]
+		  HVAC and lighting controls based on plant biofeedback
+		  Advanced real time canopy segmentation from thermal camera
+		  ESP32 based agricultural controller. Custom PCB designed in KiCAD
+		  Datalogging and dashboarding with Influxdb and Grafana
+			- ![image.png](../assets/image_1688423559948_0.png)
+	- ## Past Projects
+		- ### [[Analytical Chemistry Lab 🧪 2023]] 
+		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
+			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
+			- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
+			- ![image.png](../assets/image_1688437593680_0.png)
 	- ## [[Automated postharvest processing system 🍃 2023]] 
 	  Precision postharvest automation - optimising for maximum CO2 efflux
 	- ## [[Plantlet Finishing Chambers 🌿 2021-2022]] 
