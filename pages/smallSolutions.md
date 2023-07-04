@@ -45,11 +45,13 @@
 	- ## Send It - data collection platform
 	- ## [[Lab G - Photobiology 2019-2020]]
 	  We built a laboratory to study the effect of light quality on plant growth and development
-	  ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
+		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 		- ![image.png](../assets/image_1688437748035_0.png)
 	- ## Tissue Culture Photobiology 2017-2022
 		- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 		  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
+	- ## [[M.Sc Plant Breeding and Physiology - U of Guelph]]
+	-
 	- ## NepalCanDo
 	  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
 	-
