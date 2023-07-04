@@ -163,7 +163,7 @@
 :collapsedHeight 0
 :nonce 1688434864052}}
 :block/updated-at 1688434892368} 
-{:block/created-at 1688434889870
+{:block/created-at 1688434937048
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
@@ -173,59 +173,42 @@
 :borderRadius 8
 :index 6
 :scale [1 1]
-:pageId "Avenue Intelligence - People Counters"
+:pageId "MAC 🌱 Modular Agriculture Controller"
 :scaleLevel "md"
 :fill ""
 :compact false
 :isAutoResizing true
 :type "logseq-portal"
-:size [400 40]
+:size [400 114.96945836344284]
 :strokeType "line"
 :strokeWidth 2
 :opacity 1
-:id "e5c2dee0-1a0b-11ee-a17f-497fe74f4498"
+:id "ea55d480-1a0b-11ee-a17f-497fe74f4498"
 :noFill false
-:isLocked false
-:point [200.911059602134 922.6700342009781]
+:point [153.2009573032821 984.7415307821179]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:collapsedHeight 0
-:nonce 1688434889678}}
-:block/updated-at 1688434889870} 
-{:block/created-at 1688434889781
+:collapsedHeight 92.98934876283728
+:nonce 1688434897367}}
+:block/updated-at 1688434937048} 
+{:block/created-at 1688434948998
 :block/properties 
 {:ls-type :whiteboard-shape
 :logseq.tldraw.shape 
-{:stroke ""
-:index 7
+{:index 7
 :scale [1 1]
-:fill ""
-:type "line"
-:strokeType "line"
-:strokeWidth 1
+:type "image"
+:assetId "02b2dc30-1a0c-11ee-a17f-497fe74f4498"
+:size [404.48321397853476 162.93334397491185]
 :opacity 1
-:label ""
-:id "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
-:fontWeight 400
-:noFill true
-:point [338.58 943.02]
-:fontSize 20
-:handles 
-{:start 
-{:id "start"
-:canBind true
-:point [0 0]
-:bindingId "e5c305f1-1a0b-11ee-a17f-497fe74f4498"}
-:end 
-{:id "end"
-:canBind true
-:point [9.22 3.87]
-:bindingId "e5c305f2-1a0b-11ee-a17f-497fe74f4498"}}
-:decorations 
-{:end "arrow"}
+:id "07d19710-1a0c-11ee-a17f-497fe74f4498"
+:isAspectRatioLocked true
+:isLocked false
+:objectFit "fill"
+:point [154.42231665019034 1113.400021699539]
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
-:nonce 1688434889681
-:italic false}}
-:block/updated-at 1688434889781})
+:nonce 1688434938429
+:clipping 0}}
+:block/updated-at 1688434948998})
 :pages (
 {:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :block/properties 
@@ -234,30 +217,19 @@
 {:id "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :name "smallsolutions whiteboard"
 :bindings 
-{:e5c305f1-1a0b-11ee-a17f-497fe74f4498 
-{:id "e5c305f1-1a0b-11ee-a17f-497fe74f4498"
-:type "line"
-:fromId "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
-:toId "9cb45350-1a0b-11ee-a17f-497fe74f4498"
-:handleId "start"
-:point [0.5 0.5]
-:distance 4}
-:e5c305f2-1a0b-11ee-a17f-497fe74f4498 
-{:id "e5c305f2-1a0b-11ee-a17f-497fe74f4498"
-:type "line"
-:fromId "e5c305f0-1a0b-11ee-a17f-497fe74f4498"
-:toId "e5c2dee0-1a0b-11ee-a17f-497fe74f4498"
-:handleId "end"
-:point [0.5 0.5]
-:distance 4}}
+{}
 :nonce 1
 :assets [
 {:id "00101340-1a0b-11ee-a17f-497fe74f4498"
 :type "image"
 :src "../assets/image_1688434504233_0.png"
-:size [995 968]}]
-:shapes-index ("d673f4b0-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "e5c2dee0-1a0b-11ee-a17f-497fe74f4498" "e5c305f0-1a0b-11ee-a17f-497fe74f4498")}}
-:block/updated-at 1688434892368
+:size [995 968]} 
+{:id "02b2dc30-1a0c-11ee-a17f-497fe74f4498"
+:type "image"
+:src "../assets/image_1688434938145_0.png"
+:size [1703 686]}]
+:shapes-index ("d673f4b0-1a0b-11ee-a17f-497fe74f4498" "9cb45350-1a0b-11ee-a17f-497fe74f4498" "ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "afe1d740-1a0b-11ee-a17f-497fe74f4498" "ea55d480-1a0b-11ee-a17f-497fe74f4498" "07d19710-1a0c-11ee-a17f-497fe74f4498")}}
+:block/updated-at 1688434948998
 :block/created-at 1688434390941
 :block/type "whiteboard"
 :block/name "smallsolutions whiteboard"
