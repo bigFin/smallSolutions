@@ -40,6 +40,8 @@
 		- ### Tissue Culture Photobiology 🌈 2017-2022
 			- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
+			- https://github.com/bigFin/Prismatic
+			-
 	- ## Past Projects
 		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
@@ -83,7 +85,7 @@
 	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
 	  International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.
 - # Links
-	- github, [gitlab](https://gitlab.com/bigFinSmall)
+	- [github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
 	- Donate cash or crypto to feed me and pay my student loans
 - ## [[Wisdom]]
 - # Site todo
