@@ -28,7 +28,7 @@
 	  Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
 		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 		-
-	- ## Plant Tissue Culture
+	- ## [[Plant Tissue Culture Method Development 2019-2023]]
 	  Meristem tip dissection to eliminate pathogens from genetic library
 		- Finding the best surface sterilising agent
 		  ![20190806_152615.mp4](../assets/20190806_152615_1688426333236_0.mp4)
