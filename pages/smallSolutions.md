@@ -57,8 +57,8 @@
 	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
 	  Influxdb and Grafana, Docker, Linux.
 		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	- ### [[Plant Tissue Culture Method Development 🌱 2019-2023]] 
-	  Meristem tip dissection to eliminate pathogens from genetic library
+	- ### [[Plant Tissue Culture Method Development 🌱]] 
+	  2019-2023 Meristem tip dissection to eliminate pathogens from genetic library
 		- 3 weeks post dissection
 		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
 	- ### [[Beneficial microbes 🦠]
