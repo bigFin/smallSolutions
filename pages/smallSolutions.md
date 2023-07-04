@@ -31,7 +31,7 @@
 		  Infrastructure on Linux (AWS), Docker
 			- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 			-
-		- ### [[MAC Modular Agriculture Controller 🌱 2023]]
+		- ### [[MAC 🌱 Modular Agriculture Controller]]
 		  HVAC and lighting controls based on plant biofeedback
 		  Advanced real time canopy segmentation from thermal camera
 		  ESP32 based agricultural controller. Custom PCB designed in KiCAD
