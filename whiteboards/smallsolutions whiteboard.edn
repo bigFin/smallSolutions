@@ -68,7 +68,44 @@
 :parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :nonce 1688434504513
 :clipping 0}}
-:block/updated-at 1688434508629})
+:block/updated-at 1688434508629} 
+{:block/content "Resume\nhttps://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"}
+:block/parent 
+{:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"}
+:block/properties 
+{}
+:block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"} 
+{:block/created-at 1688434638892
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 3
+:scale [1 1]
+:pageId "64a377be-900e-4551-a982-b5045cabe689"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400.00000000000006 88.99062324386706]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "41f8c950-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:point [86.02631571448745 635.0172022262357]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 0
+:nonce 1688434614967}}
+:block/updated-at 1688434638892})
 :pages (
 {:block/uuid #uuid "64a376d6-0345-4a14-a5a8-a2b5789e2485"
 :block/properties 
@@ -84,8 +121,8 @@
 :type "image"
 :src "../assets/image_1688434504233_0.png"
 :size [995 968]}]
-:shapes-index ("ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498")}}
-:block/updated-at 1688434515165
+:shapes-index ("ec72dd90-1a0a-11ee-a17f-497fe74f4498" "fb9efd80-1a0a-11ee-a17f-497fe74f4498" "00108870-1a0b-11ee-a17f-497fe74f4498" "41f8c950-1a0b-11ee-a17f-497fe74f4498")}}
+:block/updated-at 1688434638891
 :block/created-at 1688434390941
 :block/type "whiteboard"
 :block/name "smallsolutions whiteboard"
