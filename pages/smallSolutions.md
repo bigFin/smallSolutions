@@ -6,16 +6,16 @@
 - # Project highlights
 	- ## [[Inline real time spectroscopy]]
 	  Process control driven by real time monitoring of solvent saturation in extraction
-	- ## [[Avenue Intelligence - People Counters]] 
+	- ## [[Avenue Intelligence - People Counters 2023]] 
 	  www.avenueintelligence.com
 	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 	  Infrastructure on Linux (AWS), Docker
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
-	- ## [[MAC 🌱 Modular Agriculture Controller]]
+	- ## [[MAC 🌱 Modular Agriculture Controller 2023]]
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
-	  ESP32 based agricultural controller
+	  ESP32 based agricultural controller. Custom PCB designed in KiCAD
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## [[Analytical Chemistry Lab 2023]]
 	  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
