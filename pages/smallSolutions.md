@@ -37,7 +37,7 @@
 		  ESP32 based agricultural controller. Custom PCB designed in KiCAD
 		  Datalogging and dashboarding with Influxdb and Grafana
 			- ![image.png](../assets/image_1688423559948_0.png)
-		- ### Tissue Culture Photobiology 🌈 2017-2022
+		- ### [[Prismatic - Tissue Culture Photobiology 🌈 2017]]
 			- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 			- https://github.com/bigFin/Prismatic
