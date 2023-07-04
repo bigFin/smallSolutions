@@ -41,7 +41,7 @@
 			- Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
 			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 	- ## Past Projects
-		- ### [[Analytical Chemistry Lab 🧪 2023]] 
+		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
 			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 			- ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
