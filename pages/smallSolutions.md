@@ -8,7 +8,7 @@
 			- Software: Linux (on premises, AWS), Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
 			- Data science: R, Tableau, PowerBI
-			- Reporting: Markdown, Office
+			- Reporting: Markdown, Logseq, Office
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
