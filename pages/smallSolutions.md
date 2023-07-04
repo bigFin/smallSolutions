@@ -53,7 +53,8 @@
 	- ## [[M.Sc Plant Breeding and Physiology - U of Guelph]]
 		- ### Masters thesis
 		  Prospecting drought tolerant wild plants with enhanced microbial symbiosis to enhance sustainable agriculture in the mid-hills of Nepal
-		- ### NepalCanDo
+		- ### NepalCanDo Agroecology fieldwork in Nepal, and volunteer work in 2015 earthquake
+		  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]]
 	-
 - # Links
