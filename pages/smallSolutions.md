@@ -1,9 +1,4 @@
 - ![image.png](../assets/image_1688402515733_0.png)
-- # Hello World!
-	- Welcome to Small Solutions
-	- Witness the fitness
-	- Ride the wave
-	- Experience the sensation
 - # Finlay Small
   ![F.A.A. Small Resume 230630.pdf](../assets/F.A.A._Small_Resume_230630_1688423464005_0.pdf)
 - # Project highlights
