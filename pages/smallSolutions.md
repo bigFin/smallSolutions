@@ -21,8 +21,8 @@
 			- 3D modelling with Fusion360 for 3D printing components
 		- ### Industrial ⚙️
 			- AWS and On Premises deployment
-			- Manufacturing industrial electronics
-			- Low-power, long range sensor networks on
+			- Automation  ESP32
+			- Low-power, long range sensor networks on LoRaWAN
 - # Project highlights
 	- ## Ongoing Projects
 		- ### [[Inline real time spectroscopy 🌈]] 
