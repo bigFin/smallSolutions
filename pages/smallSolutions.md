@@ -9,11 +9,14 @@
 - # Project highlights
 	- ## [[Avenue Intelligence - People Counters]] 
 	  www.avenueintelligence.com
-	  ARM® Cortex® M0+ Core and SX1262
-	  Infrastructure on Linux (AWS), Docker, LoRaWAN
+	  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
+	  Infrastructure on Linux (AWS), Docker
 		- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
 		-
 	- ## [[MAC 🌱 Modular Agriculture Controller]]
+		- ESP32 based agricultural controller
+		- Advanced real time canopy segmentation from thermal camera
+		-
 		- ![image.png](../assets/image_1688423559948_0.png)
 	- ## Analytical Chemistry
 		- ![image.png](../assets/image_1688425117268_0.png)
