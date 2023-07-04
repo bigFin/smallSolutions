@@ -91,3 +91,4 @@
 	  :LOGBOOK:
 	  CLOCK: [2023-07-03 Mon 10:24:48]
 	  :END:
+- [[smallsolutions whiteboard]]
