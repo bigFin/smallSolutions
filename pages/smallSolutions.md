@@ -8,7 +8,7 @@
 			- AWS and On Premises server deployment
 			- Automation, custom ESP32 based hardware
 			- Low-power, long range sensor networks on LoRaWAN 📡
-			- Horticulture, CEA design and production, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
+			- Design and operation of orticulture, CEA d, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
 		- ### Technology 🤖
 			- Software: Linux, Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
