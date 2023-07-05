@@ -8,6 +8,8 @@
 			- AWS and On Premises server deployment
 			- Automation, custom ESP32 based hardware
 			- Low-power, long range sensor networks on LoRaWAN 📡
+			- Water sanitation,
+			- Building Automation, HVAC, Irrigation and Fertigation systems
 		- ### Technology 🤖
 			- Software: Linux, Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
