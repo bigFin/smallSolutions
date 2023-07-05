@@ -7,7 +7,7 @@
 		- ### Industrial ⚙️
 			- AWS and On Premises server deployment. Linux (Arch, Debian), Docker, MQTT, InfluxDB
 			- Automation, custom ESP32 based hardware for networking industrial electronics, lighting, hvac.
-			- Low-power, long range sensor networks on LoRaWAN 📡: Helium Network, private networks. Edge processing of  Custom electronics design, offshore fabrication.
+			- Low-power, long range sensor networks on LoRaWAN 📡: Helium Network, private networks. Edge processing and analysis of  Custom electronics design, offshore fabrication.
 			- Controlled environment agriculture, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
 		- ### Technology 🤖
 			- Software: Linux, Docker, Python
