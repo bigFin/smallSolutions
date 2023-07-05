@@ -5,10 +5,10 @@
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 	- ## Skills
 		- ### Industrial ⚙️
-			- AWS and On Premises server deployment
+			- AWS and On Premises server deployment. Linux (Arch, Cent)
 			- Automation, custom ESP32 based hardware
 			- Low-power, long range sensor networks on LoRaWAN 📡
-			- Design and operation of orticulture, CEA d, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
+			- Controlled environment agriculture, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
 		- ### Technology 🤖
 			- Software: Linux, Docker, Python
 			- Firmware: C++ on ESP32/ESP8266
