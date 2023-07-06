@@ -26,7 +26,7 @@
 			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
-  ![image.png](../assets/image_1688683296647_0.png)
+  ![image.png](../assets/image_1688683455924_0.png)
 	- ## Ongoing Projects
 		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
@@ -81,6 +81,7 @@
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 		  ![image.png](../assets/image_1688437748035_0.png)
 - # Education
+  ![image.png](../assets/image_1688683491235_0.png)
 	- ## [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
 		- ### Masters thesis 
 		  Prospecting drought tolerant wild plants, with improved microbial symbiosis, to enhance sustainable agriculture in the mid-hills of Nepal
