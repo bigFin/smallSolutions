@@ -25,6 +25,7 @@
 			- Bioreactors, environmental control systems
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
+  ![image.png](../assets/image_1688683296647_0.png)
 	- ## Ongoing Projects
 		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
