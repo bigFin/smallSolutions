@@ -1,5 +1,6 @@
 - ![image.png](../assets/image_1688402515733_0.png)
 - # Finlay Small
+  ![image.png](../assets/image_1688683351568_0.png)
 	- ## Resume
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
