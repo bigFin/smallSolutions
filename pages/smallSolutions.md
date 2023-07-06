@@ -99,3 +99,5 @@
 		- Federal Graphics Improvement Program
 - [[smallsolutions whiteboard]]
 - This website was grown with love and [Logseq](https://logseq.com/)
+- ![image.png](../assets/image_1688683252591_0.png)
+-
