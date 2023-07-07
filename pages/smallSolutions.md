@@ -27,7 +27,6 @@
 - # Project highlights
   ![image.png](../assets/image_1688402515733_0.png)
 	- ## Ongoing Projects
-	  collapsed:: true
 		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
 		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
@@ -52,7 +51,6 @@
 			- Industrial project: light intensity effects on regeneration after droplet vitrification and cryopreservation
 			- Ongoing research
 	- ## Past Projects
-	  collapsed:: true
 		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC
 			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
