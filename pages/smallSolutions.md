@@ -27,6 +27,7 @@
 - # Project highlights
   ![image.png](../assets/image_1688402515733_0.png)
 	- ## Ongoing Projects
+	  collapsed:: true
 		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
 		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
@@ -56,25 +57,25 @@
 			- ![20220512_154003.jpg](../assets/20220512_154003_1688425376241_0.jpg){:height 1048, :width 780}
 			  ![image.png](../assets/image_1688436117795_0.png){:height 148, :width 611}
 			  ![image.png](../assets/image_1688437593680_0.png)
-	- ### [[Automated postharvest processing system 🍃 2023]] 
-	  Precision postharvest automation - optimising for maximum CO2 efflux
-	- ### [[Plantlet Finishing Chambers 🌿 2021-2022]] 
-	  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
-	  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
-	  Influxdb and Grafana, Docker, Linux.
-		- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
-	- ### [[Plant Tissue Culture Method Development 🌱]] 
-	  2019-2023 Meristem tip dissection to eliminate pathogens from genetic library
-		- 3 weeks post dissection
-		  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
-	- ### [[Beneficial microbes 🦠]]
-		- 2013-2015 Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
-		- [[OCI project @ U of G 2020-2022]]
-		  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
-		  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
-		  ![image.png](../assets/image_1688441712215_0.png)
-	- ### [[Send It - data collection platform 🔢 2021-2023]]
-	  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
+		- ### [[Automated postharvest processing system 🍃 2023]] 
+		  Precision postharvest automation - optimising for maximum CO2 efflux
+		- ### [[Plantlet Finishing Chambers 🌿 2021-2022]] 
+		  Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
+		  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
+		  Influxdb and Grafana, Docker, Linux.
+			- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
+		- ### [[Plant Tissue Culture Method Development 🌱]] 
+		  2019-2023 Meristem tip dissection to eliminate pathogens from genetic library
+			- 3 weeks post dissection
+			  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
+		- ### [[Beneficial microbes 🦠]]
+			- 2013-2015 Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
+			- [[OCI project @ U of G 2020-2022]]
+			  Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of
+			  Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
+			  ![image.png](../assets/image_1688441712215_0.png)
+		- ### [[Send It - data collection platform 🔢 2021-2023]]
+		  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
 	- ### [[Lab G - Photobiology 🌈 2019-2020]] 
 	  We built a laboratory to study the effect of light quality on plant growth and development
 		- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
