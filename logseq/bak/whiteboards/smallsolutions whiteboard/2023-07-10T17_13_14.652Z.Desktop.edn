@@ -1,0 +1,209 @@
+{:blocks (
+{:block/content "Small Solutions"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
+:block/parent 
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
+:block/properties 
+{}
+:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
+{:block/created-at 1688434889743
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 1
+:scale [1 1]
+:pageId "Avenue Intelligence - People Counters"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "9cb45350-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:isLocked false
+:point [90.89889153041986 903.0223706282522]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 92.98934876283728
+:nonce 1688434767230}}
+:block/updated-at 1688434889743} 
+{:block/created-at 1688434867609
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:collapsed false
+:borderRadius 8
+:index 5
+:scale [1 1]
+:pageId "64a377be-900e-4551-a982-b5045cabe689"
+:scaleLevel "md"
+:fill ""
+:compact true
+:isAutoResizing true
+:type "logseq-portal"
+:size [400 88.99062324386706]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "afe1d740-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:point [90.91171227173402 651.3109598711881]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 0
+:nonce 1688434799363}}
+:block/updated-at 1688434867609} 
+{:block/created-at 1688434867609
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "B"
+:stroke ""
+:rotation 0
+:collapsed false
+:borderRadius 8
+:index 2
+:scale [1 1]
+:refs ["64a36b59-305f-45fa-b8cb-7984b551432c"]
+:pageId "64a3772a-31c6-4108-bd43-a0ec9849db7b"
+:scaleLevel "lg"
+:fill ""
+:compact true
+:isAutoResizing false
+:type "logseq-portal"
+:size [320.6117649421228 60]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "ec72dd90-1a0a-11ee-a17f-497fe74f4498"
+:noFill false
+:point [57.93509156598401 92.7345300522791]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 0
+:nonce 1688434471551}}
+:block/updated-at 1688434867609} 
+{:block/created-at 1688435004383
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 0
+:scale [1 1]
+:pageId "Inline real time spectroscopy"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "d673f4b0-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:isLocked false
+:point [91.55332096284883 767.3641469250324]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 92.98927730966116
+:nonce 1688434864053}}
+:block/updated-at 1688435004383} 
+{:block/created-at 1688434867609
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 4
+:scale [1 1]
+:type "image"
+:assetId "00101340-1a0b-11ee-a17f-497fe74f4498"
+:size [497.5 484]
+:opacity 1
+:id "00108870-1a0b-11ee-a17f-497fe74f4498"
+:isAspectRatioLocked true
+:isLocked false
+:objectFit "fill"
+:point [7.045060782802409 143.86038542158872]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:nonce 1688434504514
+:clipping 0}}
+:block/updated-at 1688434867609} 
+{:block/created-at 1688434981693
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:blockType "P"
+:stroke ""
+:collapsed true
+:borderRadius 8
+:index 6
+:scale [1 1]
+:pageId "MAC 🌱 Modular Agriculture Controller"
+:scaleLevel "md"
+:fill ""
+:compact false
+:isAutoResizing false
+:type "logseq-portal"
+:size [400 40]
+:strokeType "line"
+:strokeWidth 2
+:opacity 1
+:id "ea55d480-1a0b-11ee-a17f-497fe74f4498"
+:noFill false
+:point [95.7971904897534 962.7571441985422]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:collapsedHeight 114.96945836344284
+:nonce 1688434897418}}
+:block/updated-at 1688434981693} 
+{:block/created-at 1688434867609
+:block/properties 
+{:ls-type :whiteboard-shape
+:logseq.tldraw.shape 
+{:index 3
+:scale [1 1]
+:type "html"
+:size [600 1]
+:id "fb9efd80-1a0a-11ee-a17f-497fe74f4498"
+:isLocked false
+:point [282.66484392362486 264.94593256883104]
+:parentId "64a376d6-0345-4a14-a5a8-a2b5789e2485"
+:nonce 1688434496857
+:html "<ul>\n  <li>\n    <a href=\"\">image.png</a>\n  </li>\n</ul>"}}
+:block/updated-at 1688434867609} 
+{:block/content "Resume\nid:: 64a377be-900e-4551-a982-b5045cabe689\nhttps://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing"
+:block/format :markdown
+:block/left 
+{:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"}
+:block/parent 
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"}
+:block/properties 
+{:id "64a377be-900e-4551-a982-b5045cabe689"}
+:block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"})
+:pages (
+{:block/uuid #uuid "64a392d6-162f-41cd-adf0-3abe3c28b1de"
+:block/properties 
+{:heading 2}
+:block/journal? false
+:block/refs [
+{:db/id 202}]
+:file/last-modified-at #inst "2023-07-04T02:00:17.789-00:00"
+:block/properties-order ()
+:block/created-at 1688434390941
+:block/content "## [[Inline real time spectroscopy November 2017 - present]]\nProcess control driven by real time monitoring of solvent saturation in extraction"
+:block/path-refs [
+{:db/id 27} 
+{:db/id 202}]
+:block/type "whiteboard"
+:block/name "smallsolutions whiteboard"
+:block/original-name "smallsolutions whiteboard"})}
