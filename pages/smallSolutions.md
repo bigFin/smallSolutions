@@ -1,4 +1,4 @@
-- # Finlay Small
+# Finlay Small
 	- ![image.png](../assets/image_1688684023192_0.png)
 	- ## Resume
 	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
@@ -35,7 +35,8 @@
 		  Co-Founder of [avenueintelligence.com](https://avenueintelligence.com/), an easy, privacy preserving people counting system.
 		  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
 		  Infrastructure on Linux (AWS), Docker
-			- ![image.png](../assets/image_1688423776023_0.png){:height 259, :width 611}
+			- ![](https://lh3.googleusercontent.com/pw/ADCreHcKwGfdYhdi9ch1bjMoeMYYnEgpHNAyg8C1gNijzWp0FIx1WZNIOK5AGMAr9sVr_1avf9MUPltLqr_GvnApVlaKULZKRSeieeChPdMe5FKj16cGzJrFivwJzAXgBjvw-FdviasNT1xAGDh8pYlEex-p=w595-h1288-s-no?authuser=2)
+			- ![image.png](../assets/image_1688423776023_0.png){:height 195, :width 456}
 			-
 		- ### [[MAC 🌱 Modular Agriculture Controller]]
 		  HVAC and lighting controls based on plant biofeedback
