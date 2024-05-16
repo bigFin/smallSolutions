@@ -5,12 +5,9 @@
 	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 	- ## Skills
 		- ### Industrial ⚙️
-			- AWS and On Premises server deployment. Linux (Arch, Debian), Docker, MQTT, InfluxDB
-			- Automation, custom ESP32 based hardware for networking industrial electronics, lighting, hvac.
-			- Low-power, long range sensor networks on LoRaWAN 📡: Helium Network, private networks. Edge processing and analysis of  Custom electronics design, offshore fabrication.
-			- Controlled environment agriculture, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
+		- Building tech solutions using tech from the edge, on prem, to the cloud
 		- ### Technology 🤖
-			- Systems: Linux, Docker, Kubernetes, AWS or bare metal
+			- Systems: Kubernetes, AWS or bare metal, Docker, Linux
 			- Firmware in C (a little C++ and Assembly)
 			- ML, CV, analytics in Python
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
