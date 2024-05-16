@@ -10,10 +10,9 @@
 			- Low-power, long range sensor networks on LoRaWAN 📡: Helium Network, private networks. Edge processing and analysis of  Custom electronics design, offshore fabrication.
 			- Controlled environment agriculture, building Automation, HVAC, lighting, water sanitation, irrigation and fertigation systems.
 		- ### Technology 🤖
-			- Software: Linux, Docker, Python
-			- Firmware: C++ on ESP32/ESP8266
-			- Data science: R, Tableau, PowerBI
-			- Reporting: Markdown, Logseq, Office
+			- Systems: Linux, Docker, Kubernetes, AWS or bare metal
+			- Firmware in C (a little C++ and Assembly)
+			- ML, CV, analytics in Python
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
@@ -33,9 +32,7 @@
 		  Developing custom bioreactors for research on medicinal mushrooms
 		- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
 		  Co-Founder of [avenueintelligence.com](https://avenueintelligence.com/), an easy, privacy preserving people counting system.
-		  ARM® Cortex® M0+ Core and SX1262 on LoRaWAN
-		  Infrastructure on Linux (AWS), Docker
-			- ![](https://lh3.googleusercontent.com/pw/ADCreHcKwGfdYhdi9ch1bjMoeMYYnEgpHNAyg8C1gNijzWp0FIx1WZNIOK5AGMAr9sVr_1avf9MUPltLqr_GvnApVlaKULZKRSeieeChPdMe5FKj16cGzJrFivwJzAXgBjvw-FdviasNT1xAGDh8pYlEex-p=w595-h1288-s-no?authuser=2)
+		  ![](https://lh3.googleusercontent.com/pw/ADCreHcKwGfdYhdi9ch1bjMoeMYYnEgpHNAyg8C1gNijzWp0FIx1WZNIOK5AGMAr9sVr_1avf9MUPltLqr_GvnApVlaKULZKRSeieeChPdMe5FKj16cGzJrFivwJzAXgBjvw-FdviasNT1xAGDh8pYlEex-p=w595-h1288-s-no?authuser=2)
 			- ![image.png](../assets/image_1688423776023_0.png){:height 195, :width 456}
 			-
 		- ### [[MAC 🌱 Modular Agriculture Controller]]
