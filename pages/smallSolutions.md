@@ -5,9 +5,9 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
 	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Unlocked high value production through insight from photobiology, irrigation, and hvac experiments where we used sensor arrays, thermal and viz imaging and cv, to rapidly experiment, investigate, and validate optimal operational parameters.
-	- [[Analytical Chemistry Lab 🧪 2022]]
-	- Built the [[Automated postharvest processing system 🍃 2023]] - precision postharvest automation - optimising for maximum CO2 efflux
-	- Built the [[Plantlet Finishing Chambers 🌿 2021-2022]] aseptic acclimatisation of tissue cultures
+		- [[Analytical Chemistry Lab 🧪 2022]]
+		- Built the [[Automated postharvest processing system 🍃 2023]] - precision postharvest automation - optimising for maximum CO2 efflux
+		- Built the [[Plantlet Finishing Chambers 🌿 2021-2022]] aseptic acclimatisation of tissue cultures
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - ## Tech tree
@@ -33,7 +33,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- [[Send It - data collection platform 🔢 2021-2023]]
-	  I developed a custom data collection app using PowerApps that facilitated plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
+	  Custom plant health data collection. I also developed a dashboard in Sharepoint to summarise key metrics for visibility, decision support, and optimization.
 	- [[Lab G - Photobiology 🌈 2019-2020]]
 	- [[Prismatic - Tissue Culture Photobiology 2017]]
 	- [[Plant Tissue Culture Method Development 🌱]] meristem tip dissection
