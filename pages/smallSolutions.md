@@ -43,10 +43,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  [[OCI project @ U of G 2020-2022]]
 	  ![image.png](../assets/image_1688441712215_0.png)
 	-
-		- ### [[Lab G - Photobiology 🌈 2019-2020]] 
-		  We built a laboratory to study the effect of light quality on plant growth and development
-			- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
-			  ![image.png](../assets/image_1688437748035_0.png)
+		- ### [[Lab G - Photobiology 🌈 2019-2020]]
 - # Education
   [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
 	- ### Masters thesis 
@@ -55,9 +52,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  and volunteer work in 2015 earthquake
 	  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
-	  International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.
-- Links
-  ☕[ github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
+- ☕[ github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
 - ## [[Wisdom]]
 - This website was grown with love and [Logseq](https://logseq.com/)
 - Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
