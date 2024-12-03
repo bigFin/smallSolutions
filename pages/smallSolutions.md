@@ -1,6 +1,6 @@
 # Finlay Small
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
-Running #[[Avenue Intelligence]] making
+Running #[[Avenue Intelligence]] on-line analytics for a fleet of custom pedestrian traffic sensors with some ML tools for
 	- ## Skills
 		- ### Industrial ⚙️
 		- Building tech solutions using tech from the edge, on prem, to the cloud
