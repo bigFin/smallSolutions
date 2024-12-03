@@ -1,7 +1,7 @@
 # Finlay Small
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Running #[[Avenue Intelligence]] on-line analytics and ML tools for business and cities to leverage our fleet of custom pedestrian traffic sensors.
-	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Ran e
+	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. eRan vertical farming, photobiology, irrigation, and hvac experiments
 	-
 - ## Tech tree
 	- ### Industrial ⚙️
