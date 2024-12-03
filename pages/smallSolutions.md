@@ -19,11 +19,13 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- ML, CV, analytics
 		- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 	- ## Hardware
-		- PCBs with KiCCAD design
+		- PCBs with KiCad or Eagle
+		- CAD design with Onshape or Fusion
 	- ## Science and engineering
-	  design simulation test validate
+		- design simulation test validate
+		- CCRD and process engineering (brid)
 	- ## Industrial systems
-	  Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
+		- Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
 	- ### Technology 🤖
 	- Built an on-line analytics and ML application for real-time pedestrian traffic
 		- ### Science 🔬
