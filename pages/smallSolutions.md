@@ -13,22 +13,19 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - # Tech tree
 	- ## Computers
-	  Cloud, on prem, embedded. interested in all things computer.
-	- ## Hardware
-	  PCB and CAD design
-	- ## Science and engineering
-	  design simulation test validate
-	- ## Industrial systems
-	  Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
-	- ### Industrial ⚙️
-	- Building tech solutions using tech from the edge, on prem, to the cloud
-	- ### Technology 🤖
-	- Built an on-line analytics and ML application for real-time pedestrian traffic
 		- Kubernetes, AWS or bare metal, Docker, Linux, Nix
 		- Systems and applications with Bash, Nix, C, Python
 		- Embedded C (a little Cpp and Assembly)
 		- ML, CV, analytics
 		- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
+	- ## Hardware
+		- PCBs with KiCCAD design
+	- ## Science and engineering
+	  design simulation test validate
+	- ## Industrial systems
+	  Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
+	- ### Technology 🤖
+	- Built an on-line analytics and ML application for real-time pedestrian traffic
 		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
