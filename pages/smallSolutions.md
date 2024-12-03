@@ -12,31 +12,25 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - # Tech tree
-	- ## Computers
+	- Computers
 		- Kubernetes, AWS or bare metal, Docker, Linux, Nix
 		- Systems and applications with Bash, Nix, C, Python
 		- Embedded C (a little Cpp and Assembly)
 		- ML, CV, analytics
 		- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
-	- ## Hardware
+	- Hardware
 		- PCBs with KiCad or Eagle
 		- CAD design with Onshape or Fusion
-	- ## Science and engineering
+	- Science and engineering
 		- CCRD and experimental process engineering
-	- ## Industrial systems
+	- Industrial systems
 		- Some experience with industrial hvac, irrigation, building automation operations
-		- Laboratory design (biosafety,)
-	- ### Technology 🤖
-	- Built an on-line analytics and ML application for real-time pedestrian traffic
-		- ### Science 🔬
-			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
-			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
-			- Design of experiments: media optimization, photobiology, R&D, process improvement
-			- Plant breeding: organic agriculture, climate change, and low external input environments
-		- ### Design 📐
-			- PCB Design with KiCad, Eagle
-			- Physical systems: bioreactors, environmental controls
-			-
+	-
+	- Science 🔬
+		- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
+		- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
+		- Design of experiments: media optimization, photobiology, R&D, process improvement
+		- Plant breeding: organic agriculture, climate change, and low external input environments
 - # Other stuff
 	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 	  Developing custom bioreactors for research on medicinal mushrooms
