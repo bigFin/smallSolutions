@@ -10,8 +10,8 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- Built and commercialized [[Plantlet Finishing Chambers 🌿 2021-2022]] aseptic acclimatisation of tissue cultures
 		- [[Plant Tissue Culture Method Development 🌱]] meristem tip dissection
 		- Built and ran vertical farming experiments in [[Lab G - Photobiology 2019-2020]]
-	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
-	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
+	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
+	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy]]
 - # Tech tree
 	- Computers: Experience with Kubernetes, AWS or bare metal, Docker, Linux, Nix. Systems and applications with Bash, Nix, C, Python. Embedded C (a little Cpp and Assembly). ML, CV, analytics with Python. Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 	- Hardware: PCBs with KiCad or Eagle, CAD design with Onshape or Fusion

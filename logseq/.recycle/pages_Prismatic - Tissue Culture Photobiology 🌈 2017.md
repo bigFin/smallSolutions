@@ -1,0 +1,46 @@
+- Multi-channel LED system for photobiology research. Built on ESP8266.
+  https://github.com/bigFin/Prismatic
+- 2022 Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
+- Industrial project: light intensity effects on regeneration after droplet vitrification and cryopreservation
+- Ongoing research
+- # bigFin/Prismatic
+- # [](https://github.com/bigFin/Prismatic#prismatic-is-open-source-software--hardware-for-photobiology-research) Prismatic is open-source software / hardware for photobiology research
+- ![Infographic Prismatic V1 AKA FinMax](https://github.com/bigFin/Prismatic/raw/master/infoGraphic8.jpg?raw=true)
+- ## [](https://github.com/bigFin/Prismatic#what-is-prismatic) What is Prismatic?
+- Prismatic is a modular, wifi programmable, multi-channel LED light that gives you precise control over ghthe the spectrum you give your plants. Connect with your phone or computer, the web-based scheduling system lets you create simple and advanced programs.
+- I built Prismatic to optimize light spectrum for organogenesis and regeneration in tissue culture, but it can be used for any precision lighting, photobiology, specialty plant growth, or plant propagation situation.
+- ## [](https://github.com/bigFin/Prismatic#prismatic-v2-coming-march-2019) Prismatic V2 Coming March 2019
+- ### [](https://github.com/bigFin/Prismatic#pulse-a-multi-channel-led-driver) Pulse: a multi-channel LED driver
+- A multi-channel LED driver built on NodeMCU (with constant-voltage and constant-current versions, depending on your needs).
+- intuitive wifi-programmable UI for programming advanced schedules
+- upload programs, replicate experiments
+- ### [](https://github.com/bigFin/Prismatic#photon-a-multi-channel-led-array) Photon: a multi-channel LED array
+- A 9 channel LED array designed for the WeVitro dogBox tissue culture bioreactor
+- ## [](https://github.com/bigFin/Prismatic#prismatic-v1-aka-finmax) Prismatic V1 AKA FinMax
+- #+BEGIN_EXPORT hiccup
+  [:a {:target "_blank", :rel "noopener noreferrer", :href "https://github.com/bigFin/Prismatic/blob/master/infoGraphic8.jpg?raw=true"} [:img {:src "https://github.com/bigFin/Prismatic/raw/master/infoGraphic8.jpg?raw=true", :alt "Infographic Prismatic V1 AKA FinMax"}]]
+  #+END_EXPORT
+- ### [](https://github.com/bigFin/Prismatic#how-is-prismatic-used) How is Prismatic used?
+- Each Prismatic module can be independently programmed, try growing your plants under different conditions and see how they respond. Perform controlled experiments using the Central Composite Rotatable Design. Generate a response surface and find the optimum mixture of spectra. I then validate this using replicated studies.
+- ## [](https://github.com/bigFin/Prismatic#how-did-i-make-this-stuff) How did I make this stuff?
+- **Programming** C, C++, HTML, and JQuery on NodeMCU
+- **Circuit design** Eagle
+- **PCB fabrication** [www.jlcpcb.com](http://www.jlcpcb.com/)
+- **PCB assembly** Made to order, assembled by hand in Guelph, Canada
+- # [](https://github.com/bigFin/Prismatic#whats-here-for-me) What's here for me?
+- ## [](https://github.com/bigFin/Prismatic#diy---prismatic-is-going-open-source-check-back-soon-for) DIY - Prismatic is going open-source, check back soon for:
+- Code for an advanced sheculing interface (built on NodeMCU)
+- PCB schematics and layouts (Eagle)
+- Bill of materials
+- Design of experiments: CCRD, RSM
+- ## [](https://github.com/bigFin/Prismatic#like-what-you-see) Like what you see?
+- Prismatic was designed and built by **Finlay A.A. Small** in association with the the AMP Jones Lab and the Gosling Research institute for Plant Preservation at *The University of Guelph*.
+- Hire me!
+- I make custom research equipment
+- I find the optimal light spectrum for your crop
+- I consult for your plant production and science needs
+- # [](https://github.com/bigFin/Prismatic#links) Links
+- [WeVitro](https://wevitro.com/)
+- [GRIPP](http://http//gripp.ca/)
+- [R4Photobiology](https://www.r4photobiology.info/)
