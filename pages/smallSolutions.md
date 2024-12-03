@@ -5,8 +5,8 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
 	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Unlocked high value production through insight from photobiology, irrigation, and hvac experiments where we used sensor arrays, thermal and viz imaging and cv, to rapidly experiment, investigate, and validate optimal operational parameters.
-	- Built the [[Automated postharvest processing system 🍃 2023]] 
-	  Precision postharvest automation - optimising for maximum CO2 efflux
+	- Built the [[Automated postharvest processing system 🍃 2023]] - precision postharvest automation - optimising for maximum CO2 efflux
+	- Built the [[Plantlet Finishing Chambers 🌿 2021-2022]] aseptic acclimatisation of tissue cultures
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - ## Tech tree
@@ -33,11 +33,8 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- ### [[Prismatic - Tissue Culture Photobiology 🌈 2017]]
 	- ### [[Analytical Chemistry Lab 🧪 2022]]
-	- ### [[Plantlet Finishing Chambers 🌿 2021-2022]]
-		- ### [[Plant Tissue Culture Method Development 🌱]] 
-		  2019-2023 Meristem tip dissection to eliminate pathogens from genetic library
-			- 3 weeks post dissection
-			  ![image.png](../assets/image_1688424237233_0.png){:height 416, :width 718}
+	- ###
+	- ### [[Plant Tissue Culture Method Development 🌱]] meristem tip dissection
 		- ### [[Beneficial microbes 🦠]]
 			- 2013-2015 Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses
 			- [[OCI project @ U of G 2020-2022]]
