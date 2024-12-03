@@ -4,7 +4,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Building [[MAC 🌱 Modular Agriculture Controller]]
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
-	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Unlocked high value production through insight from photobiology, irrigation, and hvac experiments where we used sensor arrays, thermal and viz imaging and cv, to rapidly experiment, investigate, and validate .
+	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Unlocked high value production through insight from photobiology, irrigation, and hvac experiments where we used sensor arrays, thermal and viz imaging and cv, to rapidly experiment, investigate, and validate optimal operational parameters.
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - ## Tech tree
@@ -31,13 +31,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  Developing custom bioreactors for research on medicinal mushrooms
 		-
 		-
-		- ### [[Prismatic - Tissue Culture Photobiology 🌈 2017]]
-		  Multi-channel LED system for photobiology research. Built on ESP8266.
-		  https://github.com/bigFin/Prismatic
-			- 2022 Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
-			  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
-			- Industrial project: light intensity effects on regeneration after droplet vitrification and cryopreservation
-			- Ongoing research
+	- ### [[Prismatic - Tissue Culture Photobiology 🌈 2017]]
 	- ## Past Projects
 		- ### [[Analytical Chemistry Lab 🧪 2022]] 
 		  Method development for simultaneous quantitation of 14 compounds on Waters Acuity ARC uHPLC

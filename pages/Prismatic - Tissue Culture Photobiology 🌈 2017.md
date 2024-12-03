@@ -1,11 +1,17 @@
+- Multi-channel LED system for photobiology research. Built on ESP8266.
+  https://github.com/bigFin/Prismatic
+- 2022 Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
+- Industrial project: light intensity effects on regeneration after droplet vitrification and cryopreservation
+- Ongoing research
 - # bigFin/Prismatic
-# [](https://github.com/bigFin/Prismatic#prismatic-is-open-source-software--hardware-for-photobiology-research) Prismatic is open-source software / hardware for photobiology research
+- # [](https://github.com/bigFin/Prismatic#prismatic-is-open-source-software--hardware-for-photobiology-research) Prismatic is open-source software / hardware for photobiology research
 - ![Infographic Prismatic V1 AKA FinMax](https://github.com/bigFin/Prismatic/raw/master/infoGraphic8.jpg?raw=true)
 - ## [](https://github.com/bigFin/Prismatic#what-is-prismatic) What is Prismatic?
 - Prismatic is a modular, wifi programmable, multi-channel LED light that gives you precise control over ghthe the spectrum you give your plants. Connect with your phone or computer, the web-based scheduling system lets you create simple and advanced programs.
 - I built Prismatic to optimize light spectrum for organogenesis and regeneration in tissue culture, but it can be used for any precision lighting, photobiology, specialty plant growth, or plant propagation situation.
 - ## [](https://github.com/bigFin/Prismatic#prismatic-v2-coming-march-2019) Prismatic V2 Coming March 2019
-### [](https://github.com/bigFin/Prismatic#pulse-a-multi-channel-led-driver) Pulse: a multi-channel LED driver
+- ### [](https://github.com/bigFin/Prismatic#pulse-a-multi-channel-led-driver) Pulse: a multi-channel LED driver
 - A multi-channel LED driver built on NodeMCU (with constant-voltage and constant-current versions, depending on your needs).
 - intuitive wifi-programmable UI for programming advanced schedules
 - upload programs, replicate experiments
@@ -22,8 +28,8 @@
 - **Circuit design** Eagle
 - **PCB fabrication** [www.jlcpcb.com](http://www.jlcpcb.com/)
 - **PCB assembly** Made to order, assembled by hand in Guelph, Canada
-# [](https://github.com/bigFin/Prismatic#whats-here-for-me) What's here for me?
-## [](https://github.com/bigFin/Prismatic#diy---prismatic-is-going-open-source-check-back-soon-for) DIY - Prismatic is going open-source, check back soon for:
+- # [](https://github.com/bigFin/Prismatic#whats-here-for-me) What's here for me?
+- ## [](https://github.com/bigFin/Prismatic#diy---prismatic-is-going-open-source-check-back-soon-for) DIY - Prismatic is going open-source, check back soon for:
 - Code for an advanced sheculing interface (built on NodeMCU)
 - PCB schematics and layouts (Eagle)
 - Bill of materials
