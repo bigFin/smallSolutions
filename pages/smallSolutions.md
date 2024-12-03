@@ -3,7 +3,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Running #[[Avenue Intelligence]] on-line analytics and ML tools for business and cities to leverage our fleet of custom pedestrian traffic sensors.
 	- Ran the [[Entourage Health Corp]] R&D program including the tissue culture and chemistry laboratories. Unlocked high value production through insight from photobiology, irrigation, and hvac experiments where we used sensor arrays, thermal and viz imaging and cv, to rapidly experiment, investigate, and validate .
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
-	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction ### [[Inline realtime spectroscopy 🌈]]
+	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - ## Tech tree
 	- ### Industrial ⚙️
 	- Building tech solutions using tech from the edge, on prem, to the cloud
@@ -23,16 +23,14 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 			- PCB Design with KiCad, Eagle
 			- Physical systems: bioreactors, environmental controls
 			-
-- # Project highlights
-	- ## Ongoing Projects
+- # Other stuff
+	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
+	  Developing custom bioreactors for research on medicinal mushrooms
+	- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
+	  Co-Founder of [avenueintelligence.com](https://avenueintelligence.com/), an easy, privacy preserving people counting system.
+	  ![](https://lh3.googleusercontent.com/pw/ADCreHcKwGfdYhdi9ch1bjMoeMYYnEgpHNAyg8C1gNijzWp0FIx1WZNIOK5AGMAr9sVr_1avf9MUPltLqr_GvnApVlaKULZKRSeieeChPdMe5FKj16cGzJrFivwJzAXgBjvw-FdviasNT1xAGDh8pYlEex-p=w595-h1288-s-no?authuser=2)
+		- ![image.png](../assets/image_1688423776023_0.png){:height 195, :width 456}
 		-
-		- ### [[Medicinal mushrooms research - U of Guelph 2023]]
-		  Developing custom bioreactors for research on medicinal mushrooms
-		- ### [[Avenue Intelligence - People Counters 🚶 2023]] 
-		  Co-Founder of [avenueintelligence.com](https://avenueintelligence.com/), an easy, privacy preserving people counting system.
-		  ![](https://lh3.googleusercontent.com/pw/ADCreHcKwGfdYhdi9ch1bjMoeMYYnEgpHNAyg8C1gNijzWp0FIx1WZNIOK5AGMAr9sVr_1avf9MUPltLqr_GvnApVlaKULZKRSeieeChPdMe5FKj16cGzJrFivwJzAXgBjvw-FdviasNT1xAGDh8pYlEex-p=w595-h1288-s-no?authuser=2)
-			- ![image.png](../assets/image_1688423776023_0.png){:height 195, :width 456}
-			-
 		- ### [[MAC 🌱 Modular Agriculture Controller]]
 		  HVAC and lighting controls based on plant biofeedback
 		  Advanced real time canopy segmentation from thermal camera
