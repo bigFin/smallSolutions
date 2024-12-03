@@ -7,7 +7,7 @@
 		- ### Industrial ⚙️
 		- Building tech solutions using tech from the edge, on prem, to the cloud
 		- ### Technology 🤖
-			- Systems: Kubernetes, AWS or bare metal, Docker, Linux, Nix
+			- Building on-line analytics and Kubernetes, AWS or bare metal, Docker, Linux, Nix
 			- Systems and applications with Bash, Nix, C, Python
 			- Embedded C (a little Cpp and Assembly)
 			- ML, CV, analytics
