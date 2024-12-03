@@ -3,7 +3,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Running #[[Avenue Intelligence]] on-line analytics and ML tools for business and cities to leverage our fleet of custom pedestrian traffic sensors.
 	-
 - ## Tech tree
-	- ### Industrial design and engineerin ⚙️
+	- ### Industrial ⚙️
 	- Building tech solutions using tech from the edge, on prem, to the cloud
 	- ### Technology 🤖
 	- Built an on-line analytics and ML application for real-time pedestrian traffic
@@ -22,7 +22,6 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 			- Physical systems: bioreactors, environmental controls
 			-
 - # Project highlights
-  ![image.png](../assets/image_1688402515733_0.png)
 	- ## Ongoing Projects
 		- ### [[Inline realtime spectroscopy 🌈]] 
 		  Process control driven by real time monitoring of solvent saturation and particle morphology in extraction
@@ -100,3 +99,5 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 - Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - ![image.png](../assets/image_1688683252591_0.png)
 - ![image.png](../assets/image_1688684023192_0.png)
+- ![image.png](../assets/image_1688402515733_0.png){:height 524, :width 531}
+-
