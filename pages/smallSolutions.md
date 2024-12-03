@@ -22,10 +22,10 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- PCBs with KiCad or Eagle
 		- CAD design with Onshape or Fusion
 	- ## Science and engineering
-		- design simulation test validate
-		- CCRD and process engineering (brid)
+		- CCRD and experimental process engineering
 	- ## Industrial systems
-		- Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
+		- Some experience with industrial hvac, irrigation, building automation operations
+		- Laboratory design (biosafety,)
 	- ### Technology 🤖
 	- Built an on-line analytics and ML application for real-time pedestrian traffic
 		- ### Science 🔬
