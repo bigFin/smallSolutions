@@ -8,10 +8,12 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- [[Analytical Chemistry Lab 🧪 2022]]
 		- Built the [[Automated postharvest processing system 🍃 2023]] - precision postharvest automation - optimising for maximum CO2 efflux
 		- Built the [[Plantlet Finishing Chambers 🌿 2021-2022]] aseptic acclimatisation of tissue cultures
-		- [[Lab G - Photobiology 🌈 2019-2020]]
+		- Built and ran vertical farming experiments in [[Lab G - Photobiology 🌈 2019-2020]]
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
-- ## Tech tree
+- # Tech tree
+	- ##
+	-
 	- ### Industrial ⚙️
 	- Building tech solutions using tech from the edge, on prem, to the cloud
 	- ### Technology 🤖
@@ -39,8 +41,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses [[Beneficial microbes 🦠]]
 		-
 - # Publications
-	- Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system.
-	  [[OCI project @ U of G 2020-2022]]
+	- Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system. [[OCI project @ U of G 2020-2022]]
 	  ![image.png](../assets/image_1688441712215_0.png)
 - # Education
   [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
