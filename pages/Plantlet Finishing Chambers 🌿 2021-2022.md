@@ -1,4 +1,7 @@
-- Custom bioreactor system for acclimatizing plant tissue cultures / micropropagation
+- Custom bioreactor system for aseptic acclimatization of plant tissue cultures / micropropagation
+  Custom design. PCBs designed in KiCAD. C++ on ESP8266. 
+  Influxdb and Grafana, Docker, Linux.
+- ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 - ![20220301_165831.jpg](../assets/20220301_165831_1688424417458_0.jpg)
 - ![image.png](../assets/image_1688402619785_0.png)
 - ![image.png](../assets/image_1688402822715_0.png)
