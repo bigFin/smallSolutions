@@ -17,7 +17,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- ## Science and engineering
 		- design simulation test validate
 	- ## Industrial systems
-		-
+	  Some experience with industrial hvac, irrigation, building automation, operation and optimisation.
 	- ### Industrial ⚙️
 	- Building tech solutions using tech from the edge, on prem, to the cloud
 	- ### Technology 🤖
