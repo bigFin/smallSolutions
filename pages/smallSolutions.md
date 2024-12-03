@@ -7,8 +7,8 @@
 		- ### Industrial ⚙️
 		- Building tech solutions using tech from the edge, on prem, to the cloud
 		- ### Technology 🤖
-			- Systems: Kubernetes, AWS or bare metal, Docker, Linux
-			- Firmware in C (a little C++ and Assembly)
+			- Systems: Kubernetes, AWS or bare metal, Docker, Linux, Nix
+			- Firmware in C (a little Cpp and Assembly)
 			- ML, CV, analytics in Python
 			- Enjoyer of Linux, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
