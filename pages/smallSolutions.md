@@ -48,29 +48,16 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 			- ![received_504930906983608.jpeg](../assets/received_504930906983608_1688426356547_0.jpeg)
 			  ![image.png](../assets/image_1688437748035_0.png)
 - # Education
-  ![image.png](../assets/image_1688683491235_0.png)
-	- ## [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
-		- ### Masters thesis 
-		  Prospecting drought tolerant wild plants, with improved microbial symbiosis, to enhance sustainable agriculture in the mid-hills of Nepal
-		- ### NepalCanDo Agroecology fieldwork in Nepal 🇳🇵
-		  and volunteer work in 2015 earthquake
-		  http://nepalcando.blogspot.com/
+  [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
+	- ### Masters thesis 
+	  Prospecting drought tolerant wild plants, with improved microbial symbiosis, to enhance sustainable agriculture in the mid-hills of Nepal
+	- ### NepalCanDo Agroecology fieldwork in Nepal 🇳🇵
+	  and volunteer work in 2015 earthquake
+	  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
 	  International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.
-- # Links
-	- ☕[ github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
+- Links
+  ☕[ github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
 - ## [[Wisdom]]
-- # Site todo
-	- NOW Design
-	  :LOGBOOK:
-	  CLOCK: [2023-07-03 Mon 10:24:39]
-	  :END:
-		- 1970s USA governmental design - NASA, EPA, Dept of Labour, NOAA
-		- Federal Graphics Improvement Program
-- [[smallsolutions whiteboard]]
 - This website was grown with love and [Logseq](https://logseq.com/)
 - Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
-- ![image.png](../assets/image_1688683252591_0.png)
-- ![image.png](../assets/image_1688684023192_0.png)
-- ![image.png](../assets/image_1688402515733_0.png){:height 524, :width 531}
--
