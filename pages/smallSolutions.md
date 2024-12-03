@@ -1,10 +1,11 @@
 # Finlay Small
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
-	- Running #[[Avenue Intelligence]] on-line analytics ad ML tools SAAS for business and cities with a fleet of custom pedestrian traffic sensors HAAS.
-	- ## Skills
-		- ### Industrial ⚙️
-		- Building tech solutions using tech from the edge, on prem, to the cloud
-		- ### Technology 🤖
+	- Running #[[Avenue Intelligence]] on-line analytics and ML tools for business and cities to leverage our fleet of custom pedestrian traffic sensors.
+	-
+- ## Tech tree
+	- ### Industrial design and engineerin ⚙️
+	- Building tech solutions using tech from the edge, on prem, to the cloud
+	- ### Technology 🤖
 	- Built an on-line analytics and ML application for real-time pedestrian traffic
 		- Kubernetes, AWS or bare metal, Docker, Linux, Nix
 		- Systems and applications with Bash, Nix, C, Python
