@@ -1,6 +1,6 @@
 # Finlay Small
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
-Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
+Running #[[Avenue Intelligence]] making
 	- ## Skills
 		- ### Industrial ⚙️
 		- Building tech solutions using tech from the edge, on prem, to the cloud
@@ -96,5 +96,6 @@ Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?us
 		- Federal Graphics Improvement Program
 - [[smallsolutions whiteboard]]
 - This website was grown with love and [Logseq](https://logseq.com/)
+- Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 - ![image.png](../assets/image_1688683252591_0.png)
 - ![image.png](../assets/image_1688684023192_0.png)
