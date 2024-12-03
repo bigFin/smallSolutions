@@ -10,7 +10,7 @@
 			- Systems: Kubernetes, AWS or bare metal, Docker, Linux, Nix
 			- Systems and applications with Bash, Nix, C, Python
 			- Embedded C (a little Cpp and Assembly)
-			- ML, CV, analytics in Python
+			- ML, CV, analytics
 			- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
@@ -18,9 +18,9 @@
 			- Design of experiments: media optimization, photobiology, R&D, process improvement
 			- Plant breeding: organic agriculture, climate change, and low external input environments
 		- ### Design 📐
-			- Hardware: PCB Design KiCad, Eagle
+			- PCB Design with KiCad, Eagle
 			- Physical systems: bioreactors, environmental controls
-			- 3D modelling with Fusion360 for 3D printing components
+			-
 - # Project highlights
   ![image.png](../assets/image_1688402515733_0.png)
 	- ## Ongoing Projects
