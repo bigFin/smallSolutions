@@ -19,7 +19,7 @@
 			- Plant breeding: organic agriculture, climate change, and low external input environments
 		- ### Design 📐
 			- Hardware: PCB Design KiCad, Eagle
-			- Physical systems: bioreactors, environmental controls, irrigation and hvac
+			- Physical systems: bioreactors, environmental controls
 			- 3D modelling with Fusion360 for 3D printing components
 - # Project highlights
   ![image.png](../assets/image_1688402515733_0.png)
