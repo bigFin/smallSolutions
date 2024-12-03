@@ -12,8 +12,12 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 🌈 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy 🌈]]
 - # Tech tree
-	- ##
-	-
+	- ## Computers
+	- ## Hardware
+	- ## Science and engineering
+		- design simulation test validate
+	- ## Industrial systems
+		-
 	- ### Industrial ⚙️
 	- Building tech solutions using tech from the edge, on prem, to the cloud
 	- ### Technology 🤖
