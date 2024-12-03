@@ -8,8 +8,8 @@
 		- Building tech solutions using tech from the edge, on prem, to the cloud
 		- ### Technology 🤖
 			- Systems: Kubernetes, AWS or bare metal, Docker, Linux, Nix
-			- Languages: bash, nix, C
-			- Firmware in C (a little Cpp and Assembly)
+			- Systems and applications with Bash, Nix, C, Python
+			- Embedded C (a little Cpp and Assembly)
 			- ML, CV, analytics in Python
 			- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
