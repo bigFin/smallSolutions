@@ -1,18 +1,16 @@
 # Finlay Small
-	- ![image.png](../assets/image_1688684023192_0.png)
-	- ## Resume
-	  id:: 64a36b59-305f-45fa-b8cb-7984b551432c
-	  https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
+id:: 64a36b59-305f-45fa-b8cb-7984b551432c
+Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
 	- ## Skills
 		- ### Industrial ⚙️
 		- Building tech solutions using tech from the edge, on prem, to the cloud
 		- ### Technology 🤖
-			- Building on-line analytics and ML application for real-time pedestrian traffic
-			- Kubernetes, AWS or bare metal, Docker, Linux, Nix
-			- Systems and applications with Bash, Nix, C, Python
-			- Embedded C (a little Cpp and Assembly)
-			- ML, CV, analytics
-			- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
+	- Built an on-line analytics and ML application for real-time pedestrian traffic
+		- Kubernetes, AWS or bare metal, Docker, Linux, Nix
+		- Systems and applications with Bash, Nix, C, Python
+		- Embedded C (a little Cpp and Assembly)
+		- ML, CV, analytics
+		- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 		- ### Science 🔬
 			- Biotech: Tissue culture, protoplast fusion, fluorescence microscopy
 			- Analytical chemistry: lab management, data management, workflow and method development, uHPLC, FTIR Spectroscopy
@@ -99,4 +97,4 @@
 - [[smallsolutions whiteboard]]
 - This website was grown with love and [Logseq](https://logseq.com/)
 - ![image.png](../assets/image_1688683252591_0.png)
--
+- ![image.png](../assets/image_1688684023192_0.png)

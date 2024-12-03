@@ -2,9 +2,9 @@
 {:block/content "Small Solutions"
 :block/format :markdown
 :block/left 
-{:block/uuid #uuid "64a743f0-cee6-4d69-ad84-22b36e42e194"}
+{:block/uuid #uuid "674e31dc-83fc-4765-94d7-ca6cb23e7f8e"}
 :block/parent 
-{:block/uuid #uuid "64a743f0-cee6-4d69-ad84-22b36e42e194"}
+{:block/uuid #uuid "674e31dc-83fc-4765-94d7-ca6cb23e7f8e"}
 :block/properties 
 {}
 :block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"} 
@@ -186,12 +186,12 @@
 :block/left 
 {:block/uuid #uuid "64a3772a-31c6-4108-bd43-a0ec9849db7b"}
 :block/parent 
-{:block/uuid #uuid "64a743f0-cee6-4d69-ad84-22b36e42e194"}
+{:block/uuid #uuid "674e31dc-83fc-4765-94d7-ca6cb23e7f8e"}
 :block/properties 
 {:id "64a377be-900e-4551-a982-b5045cabe689"}
 :block/uuid #uuid "64a377be-900e-4551-a982-b5045cabe689"})
 :pages (
-{:block/uuid #uuid "64a743f0-cee6-4d69-ad84-22b36e42e194"
+{:block/uuid #uuid "674e31dc-83fc-4765-94d7-ca6cb23e7f8e"
 :block/properties 
 {:heading 2}
 :block/journal? false
