@@ -27,9 +27,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- [[Send It - data collection platform 🔢 2021-2023]]
 	  Custom plant health data collection for precision horticulture with app for technicians and web dashboard for management.
-	-
 	- Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses [[Beneficial microbes 🦠]]
-		-
 - # Publications
 	- Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system. [[OCI project @ U of G 2020-2022]]
 	  ![image.png](../assets/image_1688441712215_0.png)
