@@ -27,7 +27,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  cli app to process .md graph dbs (logseq, obsidian, vimwiki, org) into professional notes and contextually link unstructured notes and journals
 	- Whisper.cpp server (nix isolated) https://github.com/bigFin/whisper.cpp-server-nix-systemd
 	  testing out using systemd and nix env to isolate whisper.cpp server process for for security and portability
-	- Nvim last save timer
+	- [nvim last save timer](https://github.com/bigFin/nvim-last-save-timer) - lualine util to display time since last save. For the repl users out there.
 	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- [[Send It - data collection platform 🔢 2021-2023]]
