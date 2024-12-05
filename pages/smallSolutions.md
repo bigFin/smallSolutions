@@ -23,7 +23,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- Design of experiments: media optimization, photobiology, R&D, process improvement
 		- Plant breeding: organic agriculture, climate change, and low external input environments
 - # Other stuff
-	- cli app to process .md graph dbs (logseq, obsidian, vimwiki, org) into professional notes and contextually link unstructured notes and journals
+	- [Logseq tidy graph]( https://github.com/bigFin/logseq-tidy-graph) cli app to process .md graph dbs (logseq, obsidian, vimwiki, org) into professional notes and contextually link unstructured notes and journals
 	- [Whisper.cpp server (nix isolated) ](https://github.com/bigFin/whisper.cpp-server-nix-systemd) 
 	  testing out using systemd and nix env to isolate whisper.cpp server process for for security and portability
 	- [nvim last save timer](https://github.com/bigFin/nvim-last-save-timer) - lualine util to display time since last save for the repl users out there.
