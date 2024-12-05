@@ -24,7 +24,7 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 		- Plant breeding: organic agriculture, climate change, and low external input environments
 - # Other stuff
 	- Logseq tidy graph https://github.com/bigFin/logseq-tidy-graph
-	  cli app to process .md graph dbs ()
+	  cli app to process .md graph dbs (logseq, obsidian, vimwiki, org) into professional notes and contextually link
 	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- [[Send It - data collection platform 🔢 2021-2023]]
