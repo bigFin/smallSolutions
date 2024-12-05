@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Logseq - Small Solutions
+Exec=logseq --graph "/Code/smallSolutions/"
+Type=Application
+Terminal=false
+Icon=logseq

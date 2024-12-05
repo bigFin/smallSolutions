@@ -29,8 +29,9 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  Custom plant health data collection for precision horticulture with app for technicians and web dashboard for management.
 	- Maintaining library of landrace corn derived endophytes. Developing formulations. Conducting greenhouse and field trials to evaluate microbes and formulations to suppress fungal diseases in grasses [[Beneficial microbes 🦠]]
 - # Publications
+	- 2022 Publication: Comparative Analysis of Machine Learning and Evolutionary Optimization Algorithms for Precision Micropropagation of *Cannabis sativa* : Prediction and Validation of *in vitro* Shoot Growth and Development Based on the Optimization of Light and Carbohydrate Sources
+	  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/
 	- Nesbitt, J. Small, F.A.A. Zheng, Y., Habash, M. (2022), Assessment of four biocontrol agents for their suppression of Fusarium proliferatum on Cannabis sativa plants in a soilless cultivation system. [[OCI project @ U of G 2020-2022]]
-	  ![image.png](../assets/image_1688441712215_0.png)
 - # Education
   [[M.Sc Plant Breeding and Physiology U of Guelph 2017]]
 	- ### Masters thesis 
