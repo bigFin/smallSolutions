@@ -25,7 +25,8 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 - # Other stuff
 	- Logseq tidy graph https://github.com/bigFin/logseq-tidy-graph
 	  cli app to process .md graph dbs (logseq, obsidian, vimwiki, org) into professional notes and contextually link unstructured notes and journals
-	- Whisper.cpp server
+	- Whisper.cpp server (nix isolated) https://github.com/bigFin/whisper.cpp-server-nix-systemd
+	  testing out using systemd and nix env to isolate whisper.cpp server process for for security and portability
 	- ### [[Medicinal mushrooms research - U of Guelph 2023]]
 	  Developing custom bioreactors for research on medicinal mushrooms
 	- [[Send It - data collection platform 🔢 2021-2023]]
