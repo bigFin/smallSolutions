@@ -2,7 +2,7 @@
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 - Scaling up a fleet of custom pedestrian traffic sensors with on-line analytics and ML tools on top @ #[[Avenue Intelligence]]
 	- Designed and deployed a fleet of ultra low power sensors across Canada
-	- Clickhouse high performance OLAP
+	- High performance online analytics with Clickhouse
 	- ML forecasting and anomaly detection
 - Building [[MAC 🌱 Modular Agriculture Controller]]
   HVAC and lighting controls based on plant biofeedback
