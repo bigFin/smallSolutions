@@ -11,7 +11,7 @@
  ;; - :now for NOW/LATER style (default)
  ;; - :todo for TODO/DOING style
  :preferred-workflow :now
-
+ 	:custom-css-url "@import url('https://github.com/khoulihan/logseq-everforest-theme/blob/main/everforest-dark-hard.css');"
  ;; Exclude directories/files.
  ;; Example usage:
  ;; :hidden ["/archived" "/test.md" "../assets/archived"]
@@ -132,7 +132,8 @@
  ;; 2. Set "Jun 3rd, 2021" as the home page without the right sidebar:
  ;; :default-home {:page "Jun 3rd, 2021"}
  ;; 3. Set "home" as the home page and display multiple pages in the right sidebar:
- ;; :default-home {:page "home", :sidebar ["Page A" "Page B"]}
+;;:default-home {:page "smallSolutions", :sidebar ["plantlet finishing chambers" "people counters"]}
+ :default-home {:page "smallSolutions"}
 
  ;; Set the default location for storing notes.
  ;; Default value: "pages"
@@ -411,4 +412,5 @@
  ;;   - :triple-lowbar (default)
  ;;      ;use triple underscore `___` for slash `/` in page title
  ;;      ;use Percent-encoding for other invalid characters
- :file/name-format :triple-lowbar}
+ :file/name-format :triple-lowbar
+ :publishing/all-pages-public? true}
