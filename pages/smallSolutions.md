@@ -1,6 +1,9 @@
 # Finlay Small
 id:: 64a36b59-305f-45fa-b8cb-7984b551432c
-	- Running #[[Avenue Intelligence]] on-line analytics and ML tools for business and cities to leverage our fleet of custom pedestrian traffic sensors.
+	- Scaling up a fleet of custom pedestrian traffic sensors with on-line analytics and ML tools on top @ #[[Avenue Intelligence]]
+		- Deploying ultra low power sensors across the Canada
+		- Clickhouse high performance OLAP
+		- ML forecasting and anomaly detection
 	- Building [[MAC 🌱 Modular Agriculture Controller]]
 	  HVAC and lighting controls based on plant biofeedback
 	  Advanced real time canopy segmentation from thermal camera
@@ -13,7 +16,14 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	- Developed a multi-channel LED array with some smart scheduling features enabling complex experiments and fault tolerant autonomous operation [[Prismatic - Tissue Culture Photobiology 2017]]. Co-authored research using the system to validate recipes generated using a genetic algorithm to determine optimal media composition and light spectra for plant tissue culture.
 	- Developing a process control driven by real time monitoring of solvent saturation and particle morphology in extraction process [[Inline realtime spectroscopy]]
 - # Tech tree
-	- Computers: Experience with Kubernetes, AWS or bare metal, Docker, Linux, Nix. Systems and applications with Bash, Nix, C, Python. Embedded C (a little Cpp and Assembly). ML, CV, analytics with Python. Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
+	- Computers:
+		- Systems:
+			- Experience with Kubernetes, AWS or bare metal, Docker, Linux, Nix
+			- Systems and applications with Bash, Nix, Python
+			- Embedded C (a little Cpp and Assembly)
+		- ML, CV, analytics with Python, Clickhouse, Mlflow
+		- Some web stuff with JS, Go, html, sqlite
+		- Enjoyer of Linux, nix, nvim, tmux ([dotfiles](https://github.com/bigFin/dotfiles/tree/sway) 🐧)
 	- Hardware: PCBs with KiCad or Eagle, CAD design with Onshape or Fusion
 	- CCRD and experimental process engineering
 	- Industrial systems: experience with industrial hvac, irrigation, building automation operations
@@ -45,6 +55,5 @@ id:: 64a36b59-305f-45fa-b8cb-7984b551432c
 	  http://nepalcando.blogspot.com/
 	- ## [[Wageningen UR 2012-2013]] Netherlands 🇳🇱
 - ☕[ github](https://github.com/bigFin), [gitlab](https://gitlab.com/bigFinSmall)
-- ## [[Wisdom]]
 - This website was grown with love and [Logseq](https://logseq.com/)
 - Resume https://drive.google.com/file/d/15V3KSGBV7osoUZ-4QgwHZfEtn9Y0Zhsl/view?usp=sharing
