@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import SectionCard from "../../components/SectionCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const writing = (await getCollection("writing")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Writing | smallSolutions">
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Writing</p>
+      <h1>Selected notes</h1>
+      <p class="section-copy">
+        Short writing adapted from older material that still feels structurally useful.
+      </p>
+    </div>
+    <div class="card-grid">
+      {writing.map((entry) => (
+        <SectionCard
+          href={`/writing/${entry.slug}/`}
+          title={entry.data.title}
+          summary={entry.data.summary}
+          meta={entry.data.date}
+          tags={entry.data.tags}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

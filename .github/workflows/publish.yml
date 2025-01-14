@@ -1,17 +1,44 @@
-on: [push]
+name: Deploy site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-    name: Publish Logseq graph
+    env:
+      PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io
+      PUBLIC_SITE_BASE: /${{ github.event.repository.name }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: logseq/publish-spa@v0.2.0
-      - name: add a nojekyll file # to make sure asset paths are correctly identified
-        run: touch $GITHUB_WORKSPACE/www/.nojekyll
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: cachix/install-nix-action@v31
+      - name: Build site
+        run: nix run .#build
+      - name: Add nojekyll marker
+        run: touch dist/.nojekyll
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: www
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

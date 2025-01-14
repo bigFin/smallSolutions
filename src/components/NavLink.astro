@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  currentPath: string;
+}
+
+const { href, label, currentPath } = Astro.props;
+const active = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const resolvedHref = href === "/" ? import.meta.env.BASE_URL : `${baseUrl}${href.replace(/^\//, "")}`;
+---
+
+<a href={resolvedHref} data-active={active ? "true" : "false"}>{label}</a>

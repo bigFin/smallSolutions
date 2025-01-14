@@ -1,0 +1,69 @@
+---
+import NavLink from "../components/NavLink.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Finlay Small builds durable systems spanning embedded hardware, analytics, machine learning, and operational infrastructure.",
+} = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const currentPath = Astro.url.pathname.replace(basePath, "").replace(/\/$/, "") || "/";
+const homeHref = import.meta.env.BASE_URL;
+const resumeHref = `${baseUrl}resume/`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="everforest-light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem("theme");
+        if (theme) {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-mark" href={homeHref}>
+          <span class="site-mark__label">smallSolutions</span>
+          <span class="site-mark__sub">Finlay Small</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <NavLink href="/" label="Home" currentPath={currentPath} />
+          <NavLink href="/projects" label="Projects" currentPath={currentPath} />
+          <NavLink href="/writing" label="Writing" currentPath={currentPath} />
+        </nav>
+        <ThemeToggle />
+      </header>
+
+      <main class="site-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <p class="site-footer__mark">smallSolutions</p>
+        <div class="footer-links">
+          <a href="https://github.com/bigFin">GitHub</a>
+          <a href="mailto:finlay@smallsolutions.ca">Email</a>
+          <a href={resumeHref}>Resume</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

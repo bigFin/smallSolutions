@@ -1,0 +1,53 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("work");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const coverSrc = entry.data.cover
+  ? entry.data.cover.startsWith("http")
+    ? entry.data.cover
+    : `${baseUrl}${entry.data.cover.replace(/^\//, "")}`
+  : null;
+---
+
+<BaseLayout title={`${entry.data.title} | smallSolutions`} description={entry.data.summary}>
+  <article class="detail-page">
+    <header class="detail-page__header">
+      <p class="eyebrow">Projects</p>
+      <h1>{entry.data.title}</h1>
+      <p class="detail-page__summary">{entry.data.summary}</p>
+      <div class="detail-page__meta-row">
+        <span>{entry.data.period}</span>
+        <ul class="tag-list">
+          {entry.data.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      </div>
+      {entry.data.links.length > 0 && (
+        <div class="link-list">
+          {entry.data.links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </div>
+      )}
+      {coverSrc && (
+        <figure class="detail-page__cover">
+          <img src={coverSrc} alt={entry.data.coverAlt ?? entry.data.title} loading="eager" />
+          {entry.data.coverCaption && <figcaption>{entry.data.coverCaption}</figcaption>}
+        </figure>
+      )}
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

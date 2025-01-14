@@ -1,1 +1,0 @@
-- International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.

@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import SectionCard from "../../components/SectionCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const resumes = (await getCollection("resume")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Resume | smallSolutions" description="Context-specific resume versions for different kinds of technical work.">
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">Resume</p>
+      <h1>Resume versions</h1>
+      <p class="section-copy">
+        Context-specific versions for different kinds of work.
+      </p>
+    </div>
+    <div class="card-grid">
+      {resumes.map((entry) => (
+        <SectionCard
+          href={`/resume/${entry.slug}/`}
+          title={entry.data.title}
+          summary={entry.data.summary}
+          meta={entry.data.audience}
+          tags={entry.data.tags}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

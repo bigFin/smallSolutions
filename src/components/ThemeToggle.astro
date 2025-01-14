@@ -1,0 +1,24 @@
+<div class="theme-toggle" aria-label="Theme selector">
+  <button type="button" class="theme-button" data-theme-target="everforest-light">
+    Light
+  </button>
+  <button type="button" class="theme-button" data-theme-target="everforest-dark">
+    Dark
+  </button>
+</div>
+
+<script is:inline>
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {}
+  };
+
+  for (const button of document.querySelectorAll("[data-theme-target]")) {
+    button.addEventListener("click", () => {
+      applyTheme(button.dataset.themeTarget);
+    });
+  }
+</script>
+
