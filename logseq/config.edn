@@ -11,7 +11,8 @@
  ;; - :now for NOW/LATER style (default)
  ;; - :todo for TODO/DOING style
  :preferred-workflow :now
- :custom-css-url "@import url('https://github.com/khoulihan/logseq-everforest-theme/blob/main/everforest-dark-hard.css');"
+ ;;:custom-css-url "@import url('https://github.com/khoulihan/logseq-everforest-theme/blob/main/everforest-dark-hard.css');"
+ 
  ;; Exclude directories/files.
  ;; Example usage:
  ;; :hidden ["/archived" "/test.md" "../assets/archived"]
