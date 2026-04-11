@@ -2,7 +2,7 @@
 
 Meaford, Ontario  
 519-731-5590  
-fin@small-solutions.ca  
+fsmall90@gmail.com  
 https://www.small-solutions.ca
 
 ## Profile
