@@ -112,6 +112,7 @@
         emailDyeColorLowUniform.value.set(...config.dye.low);
         emailDyeColorMidUniform.value.set(...config.dye.mid);
         emailDyeColorHighUniform.value.set(...config.dye.high);
+        emailDyeColorPeakUniform.value.set(...config.dye.peak);
       }
     };
 
@@ -177,6 +178,7 @@
     const emailDyeColorLowUniform = uniform(new THREE.Vector3(0, 0, 0));
     const emailDyeColorMidUniform = uniform(new THREE.Vector3(0, 0, 0));
     const emailDyeColorHighUniform = uniform(new THREE.Vector3(0, 0, 0));
+    const emailDyeColorPeakUniform = uniform(new THREE.Vector3(0, 0, 0));
 
     // Listen for mode changes
     window.addEventListener("background-mode-change", (e: any) => {
@@ -222,6 +224,7 @@
       emailDyeColorLowUniform,
       emailDyeColorMidUniform,
       emailDyeColorHighUniform,
+      emailDyeColorPeakUniform,
     });
 
     const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);

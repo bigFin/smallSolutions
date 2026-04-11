@@ -1,19 +1,18 @@
 ---
+import { SITE_CONFIG } from "../lib/config";
 ---
 
 <div class="status-bar">
   <div class="status-bar__left">
     <span class="status-label">Sys_Log</span>
-    <span class="status-value" id="active-mode">Smoke</span>
+    <span class="status-value" id="active-mode">{SITE_CONFIG.defaultShaderMode}</span>
   </div>
   <div class="status-bar__center">
-    <button class="status-button" data-mode="smoke">Smoke</button>
-    <button class="status-button" data-mode="warp">Warp</button>
-    <button class="status-button" data-mode="grid">Grid</button>
-    <button class="status-button" data-mode="topo">Topo</button>
-    <button class="status-button" data-mode="lines">Lines</button>
-    <button class="status-button" data-mode="lines2">Lines_2</button>
-    <button class="status-button" data-mode="vibe">Vibe</button>
+    {SITE_CONFIG.shaderModes.map((mode) => (
+      <button class="status-button" data-mode={mode}>
+        {mode.charAt(0).toUpperCase() + mode.slice(1)}
+      </button>
+    ))}
   </div>
   <div class="status-bar__right">
     <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>

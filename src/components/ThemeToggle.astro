@@ -1,16 +1,19 @@
 ---
 import { THEMES } from "../lib/themes";
+import { SITE_CONFIG } from "../lib/config";
+
+const activeThemes = SITE_CONFIG.themes.map(id => THEMES[id]).filter(Boolean);
 ---
 
 <div class="theme-toggle" aria-label="Theme selector">
-  {Object.values(THEMES).map((theme) => (
+  {activeThemes.map((theme) => (
     <button 
       type="button" 
       class="theme-button" 
       data-theme-target={theme.id}
       title={theme.name}
     >
-      {theme.id.split('-')[0]}
+      {theme.id.split('-')[1] || theme.id}
     </button>
   ))}
 </div>

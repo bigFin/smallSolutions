@@ -44,6 +44,7 @@ export type AsciiMaterialOptions = {
   emailDyeColorLowUniform: any;
   emailDyeColorMidUniform: any;
   emailDyeColorHighUniform: any;
+  emailDyeColorPeakUniform: any;
 };
 
 export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMaterial {
@@ -74,6 +75,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     emailDyeColorLowUniform: debugLow,
     emailDyeColorMidUniform: debugMid,
     emailDyeColorHighUniform: debugHigh,
+    emailDyeColorPeakUniform: debugPeak,
   } = opts;
 
   const background = vec3(0, 0, 0);
@@ -324,17 +326,20 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .toVar();
     const debugSignal = float(clamp(debugFeed.mul(float(1.1)), float(0), float(1))).toVar();
     
-    const debugLowMidT = clamp(debugSignal.mul(float(2.0)), float(0), float(1)).toVar();
-    const debugMidHighT = clamp(debugSignal.mul(float(2.0)).sub(float(1.0)), float(0), float(1)).toVar();
-    const debugLowMid = debugLow
-      .mul(float(1).sub(debugLowMidT))
-      .add(debugMid.mul(debugLowMidT))
-      .toVar();
-    const debugMidHigh = debugMid
-      .mul(float(1).sub(debugMidHighT))
-      .add(debugHigh.mul(debugMidHighT))
-      .toVar();
-    const debugColor = select(debugSignal.lessThan(float(0.5)), debugLowMid, debugMidHigh).toVar();
+    // Smooth interpolation across 4 colors
+    const t1 = clamp(debugSignal.mul(float(3.0)), float(0), float(1)).toVar();
+    const t2 = clamp(debugSignal.mul(float(3.0)).sub(float(1.0)), float(0), float(1)).toVar();
+    const t3 = clamp(debugSignal.mul(float(3.0)).sub(float(2.0)), float(0), float(1)).toVar();
+
+    const color12 = debugLow.mul(float(1).sub(t1)).add(debugMid.mul(t1)).toVar();
+    const color23 = debugMid.mul(float(1).sub(t2)).add(debugHigh.mul(t2)).toVar();
+    const color34 = debugHigh.mul(float(1).sub(t3)).add(debugPeak.mul(t3)).toVar();
+
+    const debugColor = select(
+      debugSignal.lessThan(float(0.333)),
+      color12,
+      select(debugSignal.lessThan(float(0.666)), color23, color34)
+    ).toVar();
     const debugAlpha = float(smoothstep(float(0.02), float(0.72), debugSignal))
       .mul(float(0.85))
       .toVar();
