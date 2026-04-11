@@ -6,13 +6,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const resumes = (await getCollection("resume")).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Resume | smallSolutions" description="Context-specific resume versions for different kinds of technical work.">
+<BaseLayout title="Resume | smallSolutions" description="Context-specific resume versions for technical work.">
   <section class="content-section">
     <div class="section-heading">
-      <p class="eyebrow">Resume</p>
-      <h1>Resume versions</h1>
+      <h1>Resume</h1>
       <p class="section-copy">
-        Context-specific versions for different kinds of work.
+        Context-specific versions for different kinds of technical work. 
+        Logs of systems built, managed, and operated across hardware and plant science domains.
       </p>
     </div>
     <div class="card-grid">

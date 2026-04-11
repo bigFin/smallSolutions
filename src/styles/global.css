@@ -157,11 +157,11 @@ a:hover {
 .site-main {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   scrollbar-width: none; /* Hide scrollbar for cleaner look */
   -ms-overflow-style: none;
   display: grid;
-  gap: 0.85rem;
+  gap: 1.5rem;
 }
 
 .site-main::-webkit-scrollbar {
@@ -364,7 +364,7 @@ body.zen-mode .status-bar:hover {
 .hero-panel,
 .content-section,
 .detail-page {
-  padding: 1.1rem;
+  padding: 2rem 1.5rem;
 }
 
 .hero-panel {
@@ -552,6 +552,7 @@ body.zen-mode .status-bar:hover {
 .prose {
   display: grid;
   gap: 1rem;
+  max-width: 68ch;
 }
 
 .prose h2,
@@ -565,6 +566,7 @@ body.zen-mode .status-bar:hover {
 .prose ol,
 .prose blockquote {
   margin: 0;
+  font-size: 1.05rem;
 }
 
 .prose ul,
