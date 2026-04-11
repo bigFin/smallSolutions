@@ -10,6 +10,5 @@ export const SITE_CONFIG = {
     "grid",
     "topo",
     "stochastic",
-    "nexus",
   ],
 };
