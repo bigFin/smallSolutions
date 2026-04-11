@@ -2,29 +2,29 @@
   color-scheme: light;
   --font-mono: "Iosevka Aile", "Iosevka", "SFMono-Regular", "Cascadia Mono", "JetBrains Mono", monospace;
   --bg: #f3ead3;
-  --panel: rgba(255, 251, 241, 0.92);
-  --panel-strong: #fff9ec;
-  --border: #d4c5a1;
+  --panel: rgba(255, 251, 241, 0.65);
+  --panel-strong: rgba(255, 249, 236, 0.75);
+  --border: rgba(212, 197, 161, 0.5);
   --border-strong: #9f8d67;
   --text: #2f3831;
   --muted: #5f6c5b;
   --accent: #859289;
   --accent-strong: #56635a;
-  --shadow: 0 10px 26px rgba(86, 99, 90, 0.08);
+  --shadow: 0 10px 26px rgba(86, 99, 90, 0.05);
 }
 
 :root[data-theme="everforest-dark"] {
   color-scheme: dark;
   --bg: #1e2326;
-  --panel: rgba(39, 46, 51, 0.96);
-  --panel-strong: #272e33;
-  --border: #414b50;
+  --panel: rgba(30, 35, 38, 0.7);
+  --panel-strong: rgba(39, 46, 51, 0.8);
+  --border: rgba(65, 75, 80, 0.6);
   --border-strong: #7fbbb3;
   --text: #d3c6aa;
   --muted: #9da9a0;
   --accent: #7fbbb3;
   --accent-strong: #a7c080;
-  --shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+  --shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -39,13 +39,21 @@ body {
 
 body {
   font-family: var(--font-mono);
-  background:
-    linear-gradient(135deg, rgba(133, 146, 137, 0.12), transparent 48%),
-    linear-gradient(0deg, rgba(212, 197, 161, 0.28), rgba(212, 197, 161, 0.28)),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
+
+#ascii-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 
 a {
   color: inherit;

@@ -1,0 +1,192 @@
+---
+---
+
+<canvas id="ascii-canvas"></canvas>
+
+<script>
+  import * as THREE from "three/webgpu";
+  import { buildAsciiMaterial } from "../lib/ascii-material.ts";
+  import { uniform, vec2, float, uv, sin, cos } from "three/tsl";
+
+  async function init() {
+    const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
+    if (!canvas) return;
+
+    // Check for WebGPU support
+    const supportsWebGPU = !!navigator.gpu && (await (async () => {
+      try {
+        const adapter = await navigator.gpu.requestAdapter();
+        return !!adapter;
+      } catch (e) {
+        return false;
+      }
+    })());
+
+    if (!supportsWebGPU) {
+      console.warn("WebGPU not supported or secure context required.");
+      const msg = document.createElement("div");
+      msg.style.position = "fixed";
+      msg.style.bottom = "10px";
+      msg.style.right = "10px";
+      msg.style.padding = "5px 10px";
+      msg.style.background = "rgba(255, 0, 0, 0.1)";
+      msg.style.color = "var(--muted)";
+      msg.style.fontSize = "10px";
+      msg.innerText = "WEBGL/STATIC FALLBACK";
+      document.body.appendChild(msg);
+      return;
+    }
+
+    const renderer = new THREE.WebGPURenderer({
+      canvas,
+      antialias: false,
+      alpha: true,
+    });
+    try {
+      await renderer.init();
+    } catch (e) {
+      console.error("WebGPU Renderer init failed:", e);
+      return;
+    }
+
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    // 1. Generate Character Atlas
+    const charList = " .:-=+*#%@".split("");
+    const tileSize = 32;
+    const atlasCols = 16;
+    const atlasRows = 1; 
+    const atlasWidth = atlasCols * tileSize;
+    const atlasHeight = atlasRows * tileSize;
+
+    const atlasCanvas = document.createElement("canvas");
+    atlasCanvas.width = atlasWidth;
+    atlasCanvas.height = atlasHeight;
+    const ctx = atlasCanvas.getContext("2d");
+    if (ctx) {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, atlasWidth, atlasHeight);
+      ctx.font = `bold ${tileSize * 0.8}px monospace`;
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      charList.forEach((char, i) => {
+        const x = (i % atlasCols) * tileSize + tileSize / 2;
+        const y = Math.floor(i / atlasCols) * tileSize + tileSize / 2;
+        ctx.fillText(char, x, y);
+      });
+    }
+
+    const atlasTexture = new THREE.CanvasTexture(atlasCanvas);
+    atlasTexture.minFilter = THREE.NearestFilter;
+    atlasTexture.magFilter = THREE.NearestFilter;
+
+    // 2. Generate Gradient Texture
+    const gradientCanvas = document.createElement("canvas");
+    gradientCanvas.width = 256;
+    gradientCanvas.height = 1;
+    const gCtx = gradientCanvas.getContext("2d");
+    if (gCtx) {
+      const grad = gCtx.createLinearGradient(0, 0, 256, 0);
+      grad.addColorStop(0, "#1e2326"); 
+      grad.addColorStop(0.5, "#7fbbb3"); 
+      grad.addColorStop(1, "#d3c6aa"); 
+      gCtx.fillStyle = grad;
+      gCtx.fillRect(0, 0, 256, 1);
+    }
+    const gradientTexture = new THREE.CanvasTexture(gradientCanvas);
+
+    // 3. Create a dynamic source texture using Nodes
+    const noiseTarget = new THREE.RenderTarget(512, 512);
+    const noiseScene = new THREE.Scene();
+    const noiseMaterial = new THREE.MeshBasicNodeMaterial();
+    
+    const noiseTime = uniform(float(0));
+    const p = uv().mul(4.0);
+    const noiseNode = sin(p.x.add(noiseTime)).mul(cos(p.y.sub(noiseTime.mul(0.5)))).add(sin(p.x.mul(0.5).sub(noiseTime.mul(0.2)))).mul(0.5).add(0.5);
+    noiseMaterial.colorNode = noiseNode;
+    
+    const noiseQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), noiseMaterial);
+    noiseScene.add(noiseQuad);
+
+    // 4. Uniforms
+    const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
+    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 10, window.innerHeight / 20));
+    const gridOriginUniform = uniform(new THREE.Vector2(0, 0));
+    const gridDisplaySizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
+    const displayCellSizeUniform = uniform(new THREE.Vector2(10, 20));
+    const atlasSizeUniform = uniform(new THREE.Vector2(atlasWidth, atlasHeight));
+    const tileSizeUniform = uniform(new THREE.Vector2(tileSize, tileSize));
+    const atlasColsUniform = uniform(float(atlasCols));
+    const gradientIndexUniform = uniform(float(0));
+    const debugTimeUniform = uniform(float(0));
+    const emailDyeDebugEnabledUniform = uniform(float(1));
+    const emailDyeDebugCenterUniform = uniform(new THREE.Vector2(0.5, 0.5));
+    const emailDyeDebugHalfSizeUniform = uniform(new THREE.Vector2(0.1, 0.1));
+
+    // 5. Material
+    const material = buildAsciiMaterial({
+      atlasTexture,
+      glyphTexture: noiseTarget.texture,
+      colorTexture: noiseTarget.texture,
+      sourceTexture: noiseTarget.texture,
+      gradientTexture,
+      gradientRowCount: 1,
+      useRampDither: true,
+      useGradientSignal: true,
+      invertGradient: false,
+      glyphRampIndices: [0, 1, 2, 3, 4, 5, 6, 7], 
+      viewportSizeUniform,
+      gridSizeUniform,
+      gridOriginUniform,
+      gridDisplaySizeUniform,
+      displayCellSizeUniform,
+      atlasSizeUniform,
+      tileSizeUniform,
+      atlasColsUniform,
+      gradientIndexUniform,
+      debugTimeUniform,
+      emailDyeDebugEnabledUniform,
+      emailDyeDebugCenterUniform,
+      emailDyeDebugHalfSizeUniform,
+    });
+
+    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+    scene.add(quad);
+
+    function animate(time: number) {
+      const t = time / 1000;
+      noiseTime.value = t;
+      debugTimeUniform.value = t;
+
+      // Update noise target
+      renderer.setRenderTarget(noiseTarget);
+      renderer.render(noiseScene, camera);
+      renderer.setRenderTarget(null);
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+
+
+    window.addEventListener("resize", () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      renderer.setSize(w, h);
+      viewportSizeUniform.value.set(w, h);
+      gridDisplaySizeUniform.value.set(w, h);
+      gridSizeUniform.value.set(w / 10, h / 20);
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+
+  init().catch((err) => console.error("WebGPU Init failed:", err));
+</script>
