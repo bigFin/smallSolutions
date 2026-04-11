@@ -16,7 +16,7 @@ export const THEMES: Record<string, ThemeConfig> = {
   "everforest-dark": {
     id: "everforest-dark",
     name: "Everforest Dark",
-    gradient: ["#1e2326", "#272e33", "#3b4252", "#7fbbb3", "#a7c080", "#d3c6aa"],
+    gradient: ["#2d353b", "#425047", "#a7c080", "#83c092", "#7fbbb3", "#d699b6"],
     dye: {
       low: [0.52, 0.57, 0.54],
       mid: [0.5, 0.73, 0.7],
@@ -27,7 +27,7 @@ export const THEMES: Record<string, ThemeConfig> = {
   "everforest-light": {
     id: "everforest-light",
     name: "Everforest Light",
-    gradient: ["#f3ead3", "#e5dcc5", "#d4c5a1", "#859289", "#56635a", "#2f3831"],
+    gradient: ["#f3ead3", "#d4c5a1", "#859289", "#56635a", "#a7c080", "#e69875"],
     dye: {
       low: [0.85, 0.82, 0.71],
       mid: [0.52, 0.57, 0.54],

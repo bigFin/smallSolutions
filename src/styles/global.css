@@ -117,6 +117,18 @@ body {
   flex-direction: column;
 }
 
+a {
+  color: var(--accent-strong);
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.24em;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
+
 #ascii-canvas {
   position: fixed;
   top: 0;
@@ -250,6 +262,7 @@ body.zen-mode .status-bar:hover {
   color: inherit;
   cursor: pointer;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .status-button:hover {
@@ -381,11 +394,18 @@ body.zen-mode .status-bar:hover {
 .section-heading h1,
 .section-heading h2,
 .detail-page__header h1,
-.hero-panel h1 {
+.hero-panel h1,
+.site-mark__label {
   margin: 0;
   line-height: 0.98;
   letter-spacing: -0.04em;
   font-size: clamp(2.2rem, 6vw, 4.9rem);
+  
+  /* Accent Gradient */
+  background: linear-gradient(135deg, var(--text), var(--accent-strong));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-heading h2 {
