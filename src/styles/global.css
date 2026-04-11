@@ -392,13 +392,24 @@ body.zen-mode .status-bar:hover {
 .section-heading h1,
 .section-heading h2,
 .detail-page__header h1,
-.hero-panel h1,
-.site-mark__label {
+.hero-panel h1 {
   margin: 0;
   line-height: 0.98;
   font-size: clamp(2.2rem, 6vw, 4.9rem);
   
   /* Accent Gradient */
+  background: linear-gradient(135deg, var(--text), var(--accent-strong));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.site-mark__label {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  
+  /* Keep Gradient but at smaller size */
   background: linear-gradient(135deg, var(--text), var(--accent-strong));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
