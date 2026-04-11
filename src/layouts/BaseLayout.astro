@@ -3,6 +3,7 @@ import NavLink from "../components/NavLink.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import AsciiBackground from "../components/AsciiBackground.astro";
 import ShaderControls from "../components/ShaderControls.astro";
+import { SITE_CONFIG } from "../lib/config";
 import "../styles/global.css";
 
 interface Props {
@@ -24,18 +25,16 @@ const resumeHref = `${baseUrl}resume/`;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="everforest-light">
+<html lang="en" data-theme={SITE_CONFIG.defaultTheme}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <script is:inline>
+    <script is:inline define:vars={{ defaultTheme: SITE_CONFIG.defaultTheme }}>
       try {
-        const theme = localStorage.getItem("theme");
-        if (theme) {
-          document.documentElement.dataset.theme = theme;
-        }
+        const theme = localStorage.getItem("theme") || defaultTheme;
+        document.documentElement.dataset.theme = theme;
       } catch {}
     </script>
   </head>

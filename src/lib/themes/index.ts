@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from "../config";
+
 export interface ThemeConfig {
   id: string;
   name: string;
@@ -53,5 +55,5 @@ export const THEMES: Record<string, ThemeConfig> = {
 };
 
 export function getTheme(id: string): ThemeConfig {
-  return THEMES[id] || THEMES["everforest-light"];
+  return THEMES[id] || THEMES[SITE_CONFIG.defaultTheme];
 }

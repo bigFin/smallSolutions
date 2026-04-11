@@ -72,3 +72,27 @@ export function topoLinesShader(noiseTime: Node, mousePos: Node): Node {
   
   return lines.mul(h.add(0.2)).clamp(0, 1);
 }
+
+export function topoLines2Shader(noiseTime: Node, mousePos: Node): Node {
+  const uvNode = uv();
+  const distToMouse = uvNode.sub(mousePos).length();
+  
+  const t = noiseTime.mul(0.08);
+  const p = uvNode.mul(2.2);
+
+  // Cleaner, smoother heightmap layers
+  const n1 = sin(p.x.add(t)).mul(cos(p.y.sub(t.mul(0.8))));
+  const n2 = sin(p.x.mul(1.8).sub(t.mul(1.2))).mul(cos(p.y.mul(1.5).add(t.mul(0.5)))).mul(0.4);
+  
+  const mousePeak = float(1.0).sub(distToMouse.mul(1.6)).clamp(0, 1).pow(3.0).mul(1.4);
+  const h = n1.add(n2).add(mousePeak).add(0.5).mul(0.5);
+  
+  // Sin-based contours: mathematically impossible to intersect
+  const frequency = float(55.0);
+  const contour = sin(h.mul(frequency));
+  
+  // Higher contrast lines
+  const lines = smoothstep(0.88, 0.99, contour);
+  
+  return lines.mul(h.add(0.4)).clamp(0, 1);
+}

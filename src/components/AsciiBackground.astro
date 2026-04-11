@@ -8,6 +8,7 @@
   import { buildAsciiMaterial } from "../lib/ascii-material.ts";
   import { uniform, vec2, vec3, float, uv, select } from "three/tsl";
   import { getTheme } from "../lib/themes";
+  import { SITE_CONFIG } from "../lib/config";
   import * as Shaders from "../lib/shaders/modes";
 
   async function init() {
@@ -121,7 +122,11 @@
     
     const noiseTime = uniform(float(0));
     const mousePosUniform = uniform(new THREE.Vector2(0.5, 0.5));
-    const modeIndex = uniform(float(0)); 
+    
+    // Initial mode from localStorage or config
+    const initialMode = localStorage.getItem("shader-mode") || SITE_CONFIG.defaultShaderMode;
+    const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5 };
+    const modeIndex = uniform(float(modeMap[initialMode] ?? 0)); 
     
     // --- MODE COMPOSITE ---
     const finalNoise = select(
@@ -136,7 +141,11 @@
           select(
             modeIndex.equal(3),
             Shaders.topoShader(noiseTime, mousePosUniform),
-            Shaders.topoLinesShader(noiseTime, mousePosUniform)
+            select(
+              modeIndex.equal(4),
+              Shaders.topoLinesShader(noiseTime, mousePosUniform),
+              Shaders.topoLines2Shader(noiseTime, mousePosUniform)
+            )
           )
         )
       )
@@ -173,11 +182,12 @@
       if (mode === "grid") modeIndex.value = 2;
       if (mode === "topo") modeIndex.value = 3;
       if (mode === "lines") modeIndex.value = 4;
+      if (mode === "lines2") modeIndex.value = 5;
     });
 
     // Initialize theme
-    const currentTheme = document.documentElement.dataset.theme || "everforest-light";
-    updateThemeAssets(currentTheme);
+    const savedTheme = localStorage.getItem("theme") || SITE_CONFIG.defaultTheme;
+    updateThemeAssets(savedTheme);
 
     // 5. Material
     const material = buildAsciiMaterial({

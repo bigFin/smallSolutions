@@ -12,6 +12,7 @@
     <button class="status-button" data-mode="grid">Grid</button>
     <button class="status-button" data-mode="topo">Topo</button>
     <button class="status-button" data-mode="lines">Lines</button>
+    <button class="status-button" data-mode="lines2">Lines_2</button>
   </div>
   <div class="status-bar__right">
     <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
@@ -23,12 +24,30 @@
   const zenToggle = document.getElementById("zen-toggle");
   const activeModeLabel = document.getElementById("active-mode");
 
+  // Load initial mode from localStorage
+  const savedMode = localStorage.getItem("shader-mode");
+  if (savedMode && activeModeLabel) {
+    activeModeLabel.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1);
+  }
+
+  // Load initial Zen mode state
+  const isZenSaved = localStorage.getItem("zen-mode") === "true";
+  if (isZenSaved) {
+    document.body.classList.add("zen-mode");
+    if (zenToggle) zenToggle.textContent = "Exit_Zen";
+  }
+
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const mode = btn.getAttribute("data-mode");
       if (!mode) return;
 
       if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+      
+      // Save to localStorage
+      try {
+        localStorage.setItem("shader-mode", mode);
+      } catch {}
 
       window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
     });
@@ -37,6 +56,11 @@
   zenToggle?.addEventListener("click", () => {
     document.body.classList.toggle("zen-mode");
     const isZen = document.body.classList.contains("zen-mode");
-    zenToggle.textContent = isZen ? "Exit_Zen" : "Zen_Mode";
+    if (zenToggle) zenToggle.textContent = isZen ? "Exit_Zen" : "Zen_Mode";
+    
+    // Save Zen mode state
+    try {
+      localStorage.setItem("zen-mode", isZen.toString());
+    } catch {}
   });
 </script>
