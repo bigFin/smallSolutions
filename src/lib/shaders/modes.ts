@@ -7,6 +7,9 @@ import {
   smoothstep,
   vec2,
 } from "three/tsl";
+import { stochasticShader } from "./stochastic";
+
+export { stochasticShader };
 
 type Node = any; // Simplification for TSL functions
 

@@ -1,6 +1,6 @@
 ---
 title: "Meristem to Production"
-summary: "End-to-end propagation pipeline spanning pathogen elimination, media optimization, and acclimatization."
+summary: "End-to-end propagation pipeline spanning pathogen elimination, long term storage, media optimization, and acclimatization."
 period: "2019-2023"
 order: 4
 featured: false
@@ -20,6 +20,7 @@ Plant propagation system integrating meristem remediation, stock maintenance, an
 
 ## Architecture & Components
 - **Pathogen Elimination:** Meristem tip dissection and screening protocols.
+- **Long term storage:** Genetic preservation and gene bank management.
 - **Media & Process:** Custom tissue culture media and propagation protocols.
 - **Acclimatization:** Transition systems from sterile environments to greenhouse settings.
 - **Feedback Loops:** Data connecting lab choices (nutrition, hormones, light) to production performance.

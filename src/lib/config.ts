@@ -9,5 +9,6 @@ export const SITE_CONFIG = {
     "smoke",
     "grid",
     "topo",
+    "stochastic",
   ],
 };
