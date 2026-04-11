@@ -96,3 +96,27 @@ export function topoLines2Shader(noiseTime: Node, mousePos: Node): Node {
   
   return lines.mul(h.add(0.5)).clamp(0, 1).pow(0.8);
 }
+
+export function vibeShader(noiseTime: Node, mousePos: Node): Node {
+  const uvNode = uv();
+  const distToMouse = uvNode.sub(mousePos).length();
+  
+  const t = noiseTime.mul(0.2);
+  const p = uvNode.mul(3.0);
+
+  // Layered noise for smoke
+  const n1 = sin(p.x.add(t)).mul(cos(p.y.sub(t.mul(0.7))));
+  const n2 = sin(p.x.mul(2.2).sub(t.mul(1.1))).mul(cos(p.y.mul(1.9).add(t.mul(0.6)))).mul(0.5);
+  const smoke = n1.add(n2).mul(0.5).add(0.5);
+
+  // Cursor 'excitation'
+  const mouseInfluence = float(1.0).sub(smoothstep(0.0, 0.4, distToMouse)).mul(2.5);
+  
+  // High contrast thresholds
+  const highRes = smoke.add(mouseInfluence).clamp(0, 1);
+  
+  // Create 'chunky' steps by posterizing the signal
+  const chunky = highRes.mul(10.0).floor().div(10.0);
+  
+  return chunky.mul(highRes.pow(0.5)).clamp(0, 1);
+}

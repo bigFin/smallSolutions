@@ -14,5 +14,6 @@ export const SITE_CONFIG = {
     "topo",
     "lines",
     "lines2",
+    "vibe",
   ],
 };

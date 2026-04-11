@@ -57,8 +57,8 @@
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-    // 1. Generate Character Atlas (Braille & Detailed symbols)
-    const charList = " ⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿".split("");
+    // 1. Generate Character Atlas (Mixed classic, block, and Braille)
+    const charList = " .:-=+*#%@░▒▓█⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿".split("").slice(0, 64);
     const tileSize = 32;
     const atlasCols = 8;
     const atlasRows = 8; 
@@ -72,7 +72,7 @@
     if (ctx) {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, atlasWidth, atlasHeight);
-      ctx.font = `${tileSize * 0.8}px monospace`;
+      ctx.font = `bold ${tileSize * 0.85}px monospace`;
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -125,7 +125,7 @@
     
     // Initial mode from localStorage or config
     const initialMode = localStorage.getItem("shader-mode") || SITE_CONFIG.defaultShaderMode;
-    const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5 };
+    const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5, vibe: 6 };
     const modeIndex = uniform(float(modeMap[initialMode] ?? 0)); 
     
     // --- MODE COMPOSITE ---
@@ -144,7 +144,11 @@
             select(
               modeIndex.equal(4),
               Shaders.topoLinesShader(noiseTime, mousePosUniform),
-              Shaders.topoLines2Shader(noiseTime, mousePosUniform)
+              select(
+                modeIndex.equal(5),
+                Shaders.topoLines2Shader(noiseTime, mousePosUniform),
+                Shaders.vibeShader(noiseTime, mousePosUniform)
+              )
             )
           )
         )
@@ -156,12 +160,12 @@
     const noiseQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), noiseMaterial);
     noiseScene.add(noiseQuad);
 
-    // 4. Uniforms
+    // 4. Uniforms (Grid size adjusted for chunkier look)
     const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 4, window.innerHeight / 8));
+    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 8, window.innerHeight / 16));
     const gridOriginUniform = uniform(new THREE.Vector2(0, 0));
     const gridDisplaySizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const displayCellSizeUniform = uniform(new THREE.Vector2(4, 8));
+    const displayCellSizeUniform = uniform(new THREE.Vector2(8, 16));
     const atlasSizeUniform = uniform(new THREE.Vector2(atlasWidth, atlasHeight));
     const tileSizeUniform = uniform(new THREE.Vector2(tileSize, tileSize));
     const atlasColsUniform = uniform(float(atlasCols));
@@ -183,6 +187,7 @@
       if (mode === "topo") modeIndex.value = 3;
       if (mode === "lines") modeIndex.value = 4;
       if (mode === "lines2") modeIndex.value = 5;
+      if (mode === "vibe") modeIndex.value = 6;
     });
 
     // Initialize theme
@@ -200,7 +205,7 @@
       useRampDither: true,
       useGradientSignal: true,
       invertGradient: false,
-      glyphRampIndices: [0, 4, 12, 24, 48, 63], 
+      glyphRampIndices: [0, 4, 10, 13, 32, 63], 
       viewportSizeUniform,
       gridSizeUniform,
       gridOriginUniform,
@@ -256,7 +261,7 @@
       renderer.setSize(w, h);
       viewportSizeUniform.value.set(w, h);
       gridDisplaySizeUniform.value.set(w, h);
-      gridSizeUniform.value.set(w / 4, h / 8);
+      gridSizeUniform.value.set(w / 8, h / 16);
     });
 
     // Theme Mutation Observer
