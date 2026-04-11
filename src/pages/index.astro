@@ -19,30 +19,9 @@ const resumeHref = `${baseUrl}resume/`;
 <BaseLayout title="smallSolutions">
   <section class="hero-panel">
     <div class="hero-panel__inner">
-      <h1>
-        Low-power hardware, analytics, machine learning, and durable systems.
-      </h1>
-      <p class="hero-copy">
-        Distributed sensing, geospatial analytics, contextual prediction, plant
-        systems, and data infrastructure built to stay useful.
-      </p>
+      <h1>Hardware, data, and production systems.</h1>
     </div>
     <div class="hero-panel__grid">
-      <div>
-        <p class="stat-label">Current direction</p>
-        <p class="stat-copy">
-          Large-scale IoT analytics, sensor fusion, geospatial and
-          spatiotemporal analysis, contextual prediction, and long-lived field
-          hardware.
-        </p>
-      </div>
-      <div>
-        <p class="stat-label">Good problems</p>
-        <p class="stat-copy">
-          Experimental programs that need to become disciplined systems without
-          losing the lessons that made them interesting.
-        </p>
-      </div>
       <div>
         <p class="stat-label">Links</p>
         <p class="stat-copy">
@@ -51,45 +30,6 @@ const resumeHref = `${baseUrl}resume/`;
           <a href={resumeHref}>resume</a>
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="section-heading">
-      <h2>Applied work</h2>
-      <p class="section-copy">Prototype to learn, operate to know, build with purpose.</p>
-    </div>
-    <div class="matrix-grid">
-      <article class="matrix-card">
-        <h3>Domains</h3>
-        <p class="stat-copy">
-          Photobiology, tissue culture, low-power radio systems, process
-          instrumentation, sensor fusion, contextual ML, and other domains
-          where the useful answer is rarely available off the shelf.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Method</h3>
-        <p class="stat-copy">
-          Reduce ambiguity, find the real operational constraint, and build the
-          minimum system that can carry the idea into production.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Examples</h3>
-        <p class="stat-copy">
-          Geospatial time series, contextual prediction, long-lived embedded
-          sensing, production plant systems, and data architectures that can
-          keep up with live analytical workloads.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Constraints</h3>
-        <p class="stat-copy">
-          Portability, observability, operating cost, maintainability, and
-          whether the resulting system remains legible after handoff.
-        </p>
-      </article>
     </div>
   </section>
 
@@ -107,45 +47,6 @@ const resumeHref = `${baseUrl}resume/`;
           tags={entry.data.tags}
         />
       ))}
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="section-heading">
-      <h2>Principles</h2>
-      <p class="section-copy">Directness, legibility, and sensible boundaries.</p>
-    </div>
-    <div class="matrix-grid">
-      <article class="matrix-card">
-        <h3>Stay close to the real problem</h3>
-        <p class="stat-copy">
-          Most abstractions are useful until the work becomes real. When the
-          edges show up, I prefer to step closer to the actual area of concern.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Use what holds up</h3>
-        <p class="stat-copy">
-          New ideas matter, and so do systems that have already proved they can
-          hold up. When a newer system is clearly better, it is worth using for
-          that reason.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Keep the loop short</h3>
-        <p class="stat-copy">
-          Self-hosting, bare metal, and declarative systems are useful when
-          they shorten the feedback loop and keep the system coherent. Managed
-          services are useful when they create real leverage.
-        </p>
-      </article>
-      <article class="matrix-card">
-        <h3>Spend effort where it matters</h3>
-        <p class="stat-copy">
-          Right-size the system for the objective, respect the real
-          constraints, and put effort where it creates durable value.
-        </p>
-      </article>
     </div>
   </section>
 
@@ -170,8 +71,7 @@ const resumeHref = `${baseUrl}resume/`;
     <div class="section-heading">
       <h2>Just for fun</h2>
       <p class="section-copy">
-        Shells, shaders, desktop tooling, and other small detours live mostly
-        on GitHub.
+        Shells, shaders, and other detours live on GitHub.
       </p>
     </div>
   </section>

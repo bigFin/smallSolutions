@@ -1,6 +1,6 @@
 ---
 title: "Prismatic"
-summary: "A modular multi-channel LED system for photobiology experiments, built as both research infrastructure and an open technical platform."
+summary: "Multi-channel LED system for photobiology experiments and spectral optimization."
 period: "2017-2019"
 order: 5
 featured: false
@@ -18,20 +18,16 @@ links:
     href: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/"
 ---
 
-Prismatic was a multi-channel LED system designed for photobiology research where precision mattered more than generic grow-light output.
+## System Overview
+Multi-channel LED hardware and control system for photobiology research and spectral optimization.
 
-The system was used to support controlled experiments around organogenesis, regeneration, and media or spectral optimization. It also became a vehicle for open-source hardware and software work around custom lighting infrastructure.
+## Architecture & Components
+- **Hardware:** Modular LED driver and array hardware. Multi-channel circuit design.
+- **Firmware:** Embedded C++ control logic for scheduling and spectral management.
+- **Control Surface:** Wi-Fi interface using HTML/JavaScript served from the microcontroller.
+- **Experimental Design:** Workflows based on Central Composite Rotatable Design (CCRD).
 
-## Core pieces
-
-- A Wi-Fi programmable scheduling interface
-- Modular LED driver and array hardware
-- Experimental workflows oriented around replicated conditions
-- Tight control over spectra for plant tissue culture work
-
-## Build details
-
-- Embedded firmware in C and C++
-- HTML and JavaScript control interfaces on microcontroller hardware
-- Circuit and PCB design for a multi-channel lighting stack
-- DOE-oriented experimental framing around CCRD and response surfaces
+## Constraints
+- **Spectral Precision:** Control over lighting spectra for in vitro research.
+- **Repeatability:** Replicated conditions across experimental units.
+- **Extensibility:** Open-source architecture for custom research hardware.
