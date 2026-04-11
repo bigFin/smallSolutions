@@ -57,11 +57,11 @@
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-    // 1. Generate Character Atlas
-    const charList = " .:-=+*#%@".split("");
+    // 1. Generate Character Atlas (Braille & Detailed symbols)
+    const charList = " ⠁⠂⠃⠄⠅⠆⠇⠈⠉⠊⠋⠌⠍⠎⠏⠐⠑⠒⠓⠔⠕⠖⠗⠘⠙⠚⠛⠜⠝⠞⠟⠠⠡⠢⠣⠤⠥⠦⠧⠨⠩⠪⠫⠬⠭⠮⠯⠰⠱⠲⠳⠴⠵⠶⠷⠸⠹⠺⠻⠼⠽⠾⠿".split("");
     const tileSize = 32;
-    const atlasCols = 16;
-    const atlasRows = 1; 
+    const atlasCols = 8;
+    const atlasRows = 8; 
     const atlasWidth = atlasCols * tileSize;
     const atlasHeight = atlasRows * tileSize;
 
@@ -72,7 +72,7 @@
     if (ctx) {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, atlasWidth, atlasHeight);
-      ctx.font = `bold ${tileSize * 0.8}px monospace`;
+      ctx.font = `${tileSize * 0.8}px monospace`;
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -158,10 +158,10 @@
 
     // 4. Uniforms
     const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 8, window.innerHeight / 16));
+    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 4, window.innerHeight / 8));
     const gridOriginUniform = uniform(new THREE.Vector2(0, 0));
     const gridDisplaySizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const displayCellSizeUniform = uniform(new THREE.Vector2(8, 16));
+    const displayCellSizeUniform = uniform(new THREE.Vector2(4, 8));
     const atlasSizeUniform = uniform(new THREE.Vector2(atlasWidth, atlasHeight));
     const tileSizeUniform = uniform(new THREE.Vector2(tileSize, tileSize));
     const atlasColsUniform = uniform(float(atlasCols));
@@ -200,7 +200,7 @@
       useRampDither: true,
       useGradientSignal: true,
       invertGradient: false,
-      glyphRampIndices: [0, 0, 1, 2, 5, 9], 
+      glyphRampIndices: [0, 4, 12, 24, 48, 63], 
       viewportSizeUniform,
       gridSizeUniform,
       gridOriginUniform,
@@ -256,7 +256,7 @@
       renderer.setSize(w, h);
       viewportSizeUniform.value.set(w, h);
       gridDisplaySizeUniform.value.set(w, h);
-      gridSizeUniform.value.set(w / 8, h / 16);
+      gridSizeUniform.value.set(w / 4, h / 8);
     });
 
     // Theme Mutation Observer

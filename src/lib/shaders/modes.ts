@@ -49,8 +49,8 @@ export function topoShader(noiseTime: Node, mousePos: Node): Node {
   const baseH = h1.add(h2).mul(0.5).add(0.5);
   const mPeak = float(1.0).sub(distToMouse.mul(2.0)).clamp(0, 1).pow(2.0).mul(0.8);
   const totalH = baseH.add(mPeak).clamp(0, 1);
-  const contours = sin(totalH.mul(25.0));
-  return totalH.mul(0.8).add(contours.mul(0.2)).clamp(0, 1);
+  const contours = sin(totalH.mul(30.0));
+  return totalH.mul(0.7).add(contours.mul(0.3)).clamp(0, 1).pow(1.2);
 }
 
 export function topoLinesShader(noiseTime: Node, mousePos: Node): Node {
@@ -88,11 +88,11 @@ export function topoLines2Shader(noiseTime: Node, mousePos: Node): Node {
   const h = n1.add(n2).add(mousePeak).add(0.5).mul(0.5);
   
   // Sin-based contours: mathematically impossible to intersect
-  const frequency = float(55.0);
+  const frequency = float(60.0);
   const contour = sin(h.mul(frequency));
   
   // Higher contrast lines
-  const lines = smoothstep(0.88, 0.99, contour);
+  const lines = smoothstep(0.85, 0.98, contour);
   
-  return lines.mul(h.add(0.4)).clamp(0, 1);
+  return lines.mul(h.add(0.5)).clamp(0, 1).pow(0.8);
 }

@@ -185,16 +185,14 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     );
     const overlayFillScene = overlayCompositeMode.greaterThan(float(95));
     const overlayColorOverride = overlayCompositeMode.greaterThan(float(159));
-    const boostedSignal = clamp(
-      sourceSignal.mul(useGradientSignal ? 1.15 : 1.2),
-      float(0),
-      float(1),
-    ).toVar();
+    
+    // Direct signal mapping for higher contrast
     const gradientSignal = clamp(
-      invertGradient ? float(1).sub(boostedSignal) : boostedSignal,
+      invertGradient ? float(1).sub(sourceSignal) : sourceSignal,
       float(0),
       float(1),
     ).toVar();
+    
     const gradientSampleUv = vec2(
       gradientSignal,
       gradientIndexUniform.add(float(0.5)).div(gradientRowCount),
@@ -203,7 +201,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     const sceneGlyphIndex = float(ramp0 ?? 0).toVar();
     if (useRampDither) {
       const ditherThreshold = getBayer4Threshold(cell).toVar();
-      const scaledLevel = boostedSignal.mul(float(5)).toVar();
+      const scaledLevel = sourceSignal.mul(float(5)).toVar();
       const baseLevel = floor(scaledLevel).toVar();
       const fraction = scaledLevel.sub(baseLevel).toVar();
       const rampLevel = baseLevel
@@ -229,24 +227,24 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       );
     } else {
       sceneGlyphIndex.assign(
-        select(boostedSignal.greaterThan(float(0.08)), float(ramp1 ?? 0), sceneGlyphIndex),
+        select(sourceSignal.greaterThan(float(0.08)), float(ramp1 ?? 0), sceneGlyphIndex),
       );
       sceneGlyphIndex.assign(
-        select(boostedSignal.greaterThan(float(0.18)), float(ramp2 ?? 0), sceneGlyphIndex),
+        select(sourceSignal.greaterThan(float(0.18)), float(ramp2 ?? 0), sceneGlyphIndex),
       );
       sceneGlyphIndex.assign(
-        select(boostedSignal.greaterThan(float(0.34)), float(ramp3 ?? 0), sceneGlyphIndex),
+        select(sourceSignal.greaterThan(float(0.34)), float(ramp3 ?? 0), sceneGlyphIndex),
       );
       sceneGlyphIndex.assign(
-        select(boostedSignal.greaterThan(float(0.52)), float(ramp4 ?? 0), sceneGlyphIndex),
+        select(sourceSignal.greaterThan(float(0.52)), float(ramp4 ?? 0), sceneGlyphIndex),
       );
       sceneGlyphIndex.assign(
-        select(boostedSignal.greaterThan(float(0.72)), float(ramp5 ?? 0), sceneGlyphIndex),
+        select(sourceSignal.greaterThan(float(0.72)), float(ramp5 ?? 0), sceneGlyphIndex),
       );
     }
 
     const sceneGlyphMask = sampleGlyphMask(sceneGlyphIndex, localUv);
-    const scenePresence = smoothstep(0.05, 0.14, boostedSignal);
+    const scenePresence = smoothstep(0.02, 0.08, sourceSignal); // Lower threshold for sharper appearance
     const gradientColor = texture(gradientTexture, gradientSampleUv).rgb;
     const sceneColor = (useGradientSignal ? gradientColor : sourceState.rgb).toVar();
     const sceneInk = sceneGlyphMask.mul(scenePresence);
