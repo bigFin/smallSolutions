@@ -1,24 +1,45 @@
+---
+import { THEMES } from "../lib/themes";
+---
+
 <div class="theme-toggle" aria-label="Theme selector">
-  <button type="button" class="theme-button" data-theme-target="everforest-light">
-    Light
-  </button>
-  <button type="button" class="theme-button" data-theme-target="everforest-dark">
-    Dark
-  </button>
+  {Object.values(THEMES).map((theme) => (
+    <button 
+      type="button" 
+      class="theme-button" 
+      data-theme-target={theme.id}
+      title={theme.name}
+    >
+      {theme.id.split('-')[0]}
+    </button>
+  ))}
 </div>
 
-<script is:inline>
-  const applyTheme = (theme) => {
+<script>
+  const applyTheme = (theme: string) => {
     document.documentElement.dataset.theme = theme;
     try {
       localStorage.setItem("theme", theme);
     } catch {}
   };
 
-  for (const button of document.querySelectorAll("[data-theme-target]")) {
+  const buttons = document.querySelectorAll("[data-theme-target]");
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      applyTheme(button.dataset.themeTarget);
+      const theme = (button as HTMLElement).dataset.themeTarget;
+      if (theme) applyTheme(theme);
     });
-  }
+  });
 </script>
 
+<style>
+  .theme-toggle {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .theme-button {
+    min-width: 3.5rem;
+    text-align: center;
+  }
+</style>

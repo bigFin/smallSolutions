@@ -41,9 +41,6 @@ export type AsciiMaterialOptions = {
   emailDyeDebugEnabledUniform: any;
   emailDyeDebugCenterUniform: any;
   emailDyeDebugHalfSizeUniform: any;
-  emailDyeColorLowUniform: any;
-  emailDyeColorMidUniform: any;
-  emailDyeColorHighUniform: any;
 };
 
 export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMaterial {
@@ -71,9 +68,6 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     emailDyeDebugEnabledUniform: debugEnabled,
     emailDyeDebugCenterUniform: debugCenter,
     emailDyeDebugHalfSizeUniform: debugHalfSize,
-    emailDyeColorLowUniform: debugLow,
-    emailDyeColorMidUniform: debugMid,
-    emailDyeColorHighUniform: debugHigh,
   } = opts;
 
   const background = vec3(0, 0, 0);
@@ -142,7 +136,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
   const material = new MeshBasicNodeMaterial();
   material.depthTest = false;
   material.depthWrite = false;
-  material.transparent = true;
+  material.transparent = false;
 
   material.colorNode = Fn(() => {
     const screenUv = vec2(uv().x, float(1).sub(uv().y));
@@ -325,6 +319,11 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .mul(debugEnabled)
       .toVar();
     const debugSignal = float(clamp(debugFeed.mul(float(1.1)), float(0), float(1))).toVar();
+    
+    // Everforest Theme Colors
+    const debugLow = vec3(0.52, 0.57, 0.54);   // Green
+    const debugMid = vec3(0.50, 0.73, 0.70);   // Aqua
+    const debugHigh = vec3(0.90, 0.60, 0.43);  // Orange
     
     const debugLowMidT = clamp(debugSignal.mul(float(2.0)), float(0), float(1)).toVar();
     const debugMidHighT = clamp(debugSignal.mul(float(2.0)).sub(float(1.0)), float(0), float(1)).toVar();

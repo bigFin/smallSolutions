@@ -1,0 +1,42 @@
+---
+---
+
+<div class="status-bar">
+  <div class="status-bar__left">
+    <span class="status-label">Sys_Log</span>
+    <span class="status-value" id="active-mode">Smoke</span>
+  </div>
+  <div class="status-bar__center">
+    <button class="status-button" data-mode="smoke">Smoke</button>
+    <button class="status-button" data-mode="warp">Warp</button>
+    <button class="status-button" data-mode="grid">Grid</button>
+    <button class="status-button" data-mode="topo">Topo</button>
+    <button class="status-button" data-mode="lines">Lines</button>
+  </div>
+  <div class="status-bar__right">
+    <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
+  </div>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll(".status-button[data-mode]");
+  const zenToggle = document.getElementById("zen-toggle");
+  const activeModeLabel = document.getElementById("active-mode");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const mode = btn.getAttribute("data-mode");
+      if (!mode) return;
+
+      if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+
+      window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
+    });
+  });
+
+  zenToggle?.addEventListener("click", () => {
+    document.body.classList.toggle("zen-mode");
+    const isZen = document.body.classList.contains("zen-mode");
+    zenToggle.textContent = isZen ? "Exit_Zen" : "Zen_Mode";
+  });
+</script>

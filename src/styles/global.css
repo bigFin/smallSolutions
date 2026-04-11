@@ -70,8 +70,87 @@ img {
 .site-shell {
   width: min(1080px, calc(100% - 2rem));
   margin: 0 auto;
-  padding: 0.85rem 0 2.5rem;
+  padding: 0.85rem 0 5rem; /* Space for the status bar */
 }
+
+/* Zen Mode */
+body.zen-mode .site-header,
+body.zen-mode .site-main,
+body.zen-mode .site-footer {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+body.zen-mode .status-bar {
+  opacity: 0.1;
+  border-color: transparent;
+}
+
+body.zen-mode .status-bar:hover {
+  opacity: 1;
+  border-color: var(--border);
+}
+
+/* Status Bar */
+.status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  z-index: 100;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+
+.status-bar__left,
+.status-bar__center,
+.status-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.status-label {
+  color: var(--accent-strong);
+  font-weight: bold;
+}
+
+.status-value {
+  color: var(--text);
+  min-width: 4rem;
+}
+
+.status-button {
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0.5rem;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.status-button:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.status-button--zen {
+  color: var(--accent-strong);
+}
+
 
 .site-header,
 .site-footer,

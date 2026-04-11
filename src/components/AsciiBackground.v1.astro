@@ -6,14 +6,13 @@
 <script>
   import * as THREE from "three/webgpu";
   import { buildAsciiMaterial } from "../lib/ascii-material.ts";
-  import { uniform, vec2, vec3, float, uv, select } from "three/tsl";
-  import { getTheme } from "../lib/themes";
-  import * as Shaders from "../lib/shaders/modes";
+  import { uniform, vec2, float, uv, sin, cos } from "three/tsl";
 
   async function init() {
     const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
     if (!canvas) return;
 
+    // Check for WebGPU support
     const supportsWebGPU = !!navigator.gpu && (await (async () => {
       try {
         const adapter = await navigator.gpu.requestAdapter();
@@ -53,6 +52,7 @@
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
+
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
@@ -87,32 +87,20 @@
     atlasTexture.minFilter = THREE.NearestFilter;
     atlasTexture.magFilter = THREE.NearestFilter;
 
-    // 2. Theme Handling
+    // 2. Generate Gradient Texture
     const gradientCanvas = document.createElement("canvas");
     gradientCanvas.width = 256;
     gradientCanvas.height = 1;
     const gCtx = gradientCanvas.getContext("2d");
+    if (gCtx) {
+      const grad = gCtx.createLinearGradient(0, 0, 256, 0);
+      grad.addColorStop(0, "#1e2326"); 
+      grad.addColorStop(0.5, "#7fbbb3"); 
+      grad.addColorStop(1, "#d3c6aa"); 
+      gCtx.fillStyle = grad;
+      gCtx.fillRect(0, 0, 256, 1);
+    }
     const gradientTexture = new THREE.CanvasTexture(gradientCanvas);
-
-    const updateThemeAssets = (themeId: string) => {
-      const config = getTheme(themeId);
-      
-      if (gCtx) {
-        const grad = gCtx.createLinearGradient(0, 0, 256, 0);
-        config.gradient.forEach((color, i) => {
-          grad.addColorStop(i / (config.gradient.length - 1), color);
-        });
-        gCtx.fillStyle = grad;
-        gCtx.fillRect(0, 0, 256, 1);
-        gradientTexture.needsUpdate = true;
-      }
-
-      if (emailDyeColorLowUniform) {
-        emailDyeColorLowUniform.value.set(...config.dye.low);
-        emailDyeColorMidUniform.value.set(...config.dye.mid);
-        emailDyeColorHighUniform.value.set(...config.dye.high);
-      }
-    };
 
     // 3. Create a dynamic source texture using Nodes
     const noiseTarget = new THREE.RenderTarget(512, 512);
@@ -121,38 +109,39 @@
     
     const noiseTime = uniform(float(0));
     const mousePosUniform = uniform(new THREE.Vector2(0.5, 0.5));
-    const modeIndex = uniform(float(0)); 
     
-    // --- MODE COMPOSITE ---
-    const finalNoise = select(
-      modeIndex.equal(0),
-      Shaders.smokeShader(noiseTime, mousePosUniform),
-      select(
-        modeIndex.equal(1),
-        Shaders.warpShader(noiseTime, mousePosUniform),
-        select(
-          modeIndex.equal(2),
-          Shaders.gridShader(noiseTime, mousePosUniform),
-          select(
-            modeIndex.equal(3),
-            Shaders.topoShader(noiseTime, mousePosUniform),
-            Shaders.topoLinesShader(noiseTime, mousePosUniform)
-          )
-        )
-      )
-    );
+    // Domain warping for fluid/flame-like movement
+    const t = noiseTime.mul(0.3);
+    const p = uv().mul(3.5);
     
-    noiseMaterial.colorNode = finalNoise;
+    // Warp layer 1
+    const q = vec2(
+      sin(p.x.add(t).add(mousePosUniform.x.mul(2.0))),
+      cos(p.y.add(t).add(mousePosUniform.y.mul(2.0)))
+    ).mul(0.5);
+    
+    // Warp layer 2
+    const r = vec2(
+      sin(p.x.add(q.x).mul(1.2).add(t.mul(0.8))),
+      cos(p.y.add(q.y).mul(1.4).add(t.mul(0.3)))
+    ).mul(0.8);
+    
+    // Final composite noise
+    const noiseNode = sin(p.x.add(r.x)).mul(cos(p.y.add(r.y)))
+      .add(sin(p.x.mul(0.5).sub(t.mul(0.2))).mul(0.5))
+      .mul(0.5).add(0.5);
+    
+    noiseMaterial.colorNode = noiseNode;
     
     const noiseQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), noiseMaterial);
     noiseScene.add(noiseQuad);
 
     // 4. Uniforms
     const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 8, window.innerHeight / 16));
+    const gridSizeUniform = uniform(new THREE.Vector2(window.innerWidth / 6, window.innerHeight / 12));
     const gridOriginUniform = uniform(new THREE.Vector2(0, 0));
     const gridDisplaySizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
-    const displayCellSizeUniform = uniform(new THREE.Vector2(8, 16));
+    const displayCellSizeUniform = uniform(new THREE.Vector2(6, 12));
     const atlasSizeUniform = uniform(new THREE.Vector2(atlasWidth, atlasHeight));
     const tileSizeUniform = uniform(new THREE.Vector2(tileSize, tileSize));
     const atlasColsUniform = uniform(float(atlasCols));
@@ -160,24 +149,7 @@
     const debugTimeUniform = uniform(float(0));
     const emailDyeDebugEnabledUniform = uniform(float(1.0));
     const emailDyeDebugCenterUniform = uniform(new THREE.Vector2(0.5, 0.5));
-    const emailDyeDebugHalfSizeUniform = uniform(new THREE.Vector2(0.18, 0.18));
-    const emailDyeColorLowUniform = uniform(new THREE.Vector3(0, 0, 0));
-    const emailDyeColorMidUniform = uniform(new THREE.Vector3(0, 0, 0));
-    const emailDyeColorHighUniform = uniform(new THREE.Vector3(0, 0, 0));
-
-    // Listen for mode changes
-    window.addEventListener("background-mode-change", (e: any) => {
-      const mode = e.detail;
-      if (mode === "smoke") modeIndex.value = 0;
-      if (mode === "warp") modeIndex.value = 1;
-      if (mode === "grid") modeIndex.value = 2;
-      if (mode === "topo") modeIndex.value = 3;
-      if (mode === "lines") modeIndex.value = 4;
-    });
-
-    // Initialize theme
-    const currentTheme = document.documentElement.dataset.theme || "everforest-light";
-    updateThemeAssets(currentTheme);
+    const emailDyeDebugHalfSizeUniform = uniform(new THREE.Vector2(0.15, 0.15));
 
     // 5. Material
     const material = buildAsciiMaterial({
@@ -190,7 +162,7 @@
       useRampDither: true,
       useGradientSignal: true,
       invertGradient: false,
-      glyphRampIndices: [0, 0, 1, 2, 5, 9], 
+      glyphRampIndices: [0, 1, 2, 4, 7, 9], 
       viewportSizeUniform,
       gridSizeUniform,
       gridOriginUniform,
@@ -204,9 +176,6 @@
       emailDyeDebugEnabledUniform,
       emailDyeDebugCenterUniform,
       emailDyeDebugHalfSizeUniform,
-      emailDyeColorLowUniform,
-      emailDyeColorMidUniform,
-      emailDyeColorHighUniform,
     });
 
     const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
@@ -227,11 +196,13 @@
       noiseTime.value = t;
       debugTimeUniform.value = t;
 
+      // Smooth mouse tracking
       currentMouseX += (targetMouseX - currentMouseX) * 0.05;
       currentMouseY += (targetMouseY - currentMouseY) * 0.05;
       emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
       mousePosUniform.value.set(currentMouseX, currentMouseY);
 
+      // Update noise target
       renderer.setRenderTarget(noiseTarget);
       renderer.render(noiseScene, camera);
       renderer.setRenderTarget(null);
@@ -240,28 +211,19 @@
       requestAnimationFrame(animate);
     }
 
+
     window.addEventListener("resize", () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
       renderer.setSize(w, h);
       viewportSizeUniform.value.set(w, h);
       gridDisplaySizeUniform.value.set(w, h);
-      gridSizeUniform.value.set(w / 8, h / 16);
+      gridSizeUniform.value.set(w / 10, h / 20);
     });
-
-    // Theme Mutation Observer
-    const observer = new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        if (mutation.attributeName === "data-theme") {
-          const theme = document.documentElement.dataset.theme || "everforest-light";
-          updateThemeAssets(theme);
-        }
-      }
-    });
-    observer.observe(document.documentElement, { attributes: true });
 
     requestAnimationFrame(animate);
   }
+
 
   init().catch((err) => console.error("WebGPU Init failed:", err));
 </script>
