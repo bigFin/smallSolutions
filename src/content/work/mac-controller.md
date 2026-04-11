@@ -24,7 +24,7 @@ Modular environmental control platform combining custom electronics, embedded fi
 - **Sensing:** Environmental sensors and thermal imaging for canopy temperature monitoring.
 - **Observation:** InfluxDB and Grafana for telemetry and performance tracking.
 
-## Constraints
-- **Interoperability:** Unifying HVAC, lighting, and sensing into a single control loop.
-- **Reliability:** Hardware and firmware for continuous operation in high-humidity environments.
-- **Legibility:** System architecture and control surfaces built for maintenance after handoff.
+## System Capabilities
+- **Unified Control:** Integration of HVAC, lighting, and sensing into a single feedback loop.
+- **Environmental Resilience:** Hardened hardware and firmware for continuous operation in high-humidity environments.
+- **Operational Legibility:** Clear system architecture and interfaces built for long-term maintenance.

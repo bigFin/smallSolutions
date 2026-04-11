@@ -24,8 +24,8 @@ Pedestrian traffic sensing platform built for privacy-preserving analytics and w
 - **Data Infrastructure:** Object-storage architecture utilizing ClickHouse and DuckDB for analytical workloads.
 - **Analytics:** Integration of geospatial and spatiotemporal data for signal reliability.
 
-## Constraints
-- **Power:** Operation in locations without grid power.
-- **Connectivity:** Data consistency across weak or intermittent network paths.
-- **Privacy:** Signal processing at the edge.
-- **Scale:** Transitioning from prototype patterns to production systems.
+## System Capabilities
+- **Off-grid Autonomy:** Engineered for remote operation without local power infrastructure.
+- **Network Resilience:** Data consistency across weak or intermittent communication paths.
+- **Privacy by Design:** Localized edge processing to preserve signal privacy.
+- **Production Scale:** Designed for stable transition from prototype to production deployment.

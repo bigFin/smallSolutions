@@ -23,8 +23,8 @@ Environmental control chambers and bioreactors for the transition of plant tissu
 - **Sensing:** Integrated monitoring of temperature, humidity, and CO2.
 - **Infrastructure:** InfluxDB and Grafana for telemetry and process validation.
 
-## Constraints
-- **Process Stability:** Hardening the transition from sterile in vitro environments to greenhouse conditions.
-- **Reliability:** Engineering for 24/7 operation in high-humidity settings.
-- **Scalability:** Transitioning from experimental units to production modules.
-- **Validation:** Instrumentation for data-driven protocols.
+## System Capabilities
+- **Acclimatization Stability:** Robust transition of plant material from sterile lab environments to greenhouse conditions.
+- **Operational Reliability:** Engineered for 24/7 continuous operation in agricultural environments.
+- **Modular Scale:** Transition from individual research units to high-volume production modules.
+- **Data-Driven Validation:** Integrated instrumentation for verifiable, repeatable biological protocols.

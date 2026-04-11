@@ -27,7 +27,7 @@ Multi-channel LED hardware and control system for photobiology research and spec
 - **Control Surface:** Wi-Fi interface using HTML/JavaScript served from the microcontroller.
 - **Experimental Design:** Workflows based on Central Composite Rotatable Design (CCRD).
 
-## Constraints
-- **Spectral Precision:** Control over lighting spectra for in vitro research.
-- **Repeatability:** Replicated conditions across experimental units.
-- **Extensibility:** Open-source architecture for custom research hardware.
+## System Capabilities
+- **Spectral Precision:** High-resolution control over lighting spectra for specialized research.
+- **Research Fidelity:** Consistent, replicated conditions across multiple experimental modules.
+- **System Extensibility:** Open architecture designed for modular expansion and custom research integration.

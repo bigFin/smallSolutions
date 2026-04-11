@@ -25,8 +25,8 @@ Plant propagation system integrating meristem remediation, stock maintenance, an
 - **Acclimatization:** Transition systems from sterile environments to greenhouse settings.
 - **Feedback Loops:** Data connecting lab choices (nutrition, hormones, light) to production performance.
 
-## Constraints
-- **Facility Integration:** Operating within HVAC, irrigation, and lighting constraints.
-- **Biosecurity:** Maintaining clean maintenance pipelines under contamination pressures.
-- **Scale:** Transitioning from small-batch research to production delivery.
-- **Biological Fidelity:** Ensuring remediation and propagation preserve genetic integrity.
+## System Capabilities
+- **Production Integration:** Seamless operation within existing facility HVAC and irrigation infrastructure.
+- **Biosecurity Rigor:** Maintenance of clean genetic pipelines under real-world facility pressures.
+- **Commercial Scalability:** Scaled transition from research protocols to commercial production volumes.
+- **Genetic Preservation:** High-fidelity propagation ensuring long-term genetic integrity.

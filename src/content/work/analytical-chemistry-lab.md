@@ -23,7 +23,7 @@ Analytical chemistry laboratory and data pipeline for chemical characterization 
 - **Workflows:** Lab procedures for sample preparation, instrument operation, and reporting.
 - **Data Integration:** Feedback loops connecting chemical profiles to cultivation conditions.
 
-## Constraints
-- **Repeatability:** Instrument qualification and method validation.
-- **Throughput:** Process design for routine use.
-- **Utility:** Chemical data for decisions about production variables.
+## System Capabilities
+- **Technical Validation:** Repeatable characterization through rigorous instrument qualification.
+- **High-Throughput Workflows:** Process design optimized for routine, high-volume analytical characterization.
+- **Operational Intelligence:** Rapid translation of chemical data into production decisions.
