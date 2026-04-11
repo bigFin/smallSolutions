@@ -123,3 +123,38 @@ export function vibeShader(noiseTime: Node, mousePos: Node): Node {
   
   return chunky.mul(highRes.pow(0.5)).clamp(0, 1);
 }
+
+export function nexusShader(noiseTime: Node, mousePos: Node): Node {
+  const uvNode = uv();
+  const distToMouse = uvNode.sub(mousePos).length();
+  
+  const t = noiseTime.mul(0.15);
+  const p = uvNode.mul(5.0);
+
+  // Cross-hatch / circuit board base
+  const sx = sin(p.x.add(t).mul(4.0));
+  const sy = sin(p.y.sub(t.mul(0.8)).mul(4.0));
+  const circuit = sx.mul(sy);
+  
+  // Cellular displacement
+  const q = vec2(
+    sin(p.y.add(t).mul(2.0)),
+    cos(p.x.add(t).mul(2.0))
+  ).mul(0.5);
+
+  const cx = sin(p.x.add(q.x).mul(5.0));
+  const cy = sin(p.y.add(q.y).mul(5.0));
+  const cell = cx.add(cy).mul(0.5);
+
+  // Mouse distortion wave (ripple effect)
+  const mouseWarp = float(1.0).sub(smoothstep(0.0, 0.5, distToMouse)).pow(2.0).mul(2.5);
+  const wave = sin(distToMouse.mul(20.0).sub(noiseTime.mul(5.0))).mul(mouseWarp);
+  
+  const combined = circuit.add(cell).add(wave).mul(0.3).add(0.5);
+  
+  // High contrast posterization for a chunky data/tech feel
+  const steps = float(8.0);
+  const posterized = combined.mul(steps).floor().div(steps);
+  
+  return posterized.clamp(0, 1);
+}

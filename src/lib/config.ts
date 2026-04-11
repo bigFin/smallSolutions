@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   defaultTheme: "everforest-light",
-  defaultShaderMode: "topo",
+  defaultShaderMode: "stochastic",
   themes: [
     "everforest-dark",
     "everforest-light",
@@ -10,5 +10,6 @@ export const SITE_CONFIG = {
     "grid",
     "topo",
     "stochastic",
+    "nexus",
   ],
 };
