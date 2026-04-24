@@ -195,14 +195,21 @@
       variant: "perspective",
     });
 
-    window.addEventListener("spectrogram-audio-stream", (event: any) => {
-      spectrogramBackground.setStream(event.detail).catch((error) => {
+    const connectAudioStream = (stream: MediaStream) => {
+      spectrogramBackground.setStream(stream).catch((error) => {
         console.warn("Could not connect audio stream to spectrogram.", error);
       });
-      sonogramBackground.setStream(event.detail).catch((error) => {
+      sonogramBackground.setStream(stream).catch((error) => {
         console.warn("Could not connect audio stream to sonogram.", error);
       });
+    };
+
+    window.addEventListener("spectrogram-audio-stream", (event: any) => {
+      connectAudioStream(event.detail);
     });
+    if ((window as any).__spectrogramAudioStream) {
+      connectAudioStream((window as any).__spectrogramAudioStream);
+    }
 
     // 4. Uniforms (Grid size adjusted for chunkier look)
     const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));

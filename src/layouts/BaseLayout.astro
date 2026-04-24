@@ -50,9 +50,13 @@ const resumeHref = `${baseUrl}resume/`;
           <NavLink href="/projects" label="Projects" currentPath={currentPath} />
           <NavLink href="/writing" label="Writing" currentPath={currentPath} />
         </nav>
-        <button class="mic-toggle" id="mic-enable" type="button" aria-label="Enable microphone spectrogram">
-          Mic
-        </button>
+        <div class="header-audio-controls">
+          <span class="mic-status" id="audio-status">Audio: idle</span>
+          <div class="audio-source-toggle" aria-label="Audio source">
+            <button class="status-button audio-source-toggle__button" id="music-enable" type="button">Music</button>
+            <button class="status-button audio-source-toggle__button" id="mic-source-enable" type="button">Mic</button>
+          </div>
+        </div>
         <ThemeToggle />
       </header>
 

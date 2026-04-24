@@ -8,7 +8,6 @@ export const SITE_CONFIG = {
   ],
   shaderModes: [
     "stochastic",
-    "stochastic-plus",
     "spectrogram",
     "sonogram",
   ],
