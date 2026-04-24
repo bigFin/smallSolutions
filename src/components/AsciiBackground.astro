@@ -169,7 +169,7 @@
                       select(
                         modeIndex.equal(10),
                         Shaders.syntheticSpectrogramShader(noiseTime, mousePosUniform),
-                        Shaders.enhancedStochasticShader(noiseTime, mousePosUniform)
+                        Shaders.stochasticShader(noiseTime, mousePosUniform)
                       )
                     )
                   )
@@ -315,9 +315,9 @@
       currentMouseX += (targetMouseX - currentMouseX) * inputEase;
       currentMouseY += (targetMouseY - currentMouseY) * inputEase;
       emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
-      emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" || activeMode === "sonogram" || activeMode === "stochastic-plus" ? 0 : 1;
-      emailDyeDebugModeUniform.value = activeMode === "stochastic" ? 1 : 0;
-      const shaderMouseY = activeMode === "stochastic" ? 1.0 - currentMouseY : currentMouseY;
+      emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" || activeMode === "sonogram" ? 0 : 1;
+      emailDyeDebugModeUniform.value = activeMode === "stochastic-plus" ? 2 : activeMode === "stochastic" ? 1 : 0;
+      const shaderMouseY = activeMode === "stochastic" || activeMode === "stochastic-plus" ? 1.0 - currentMouseY : currentMouseY;
       mousePosUniform.value.set(currentMouseX, shaderMouseY);
 
       if (activeMode === "spectrogram") {

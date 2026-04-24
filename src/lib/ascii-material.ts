@@ -333,6 +333,9 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     const debugVeinBand = smoothstep(float(0.035), float(0.16), sourceSignal)
       .mul(float(1).sub(smoothstep(float(0.28), float(0.5), sourceSignal)))
       .toVar();
+    const debugPopVeinBand = smoothstep(float(0.055), float(0.11), sourceSignal)
+      .mul(float(1).sub(smoothstep(float(0.2), float(0.34), sourceSignal)))
+      .toVar();
     const debugCurlA = debugCursorRel.x.mul(debugCursorRel.x).mul(float(92.0))
       .add(debugCursorRel.y.mul(debugCursorRel.y).mul(float(57.0)))
       .toVar();
@@ -383,18 +386,25 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .mul(float(0.72).add(debugBreath.mul(float(0.28))))
       .toVar();
     const debugCursorFeed = debugPulseBand
-      .mul(debugVeinBand)
-      .mul(float(0.92))
+      .mul(select(debugMode.greaterThan(float(1.5)), debugPopVeinBand, debugVeinBand))
+      .mul(select(debugMode.greaterThan(float(1.5)), float(1.35), float(0.92)))
       .toVar();
 
+    const debugStochasticMode = debugMode.greaterThan(float(0.5)).toVar();
+    const debugStochasticPopMode = debugMode.greaterThan(float(1.5)).toVar();
     const debugFeed = select(
-      debugMode.greaterThan(float(0.5)),
+      debugStochasticMode,
       debugCursorFeed,
       debugRotorFeed,
     )
       .mul(debugEnabled)
       .toVar();
-    const debugSignal = float(clamp(debugFeed.mul(select(debugMode.greaterThan(float(0.5)), float(0.85), float(1.1))), float(0), float(1))).toVar();
+    const debugRawSignal = float(clamp(debugFeed.mul(select(debugStochasticMode, float(0.85), float(1.1))), float(0), float(1))).toVar();
+    const debugSignal = select(
+      debugStochasticPopMode,
+      smoothstep(float(0.08), float(0.62), debugRawSignal).pow(float(0.55)),
+      debugRawSignal,
+    ).toVar();
     
     // Smooth interpolation across 4 colors
     const t1 = clamp(debugSignal.mul(float(3.0)), float(0), float(1)).toVar();
@@ -415,12 +425,54 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .mul(float(1).sub(debugVeinColorBlend))
       .add(debugHigh.mul(debugVeinColorBlend))
       .toVar();
-    const debugResolvedColor = select(debugMode.greaterThan(float(0.5)), debugVeinColor, debugColor).toVar();
-    const debugAlpha = float(smoothstep(float(0.02), float(0.72), debugSignal))
-      .mul(select(debugMode.greaterThan(float(0.5)), float(0.58), float(0.85)))
+    const debugPopT1 = clamp(debugSignal.mul(float(2.4)), float(0), float(1)).toVar();
+    const debugPopT2 = clamp(debugSignal.mul(float(2.4)).sub(float(0.7)), float(0), float(1)).toVar();
+    const debugPopT3 = clamp(debugSignal.mul(float(2.4)).sub(float(1.65)), float(0), float(1)).toVar();
+    const debugPopLow = vec3(0.0, 0.34, 0.72);
+    const debugPopCyan = vec3(0.0, 0.86, 1.0);
+    const debugPopMagenta = vec3(1.0, 0.08, 0.64);
+    const debugPopGold = vec3(1.0, 0.78, 0.12);
+    const debugPop12 = debugPopLow
+      .mul(float(1).sub(debugPopT1))
+      .add(debugPopCyan.mul(debugPopT1))
       .toVar();
-    const finalOutput = compositedOutput
-      .mul(float(1).sub(debugAlpha.mul(float(0.55))))
+    const debugPop23 = debugPopCyan
+      .mul(float(1).sub(debugPopT2))
+      .add(debugPopMagenta.mul(debugPopT2))
+      .toVar();
+    const debugPop34 = debugPopMagenta
+      .mul(float(1).sub(debugPopT3))
+      .add(debugPopGold.mul(debugPopT3))
+      .toVar();
+    const debugPopColor = select(
+      debugSignal.lessThan(float(0.28)),
+      debugPop12,
+      select(debugSignal.lessThan(float(0.76)), debugPop23, debugPop34),
+    )
+      .mul(float(1.35))
+      .toVar();
+    const debugResolvedColor = select(
+      debugStochasticPopMode,
+      debugPopColor,
+      select(debugStochasticMode, debugVeinColor, debugColor),
+    ).toVar();
+    const debugAlphaBase = float(smoothstep(select(debugStochasticPopMode, float(0.04), float(0.02)), select(debugStochasticPopMode, float(0.4), float(0.72)), debugSignal))
+      .mul(select(debugStochasticPopMode, float(1.0), select(debugStochasticMode, float(0.58), float(0.85))))
+      .toVar();
+    const debugPopPresence = smoothstep(float(0.02), float(0.18), debugRawSignal).mul(float(0.68)).toVar();
+    const debugAlpha = select(
+      debugStochasticPopMode,
+      max(debugAlphaBase, debugPopPresence),
+      debugAlphaBase,
+    ).toVar();
+    const contrastBaseOutput = select(
+      debugStochasticPopMode,
+      compositedOutput.mul(float(0.06)),
+      compositedOutput,
+    ).toVar();
+    const dyeBaseDimming = select(debugStochasticPopMode, float(0.96), float(0.55));
+    const finalOutput = contrastBaseOutput
+      .mul(float(1).sub(debugAlpha.mul(dyeBaseDimming)))
       .add(debugResolvedColor.mul(debugAlpha))
       .toVar();
 
