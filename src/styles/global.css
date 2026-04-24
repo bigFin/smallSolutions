@@ -339,7 +339,8 @@ body.zen-mode .status-bar:hover {
 }
 
 .site-nav a,
-.theme-button {
+.theme-button,
+.mic-toggle {
   border: 1px solid var(--border);
   background: transparent;
   padding: 0.42rem 0.62rem;
@@ -353,13 +354,20 @@ body.zen-mode .status-bar:hover {
 
 .site-nav a[data-active="true"],
 .site-nav a:hover,
-.theme-button:hover {
+.theme-button:hover,
+.mic-toggle:hover {
   color: var(--text);
   border-color: var(--border-strong);
 }
 
-.theme-button {
+.theme-button,
+.mic-toggle {
   cursor: pointer;
+}
+
+.mic-toggle[data-active="true"] {
+  color: var(--text);
+  border-color: var(--border-strong);
 }
 
 .site-main {

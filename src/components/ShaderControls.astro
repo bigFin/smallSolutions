@@ -27,8 +27,10 @@ import { SITE_CONFIG } from "../lib/config";
   const statusBar = document.querySelector(".status-bar");
   const zenToggle = document.getElementById("zen-toggle");
   const fullscreenToggle = document.getElementById("fullscreen-toggle");
+  const micEnable = document.getElementById("mic-enable");
   const activeModeLabel = document.getElementById("active-mode");
   const micStatus = document.getElementById("mic-status");
+  const MIC_MODES = new Set(["spectrogram", "sonogram"]);
   let spectrogramMicPromise = null;
 
   const setMicStatus = (message) => {
@@ -38,7 +40,7 @@ import { SITE_CONFIG } from "../lib/config";
   const setActiveMode = (mode, persist = true) => {
     if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
 
-    if (persist) {
+    if (persist && !MIC_MODES.has(mode)) {
       try {
         localStorage.setItem("shader-mode", mode);
       } catch {}
@@ -49,6 +51,7 @@ import { SITE_CONFIG } from "../lib/config";
 
   const fallBackFromSpectrogram = (error) => {
     console.warn("Could not start spectrogram microphone input.", error);
+    if (micEnable) micEnable.removeAttribute("data-active");
     setActiveMode(FALLBACK_SHADER_MODE);
   };
 
@@ -70,6 +73,7 @@ import { SITE_CONFIG } from "../lib/config";
         .getUserMedia({ audio: true })
         .then((stream) => {
           setMicStatus("live");
+          if (micEnable) micEnable.setAttribute("data-active", "true");
           window.dispatchEvent(new CustomEvent("spectrogram-microphone-stream", { detail: stream }));
           return stream;
         })
@@ -97,7 +101,9 @@ import { SITE_CONFIG } from "../lib/config";
 
   // Load initial mode from localStorage
   const savedMode = localStorage.getItem("shader-mode");
-  if (savedMode && activeModeLabel) {
+  if (savedMode && MIC_MODES.has(savedMode)) {
+    setActiveMode(FALLBACK_SHADER_MODE);
+  } else if (savedMode && activeModeLabel) {
     activeModeLabel.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1);
   }
 
@@ -132,18 +138,10 @@ import { SITE_CONFIG } from "../lib/config";
     setActiveMode(mode);
   });
 
-  if ((savedMode || DEFAULT_SHADER_MODE) === "spectrogram") {
-    setMicStatus("click to allow");
-    const requestDefaultSpectrogram = (event) => {
-      const target = event.target instanceof Element ? event.target : null;
-      const modeButton = target?.closest(".status-button[data-mode]");
-      if (modeButton && modeButton.getAttribute("data-mode") !== "spectrogram") return;
-
-      requestSpectrogramMic().catch(fallBackFromSpectrogram);
-    };
-    window.addEventListener("pointerdown", requestDefaultSpectrogram, { once: true, capture: true });
-    window.addEventListener("keydown", requestDefaultSpectrogram, { once: true, capture: true });
-  }
+  micEnable?.addEventListener("click", () => {
+    setActiveMode("spectrogram");
+    requestSpectrogramMic().catch(fallBackFromSpectrogram);
+  });
 
   zenToggle?.addEventListener("click", () => {
     document.body.classList.toggle("zen-mode");

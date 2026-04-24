@@ -39,6 +39,7 @@ export type AsciiMaterialOptions = {
   gradientIndexUniform: any;
   debugTimeUniform: any;
   emailDyeDebugEnabledUniform: any;
+  emailDyeDebugModeUniform: any;
   emailDyeDebugCenterUniform: any;
   emailDyeDebugHalfSizeUniform: any;
   emailDyeColorLowUniform: any;
@@ -70,6 +71,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     gradientIndexUniform,
     debugTimeUniform,
     emailDyeDebugEnabledUniform: debugEnabled,
+    emailDyeDebugModeUniform: debugMode,
     emailDyeDebugCenterUniform: debugCenter,
     emailDyeDebugHalfSizeUniform: debugHalfSize,
     emailDyeColorLowUniform: debugLow,
@@ -318,13 +320,46 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       )
       .toVar();
     const debugModulation = debugNoise.mul(float(0.18)).add(float(0.92)).toVar();
-    const debugFeed = debugLeftArc
+    const debugRotorFeed = debugLeftArc
       .add(debugRightArc)
       .mul(float(1.35))
       .mul(debugModulation)
+      .toVar();
+
+    const debugCursorRel = cellSampleUv.sub(debugCenter).toVar();
+    const debugCursorRadius = debugCursorRel.length().toVar();
+    const debugVeinBand = smoothstep(float(0.035), float(0.16), sourceSignal)
+      .mul(float(1).sub(smoothstep(float(0.28), float(0.5), sourceSignal)))
+      .toVar();
+    const debugPulseA = sin(debugCursorRadius.mul(float(72.0)).sub(debugTimeUniform.mul(float(6.2))))
+      .mul(float(0.5))
+      .add(float(0.5))
+      .toVar();
+    const debugPulseB = sin(debugCursorRadius.mul(float(43.0)).sub(debugTimeUniform.mul(float(3.7))).add(debugNoise.mul(float(0.9))))
+      .mul(float(0.5))
+      .add(float(0.5))
+      .toVar();
+    const debugBreath = sin(debugTimeUniform.mul(float(1.7)))
+      .mul(float(0.5))
+      .add(float(0.5))
+      .toVar();
+    const debugPulseBand = smoothstep(float(0.54), float(0.9), debugPulseA.mul(float(0.62)).add(debugPulseB.mul(float(0.38))))
+      .mul(exp(debugCursorRadius.mul(debugCursorRadius).mul(float(-2.15))))
+      .mul(float(0.72).add(debugBreath.mul(float(0.28))))
+      .toVar();
+    const debugCursorFeed = debugPulseBand
+      .mul(debugVeinBand)
+      .mul(float(0.92))
+      .toVar();
+
+    const debugFeed = select(
+      debugMode.greaterThan(float(0.5)),
+      debugCursorFeed,
+      debugRotorFeed,
+    )
       .mul(debugEnabled)
       .toVar();
-    const debugSignal = float(clamp(debugFeed.mul(float(1.1)), float(0), float(1))).toVar();
+    const debugSignal = float(clamp(debugFeed.mul(select(debugMode.greaterThan(float(0.5)), float(0.85), float(1.1))), float(0), float(1))).toVar();
     
     // Smooth interpolation across 4 colors
     const t1 = clamp(debugSignal.mul(float(3.0)), float(0), float(1)).toVar();
@@ -340,12 +375,18 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       color12,
       select(debugSignal.lessThan(float(0.666)), color23, color34)
     ).toVar();
+    const debugVeinColorBlend = clamp(debugSignal.mul(float(2.1)), float(0), float(1)).toVar();
+    const debugVeinColor = debugMid
+      .mul(float(1).sub(debugVeinColorBlend))
+      .add(debugHigh.mul(debugVeinColorBlend))
+      .toVar();
+    const debugResolvedColor = select(debugMode.greaterThan(float(0.5)), debugVeinColor, debugColor).toVar();
     const debugAlpha = float(smoothstep(float(0.02), float(0.72), debugSignal))
-      .mul(float(0.85))
+      .mul(select(debugMode.greaterThan(float(0.5)), float(0.58), float(0.85)))
       .toVar();
     const finalOutput = compositedOutput
       .mul(float(1).sub(debugAlpha.mul(float(0.55))))
-      .add(debugColor.mul(debugAlpha))
+      .add(debugResolvedColor.mul(debugAlpha))
       .toVar();
 
     return select(inBounds, finalOutput, background);
