@@ -16,6 +16,7 @@ import { SITE_CONFIG } from "../lib/config";
   </div>
   <div class="status-bar__right">
     <span class="mic-status" id="mic-status">Mic: idle</span>
+    <button class="status-button status-button--fullscreen" id="fullscreen-toggle">Fullscreen</button>
     <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
   </div>
 </div>
@@ -25,6 +26,7 @@ import { SITE_CONFIG } from "../lib/config";
   const FALLBACK_SHADER_MODE = fallbackShaderMode;
   const statusBar = document.querySelector(".status-bar");
   const zenToggle = document.getElementById("zen-toggle");
+  const fullscreenToggle = document.getElementById("fullscreen-toggle");
   const activeModeLabel = document.getElementById("active-mode");
   const micStatus = document.getElementById("mic-status");
   let spectrogramMicPromise = null;
@@ -153,4 +155,23 @@ import { SITE_CONFIG } from "../lib/config";
       localStorage.setItem("zen-mode", isZen.toString());
     } catch {}
   });
+
+  const updateFullscreenLabel = () => {
+    if (fullscreenToggle) fullscreenToggle.textContent = document.fullscreenElement ? "Exit_Fullscreen" : "Fullscreen";
+  };
+
+  fullscreenToggle?.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (error) {
+      console.warn("Could not toggle fullscreen.", error);
+    }
+  });
+
+  document.addEventListener("fullscreenchange", updateFullscreenLabel);
+  updateFullscreenLabel();
 </script>
