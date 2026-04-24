@@ -23,18 +23,17 @@ import { SITE_CONFIG } from "../lib/config";
 <script define:vars={{ defaultShaderMode: SITE_CONFIG.defaultShaderMode, fallbackShaderMode: SITE_CONFIG.fallbackShaderMode }}>
   const DEFAULT_SHADER_MODE = defaultShaderMode;
   const FALLBACK_SHADER_MODE = fallbackShaderMode;
-  const buttons = document.querySelectorAll(".status-button[data-mode]");
   const statusBar = document.querySelector(".status-bar");
   const zenToggle = document.getElementById("zen-toggle");
   const activeModeLabel = document.getElementById("active-mode");
   const micStatus = document.getElementById("mic-status");
   let spectrogramMicPromise = null;
 
-  const setMicStatus = (message: string) => {
+  const setMicStatus = (message) => {
     if (micStatus) micStatus.textContent = `Mic: ${message}`;
   };
 
-  const setActiveMode = (mode: string, persist = true) => {
+  const setActiveMode = (mode, persist = true) => {
     if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
 
     if (persist) {
@@ -46,7 +45,7 @@ import { SITE_CONFIG } from "../lib/config";
     window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
   };
 
-  const fallBackFromSpectrogram = (error: unknown) => {
+  const fallBackFromSpectrogram = (error) => {
     console.warn("Could not start spectrogram microphone input.", error);
     setActiveMode(FALLBACK_SHADER_MODE);
   };
@@ -133,7 +132,11 @@ import { SITE_CONFIG } from "../lib/config";
 
   if ((savedMode || DEFAULT_SHADER_MODE) === "spectrogram") {
     setMicStatus("click to allow");
-    const requestDefaultSpectrogram = () => {
+    const requestDefaultSpectrogram = (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const modeButton = target?.closest(".status-button[data-mode]");
+      if (modeButton && modeButton.getAttribute("data-mode") !== "spectrogram") return;
+
       requestSpectrogramMic().catch(fallBackFromSpectrogram);
     };
     window.addEventListener("pointerdown", requestDefaultSpectrogram, { once: true, capture: true });
