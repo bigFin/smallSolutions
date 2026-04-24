@@ -6,10 +6,11 @@
 <script>
   import * as THREE from "three/webgpu";
   import { buildAsciiMaterial } from "../lib/ascii-material.ts";
-  import { uniform, vec2, vec3, float, uv, select } from "three/tsl";
+  import { uniform, float, select } from "three/tsl";
   import { getTheme } from "../lib/themes";
   import { SITE_CONFIG } from "../lib/config";
   import * as Shaders from "../lib/shaders/modes";
+  import { ChromeLabSpectrogram } from "../lib/backgrounds/spectrogram/chrome-lab-spectrogram";
 
   async function init() {
     const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
@@ -125,8 +126,16 @@
     const mousePosUniform = uniform(new THREE.Vector2(0.5, 0.5));
     
     // Initial mode from localStorage or config
-    const initialMode = localStorage.getItem("shader-mode") || SITE_CONFIG.defaultShaderMode;
-    const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5, vibe: 6, stochastic: 7, nexus: 8 };
+    const normalizeMode = (mode: string | null | undefined) => {
+      const cleanMode = mode?.trim();
+      if (!cleanMode) return SITE_CONFIG.defaultShaderMode;
+      const lowerMode = cleanMode.toLowerCase();
+      if (lowerMode === "syntheticspectrogram") return "syntheticSpectrogram";
+      return lowerMode;
+    };
+    const initialMode = normalizeMode(localStorage.getItem("shader-mode"));
+    const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5, vibe: 6, stochastic: 7, nexus: 8, spectrogram: 9, syntheticSpectrogram: 10 };
+    let activeMode = initialMode;
     const modeIndex = uniform(float(modeMap[initialMode] ?? 0)); 
     
     // --- MODE COMPOSITE ---
@@ -154,7 +163,11 @@
                   select(
                     modeIndex.equal(7),
                     Shaders.stochasticShader(noiseTime, mousePosUniform),
-                    Shaders.nexusShader(noiseTime, mousePosUniform)
+                    select(
+                      modeIndex.equal(8),
+                      Shaders.nexusShader(noiseTime, mousePosUniform),
+                      Shaders.syntheticSpectrogramShader(noiseTime, mousePosUniform)
+                    )
                   )
                 )
               )
@@ -168,6 +181,16 @@
     
     const noiseQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), noiseMaterial);
     noiseScene.add(noiseQuad);
+
+    const spectrogramBackground = new ChromeLabSpectrogram({
+      palette: SITE_CONFIG.spectrogramPalette,
+    });
+
+    window.addEventListener("spectrogram-microphone-stream", (event: any) => {
+      spectrogramBackground.setStream(event.detail).catch((error) => {
+        console.warn("Could not connect microphone stream to spectrogram.", error);
+      });
+    });
 
     // 4. Uniforms (Grid size adjusted for chunkier look)
     const viewportSizeUniform = uniform(new THREE.Vector2(window.innerWidth, window.innerHeight));
@@ -190,7 +213,8 @@
 
     // Listen for mode changes
     window.addEventListener("background-mode-change", (e: any) => {
-      const mode = e.detail;
+      const mode = normalizeMode(e.detail);
+      activeMode = mode;
       if (mode === "smoke") modeIndex.value = 0;
       if (mode === "warp") modeIndex.value = 1;
       if (mode === "grid") modeIndex.value = 2;
@@ -200,6 +224,8 @@
       if (mode === "vibe") modeIndex.value = 6;
       if (mode === "stochastic") modeIndex.value = 7;
       if (mode === "nexus") modeIndex.value = 8;
+      if (mode === "spectrogram") modeIndex.value = 9;
+      if (mode === "syntheticSpectrogram") modeIndex.value = 10;
     });
 
     // Initialize theme
@@ -258,13 +284,23 @@
       currentMouseX += (targetMouseX - currentMouseX) * 0.05;
       currentMouseY += (targetMouseY - currentMouseY) * 0.05;
       emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
+      emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" ? 0 : 1;
       mousePosUniform.value.set(currentMouseX, currentMouseY);
 
-      renderer.setRenderTarget(noiseTarget);
-      renderer.render(noiseScene, camera);
-      renderer.setRenderTarget(null);
+      if (activeMode === "spectrogram") {
+        spectrogramBackground.update(time);
+      } else {
+        quad.material = material;
+        renderer.setRenderTarget(noiseTarget);
+        renderer.render(noiseScene, camera);
+        renderer.setRenderTarget(null);
+      }
 
-      renderer.render(scene, camera);
+      if (activeMode === "spectrogram") {
+        renderer.render(spectrogramBackground.scene, spectrogramBackground.camera);
+      } else {
+        renderer.render(scene, camera);
+      }
       requestAnimationFrame(animate);
     }
 
@@ -272,6 +308,7 @@
       const w = window.innerWidth;
       const h = window.innerHeight;
       renderer.setSize(w, h);
+      spectrogramBackground.resize(w, h);
       viewportSizeUniform.value.set(w, h);
       gridDisplaySizeUniform.value.set(w, h);
       gridSizeUniform.value.set(w / 8, h / 16);

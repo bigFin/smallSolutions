@@ -15,14 +15,54 @@ import { SITE_CONFIG } from "../lib/config";
     ))}
   </div>
   <div class="status-bar__right">
+    <span class="mic-status" id="mic-status">Mic: idle</span>
     <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
   </div>
 </div>
 
 <script>
   const buttons = document.querySelectorAll(".status-button[data-mode]");
+  const statusBar = document.querySelector(".status-bar");
   const zenToggle = document.getElementById("zen-toggle");
   const activeModeLabel = document.getElementById("active-mode");
+  const micStatus = document.getElementById("mic-status");
+  let spectrogramMicPromise = null;
+
+  const setMicStatus = (message: string) => {
+    if (micStatus) micStatus.textContent = `Mic: ${message}`;
+  };
+
+  const requestSpectrogramMic = async () => {
+    setMicStatus("requesting");
+
+    if (!window.isSecureContext) {
+      setMicStatus("insecure");
+      throw new Error("Microphone access requires localhost or HTTPS.");
+    }
+
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setMicStatus("unavailable");
+      throw new Error("navigator.mediaDevices.getUserMedia is unavailable.");
+    }
+
+    if (!spectrogramMicPromise) {
+      spectrogramMicPromise = navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then((stream) => {
+          setMicStatus("live");
+          window.dispatchEvent(new CustomEvent("spectrogram-microphone-stream", { detail: stream }));
+          return stream;
+        })
+        .catch((error) => {
+          spectrogramMicPromise = null;
+          setMicStatus(error?.name || "error");
+          window.dispatchEvent(new CustomEvent("spectrogram-microphone-error", { detail: error }));
+          throw error;
+        });
+    }
+
+    return spectrogramMicPromise;
+  };
 
   // Load initial mode from localStorage
   const savedMode = localStorage.getItem("shader-mode");
@@ -37,20 +77,36 @@ import { SITE_CONFIG } from "../lib/config";
     if (zenToggle) zenToggle.textContent = "Exit_Zen";
   }
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const mode = btn.getAttribute("data-mode");
-      if (!mode) return;
+  statusBar?.addEventListener("pointerdown", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const btn = target?.closest(".status-button[data-mode]");
+    const mode = btn?.getAttribute("data-mode");
+    if (mode !== "spectrogram") return;
 
-      if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-      
-      // Save to localStorage
-      try {
-        localStorage.setItem("shader-mode", mode);
-      } catch {}
-
-      window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
+    requestSpectrogramMic().catch((error) => {
+      console.warn("Could not start spectrogram microphone input.", error);
     });
+  });
+
+  statusBar?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const btn = target?.closest(".status-button[data-mode]");
+    const mode = btn?.getAttribute("data-mode");
+    if (!mode) return;
+
+    if (mode === "spectrogram") {
+      requestSpectrogramMic().catch((error) => {
+        console.warn("Could not start spectrogram microphone input.", error);
+      });
+    }
+
+    if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+
+    try {
+      localStorage.setItem("shader-mode", mode);
+    } catch {}
+
+    window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
   });
 
   zenToggle?.addEventListener("click", () => {
