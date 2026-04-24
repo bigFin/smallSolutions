@@ -625,6 +625,47 @@ body.zen-mode .status-bar:hover {
     padding-top: 0.5rem;
   }
 
+  .status-bar {
+    justify-content: flex-start;
+    gap: 0.75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0.75rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .status-bar::-webkit-scrollbar {
+    height: 0.35rem;
+  }
+
+  .status-bar__left,
+  .status-bar__center,
+  .status-bar__right {
+    flex: 0 0 auto;
+  }
+
+  .status-bar__left {
+    gap: 0.65rem;
+    margin-right: 0;
+  }
+
+  .status-bar__center {
+    gap: 0.55rem;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .status-bar__right {
+    gap: 0.55rem;
+    padding-left: 0;
+    background: none;
+  }
+
+  .status-value {
+    min-width: auto;
+  }
+
   .site-header,
   .site-footer {
     align-items: flex-start;
