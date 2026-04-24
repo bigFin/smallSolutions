@@ -20,7 +20,9 @@ import { SITE_CONFIG } from "../lib/config";
   </div>
 </div>
 
-<script>
+<script define:vars={{ defaultShaderMode: SITE_CONFIG.defaultShaderMode, fallbackShaderMode: SITE_CONFIG.fallbackShaderMode }}>
+  const DEFAULT_SHADER_MODE = defaultShaderMode;
+  const FALLBACK_SHADER_MODE = fallbackShaderMode;
   const buttons = document.querySelectorAll(".status-button[data-mode]");
   const statusBar = document.querySelector(".status-bar");
   const zenToggle = document.getElementById("zen-toggle");
@@ -30,6 +32,23 @@ import { SITE_CONFIG } from "../lib/config";
 
   const setMicStatus = (message: string) => {
     if (micStatus) micStatus.textContent = `Mic: ${message}`;
+  };
+
+  const setActiveMode = (mode: string, persist = true) => {
+    if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+
+    if (persist) {
+      try {
+        localStorage.setItem("shader-mode", mode);
+      } catch {}
+    }
+
+    window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
+  };
+
+  const fallBackFromSpectrogram = (error: unknown) => {
+    console.warn("Could not start spectrogram microphone input.", error);
+    setActiveMode(FALLBACK_SHADER_MODE);
   };
 
   const requestSpectrogramMic = async () => {
@@ -64,6 +83,17 @@ import { SITE_CONFIG } from "../lib/config";
     return spectrogramMicPromise;
   };
 
+  const requestMotionInput = async () => {
+    const OrientationEvent = window.DeviceOrientationEvent;
+    if (!OrientationEvent || typeof OrientationEvent.requestPermission !== "function") return;
+
+    try {
+      await OrientationEvent.requestPermission();
+    } catch (error) {
+      console.warn("Could not enable device orientation input.", error);
+    }
+  };
+
   // Load initial mode from localStorage
   const savedMode = localStorage.getItem("shader-mode");
   if (savedMode && activeModeLabel) {
@@ -78,14 +108,14 @@ import { SITE_CONFIG } from "../lib/config";
   }
 
   statusBar?.addEventListener("pointerdown", (event) => {
+    requestMotionInput();
+
     const target = event.target instanceof Element ? event.target : null;
     const btn = target?.closest(".status-button[data-mode]");
     const mode = btn?.getAttribute("data-mode");
     if (mode !== "spectrogram") return;
 
-    requestSpectrogramMic().catch((error) => {
-      console.warn("Could not start spectrogram microphone input.", error);
-    });
+    requestSpectrogramMic().catch(fallBackFromSpectrogram);
   });
 
   statusBar?.addEventListener("click", (event) => {
@@ -95,19 +125,20 @@ import { SITE_CONFIG } from "../lib/config";
     if (!mode) return;
 
     if (mode === "spectrogram") {
-      requestSpectrogramMic().catch((error) => {
-        console.warn("Could not start spectrogram microphone input.", error);
-      });
+      requestSpectrogramMic().catch(fallBackFromSpectrogram);
     }
 
-    if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-
-    try {
-      localStorage.setItem("shader-mode", mode);
-    } catch {}
-
-    window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
+    setActiveMode(mode);
   });
+
+  if ((savedMode || DEFAULT_SHADER_MODE) === "spectrogram") {
+    setMicStatus("click to allow");
+    const requestDefaultSpectrogram = () => {
+      requestSpectrogramMic().catch(fallBackFromSpectrogram);
+    };
+    window.addEventListener("pointerdown", requestDefaultSpectrogram, { once: true, capture: true });
+    window.addEventListener("keydown", requestDefaultSpectrogram, { once: true, capture: true });
+  }
 
   zenToggle?.addEventListener("click", () => {
     document.body.classList.toggle("zen-mode");

@@ -270,10 +270,22 @@
     let targetMouseY = 0.5;
     let currentMouseX = 0.5;
     let currentMouseY = 0.5;
+    let orientationActive = false;
 
     window.addEventListener("mousemove", (e) => {
+      orientationActive = false;
       targetMouseX = e.clientX / window.innerWidth;
       targetMouseY = 1.0 - (e.clientY / window.innerHeight);
+    });
+
+    window.addEventListener("deviceorientation", (e) => {
+      if (e.beta == null && e.gamma == null) return;
+
+      orientationActive = true;
+      const tiltX = Math.max(-1, Math.min(1, (e.gamma ?? 0) / 35));
+      const tiltY = Math.max(-1, Math.min(1, ((e.beta ?? 45) - 45) / 45));
+      targetMouseX = 0.5 + tiltX * 0.42;
+      targetMouseY = 0.5 - tiltY * 0.42;
     });
 
     function animate(time: number) {
@@ -281,8 +293,9 @@
       noiseTime.value = t;
       debugTimeUniform.value = t;
 
-      currentMouseX += (targetMouseX - currentMouseX) * 0.05;
-      currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+      const inputEase = orientationActive ? 0.09 : 0.05;
+      currentMouseX += (targetMouseX - currentMouseX) * inputEase;
+      currentMouseY += (targetMouseY - currentMouseY) * inputEase;
       emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
       emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" ? 0 : 1;
       mousePosUniform.value.set(currentMouseX, currentMouseY);

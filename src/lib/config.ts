@@ -1,6 +1,7 @@
 export const SITE_CONFIG = {
   defaultTheme: "everforest-light",
-  defaultShaderMode: "stochastic",
+  defaultShaderMode: "spectrogram",
+  fallbackShaderMode: "stochastic",
   themes: [
     "everforest-dark",
     "everforest-light",
