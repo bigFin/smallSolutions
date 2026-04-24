@@ -210,6 +210,8 @@ body.zen-mode .status-bar:hover {
   letter-spacing: 0.08em;
   color: var(--muted);
   transition: all 0.3s ease;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .status-bar__left {
@@ -271,12 +273,44 @@ body.zen-mode .status-bar:hover {
   cursor: pointer;
   transition: color 0.2s ease;
   white-space: nowrap;
+  min-height: 2rem;
 }
 
 .status-button:hover {
   color: var(--text);
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.status-button[data-active] {
+  color: var(--text);
+}
+
+.audio-source-toggle {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+}
+
+.audio-source-toggle__button {
+  min-height: 1.7rem;
+  padding: 0.2rem 0.55rem;
+  border-left: 1px solid var(--border);
+}
+
+.audio-source-toggle__button:first-child {
+  border-left: 0;
+}
+
+.audio-source-toggle__button:hover {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--text) 7%, transparent);
+}
+
+.audio-source-toggle__button[data-active] {
+  color: var(--panel);
+  background: var(--text);
 }
 
 .status-button--zen {
@@ -625,45 +659,138 @@ body.zen-mode .status-bar:hover {
     padding-top: 0.5rem;
   }
 
+  .site-main {
+    padding-bottom: 8.75rem;
+  }
+
+  .site-footer {
+    margin-bottom: 8rem;
+  }
+
   .status-bar {
-    justify-content: flex-start;
-    gap: 0.75rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0 0.75rem;
-    scrollbar-width: thin;
+    right: 0.5rem;
+    bottom: max(0.5rem, env(safe-area-inset-bottom));
+    left: 0.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "state actions"
+      "modes modes";
+    height: auto;
+    min-height: 0;
+    gap: 0.55rem 0.75rem;
+    align-items: center;
+    overflow: hidden;
+    padding: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel-strong);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
 
   .status-bar::-webkit-scrollbar {
-    height: 0.35rem;
+    display: none;
   }
 
   .status-bar__left,
   .status-bar__center,
   .status-bar__right {
-    flex: 0 0 auto;
+    min-width: 0;
   }
 
   .status-bar__left {
-    gap: 0.65rem;
+    grid-area: state;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.5rem;
     margin-right: 0;
   }
 
   .status-bar__center {
-    gap: 0.55rem;
-    overflow: visible;
-    padding-right: 0;
+    grid-area: modes;
+    display: flex;
+    gap: 0.45rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.05rem 0.05rem 0.15rem;
+    scroll-padding-inline: 0.05rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .status-bar__center::-webkit-scrollbar {
+    display: none;
   }
 
   .status-bar__right {
-    gap: 0.55rem;
+    grid-area: actions;
+    justify-content: flex-end;
+    gap: 0.35rem;
     padding-left: 0;
     background: none;
   }
 
+  .mic-status,
+  .status-button--fullscreen {
+    display: none;
+  }
+
+  .status-label,
+  .status-value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .status-value {
     min-width: auto;
+  }
+
+  .status-button {
+    min-height: 2.75rem;
+    padding: 0.62rem 0.78rem;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.04);
+    text-decoration: none;
+    scroll-snap-align: start;
+  }
+
+  .status-button:hover {
+    border-color: var(--border-strong);
+    text-decoration: none;
+  }
+
+  .status-button[data-active] {
+    color: var(--text);
+    border-color: var(--border-strong);
+    background: var(--panel);
+  }
+
+  .audio-source-toggle {
+    border-radius: 7px;
+    overflow: hidden;
+  }
+
+  .audio-source-toggle__button {
+    min-height: 2.75rem;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .audio-source-toggle__button[data-active] {
+    color: var(--panel);
+    background: var(--text);
+  }
+
+  .status-button--zen {
+    min-width: 4.8rem;
+    color: var(--text);
+    border-color: var(--border-strong);
   }
 
   .site-header,

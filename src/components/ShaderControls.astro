@@ -15,7 +15,11 @@ import { SITE_CONFIG } from "../lib/config";
     ))}
   </div>
   <div class="status-bar__right">
-    <span class="mic-status" id="mic-status">Mic: idle</span>
+    <span class="mic-status" id="audio-status">Audio: idle</span>
+    <div class="audio-source-toggle" aria-label="Audio source">
+      <button class="status-button audio-source-toggle__button" id="music-enable" type="button">Music</button>
+      <button class="status-button audio-source-toggle__button" id="mic-source-enable" type="button">Mic</button>
+    </div>
     <button class="status-button status-button--fullscreen" id="fullscreen-toggle">Fullscreen</button>
     <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
   </div>
@@ -28,18 +32,35 @@ import { SITE_CONFIG } from "../lib/config";
   const zenToggle = document.getElementById("zen-toggle");
   const fullscreenToggle = document.getElementById("fullscreen-toggle");
   const micEnable = document.getElementById("mic-enable");
+  const musicEnable = document.getElementById("music-enable");
+  const micSourceEnable = document.getElementById("mic-source-enable");
   const activeModeLabel = document.getElementById("active-mode");
-  const micStatus = document.getElementById("mic-status");
+  const audioStatus = document.getElementById("audio-status");
+  const modeButtons = document.querySelectorAll(".status-button[data-mode]");
   const MIC_MODES = new Set(["spectrogram", "sonogram"]);
   const SESSION_ONLY_MODES = new Set(["stochastic-plus", ...MIC_MODES]);
   let spectrogramMicPromise = null;
+  let generativeMusic = null;
+  let activeAudioSource = "music";
+  let activeMode = DEFAULT_SHADER_MODE;
 
-  const setMicStatus = (message) => {
-    if (micStatus) micStatus.textContent = `Mic: ${message}`;
+  const setAudioStatus = (message) => {
+    if (audioStatus) audioStatus.textContent = `Audio: ${message}`;
+  };
+
+  const setAudioSourceActive = (source) => {
+    activeAudioSource = source;
+    musicEnable?.toggleAttribute("data-active", source === "music");
+    micSourceEnable?.toggleAttribute("data-active", source === "mic");
+    micEnable?.toggleAttribute("data-active", source === "mic");
   };
 
   const setActiveMode = (mode, persist = true) => {
+    activeMode = mode;
     if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+    modeButtons.forEach((button) => {
+      button.toggleAttribute("data-active", button.getAttribute("data-mode") === mode);
+    });
 
     if (persist && !SESSION_ONLY_MODES.has(mode)) {
       try {
@@ -52,20 +73,135 @@ import { SITE_CONFIG } from "../lib/config";
 
   const fallBackFromSpectrogram = (error) => {
     console.warn("Could not start spectrogram microphone input.", error);
-    if (micEnable) micEnable.removeAttribute("data-active");
+    setAudioSourceActive("music");
     setActiveMode(FALLBACK_SHADER_MODE);
   };
 
+  const createGenerativeMusic = async () => {
+    const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextConstructor) throw new Error("Web Audio is not available.");
+
+    const audioContext = new AudioContextConstructor();
+    const master = audioContext.createGain();
+    const destination = audioContext.createMediaStreamDestination();
+    const delay = audioContext.createDelay(1.2);
+    const feedback = audioContext.createGain();
+    const filter = audioContext.createBiquadFilter();
+    const shimmer = audioContext.createBiquadFilter();
+    const bell = audioContext.createBiquadFilter();
+    const pulseGain = audioContext.createGain();
+    const compressor = audioContext.createDynamicsCompressor();
+    const voices = [];
+    const scale = [0, 2, 4, 7, 9, 11, 12, 14, 16, 19];
+    const root = 98;
+
+    master.gain.value = 0.0;
+    filter.type = "lowpass";
+    filter.frequency.value = 1700;
+    filter.Q.value = 0.6;
+    shimmer.type = "highpass";
+    shimmer.frequency.value = 180;
+    bell.type = "bandpass";
+    bell.frequency.value = 2100;
+    bell.Q.value = 7;
+    pulseGain.gain.value = 0.0;
+    delay.delayTime.value = 0.36;
+    feedback.gain.value = 0.24;
+    compressor.threshold.value = -28;
+    compressor.knee.value = 18;
+    compressor.ratio.value = 5;
+    compressor.attack.value = 0.018;
+    compressor.release.value = 0.28;
+
+    filter.connect(delay);
+    delay.connect(feedback);
+    feedback.connect(delay);
+    delay.connect(shimmer);
+    filter.connect(shimmer);
+    bell.connect(shimmer);
+    pulseGain.connect(bell);
+    shimmer.connect(compressor);
+    compressor.connect(master);
+    master.connect(destination);
+    master.connect(audioContext.destination);
+
+    const now = audioContext.currentTime;
+    for (let i = 0; i < 6; i++) {
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const pan = audioContext.createStereoPanner();
+      osc.type = i === 5 ? "square" : i % 2 ? "triangle" : "sine";
+      gain.gain.value = 0.0;
+      pan.pan.value = (i - 2.5) * 0.18;
+      osc.connect(gain);
+      gain.connect(pan);
+      pan.connect(i === 5 ? pulseGain : filter);
+      osc.start(now + i * 0.02);
+      voices.push({ osc, gain, noteOffset: i * 2 });
+    }
+
+    let step = 0;
+    const schedule = () => {
+      const t = audioContext.currentTime + 0.04;
+      const phrase = Math.floor(step / 32);
+      const pattern = [0, 2, 4, 2, 7, 4, 2, 9, 0, 4, 7, 11, 9, 7, 4, 2];
+      voices.forEach((voice, i) => {
+        const degree = i === 5
+          ? pattern[step % pattern.length]
+          : scale[(step + voice.noteOffset + phrase + i) % scale.length];
+        const octave = i === 0 ? 0.5 : i === 5 ? 3 : i > 3 ? 2 : 1;
+        const freq = root * octave * Math.pow(2, degree / 12);
+        const level = i === 0 ? 0.052 : i === 5 ? 0.018 : 0.024 + ((step + i) % 3) * 0.005;
+        voice.osc.frequency.setTargetAtTime(freq, t, 0.045);
+        voice.gain.gain.cancelScheduledValues(t);
+        voice.gain.gain.setTargetAtTime(level, t, i === 5 ? 0.006 : 0.025);
+        voice.gain.gain.setTargetAtTime(0.002, t + (i === 5 ? 0.055 : 0.2 + i * 0.045), i === 5 ? 0.035 : 0.16);
+      });
+      filter.frequency.setTargetAtTime(1050 + ((step * 89) % 1400), t, 0.18);
+      bell.frequency.setTargetAtTime(1600 + ((step * 233) % 2100), t, 0.035);
+      step += 1;
+    };
+
+    const timer = window.setInterval(schedule, 260);
+    schedule();
+
+    return {
+      stream: destination.stream,
+      resume: async () => {
+        if (audioContext.state === "suspended") await audioContext.resume();
+        master.gain.setTargetAtTime(0.62, audioContext.currentTime, 0.08);
+      },
+      mute: () => {
+        master.gain.setTargetAtTime(0, audioContext.currentTime, 0.05);
+      },
+      stop: () => {
+        window.clearInterval(timer);
+        master.gain.setTargetAtTime(0, audioContext.currentTime, 0.05);
+      },
+    };
+  };
+
+  const requestGenerativeMusic = async () => {
+    setAudioStatus("starting music");
+    if (!generativeMusic) generativeMusic = await createGenerativeMusic();
+    await generativeMusic.resume();
+    setAudioSourceActive("music");
+    setAudioStatus("music");
+    window.dispatchEvent(new CustomEvent("spectrogram-audio-stream", { detail: generativeMusic.stream }));
+    return generativeMusic.stream;
+  };
+
   const requestSpectrogramMic = async () => {
-    setMicStatus("requesting");
+    setAudioStatus("requesting mic");
+    generativeMusic?.mute();
 
     if (!window.isSecureContext) {
-      setMicStatus("insecure");
+      setAudioStatus("mic insecure");
       throw new Error("Microphone access requires localhost or HTTPS.");
     }
 
     if (!navigator.mediaDevices?.getUserMedia) {
-      setMicStatus("unavailable");
+      setAudioStatus("mic unavailable");
       throw new Error("navigator.mediaDevices.getUserMedia is unavailable.");
     }
 
@@ -73,14 +209,15 @@ import { SITE_CONFIG } from "../lib/config";
       spectrogramMicPromise = navigator.mediaDevices
         .getUserMedia({ audio: true })
         .then((stream) => {
-          setMicStatus("live");
-          if (micEnable) micEnable.setAttribute("data-active", "true");
+          setAudioStatus("mic");
+          setAudioSourceActive("mic");
+          window.dispatchEvent(new CustomEvent("spectrogram-audio-stream", { detail: stream }));
           window.dispatchEvent(new CustomEvent("spectrogram-microphone-stream", { detail: stream }));
           return stream;
         })
         .catch((error) => {
           spectrogramMicPromise = null;
-          setMicStatus(error?.name || "error");
+          setAudioStatus(error?.name || "error");
           window.dispatchEvent(new CustomEvent("spectrogram-microphone-error", { detail: error }));
           throw error;
         });
@@ -105,7 +242,9 @@ import { SITE_CONFIG } from "../lib/config";
   if (savedMode && SESSION_ONLY_MODES.has(savedMode)) {
     setActiveMode(FALLBACK_SHADER_MODE);
   } else if (savedMode && activeModeLabel) {
-    activeModeLabel.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1);
+    setActiveMode(savedMode, false);
+  } else {
+    setActiveMode(DEFAULT_SHADER_MODE, false);
   }
 
   statusBar?.addEventListener("pointerdown", (event) => {
@@ -114,9 +253,13 @@ import { SITE_CONFIG } from "../lib/config";
     const target = event.target instanceof Element ? event.target : null;
     const btn = target?.closest(".status-button[data-mode]");
     const mode = btn?.getAttribute("data-mode");
-    if (mode !== "spectrogram") return;
+    if (!MIC_MODES.has(mode)) return;
 
-    requestSpectrogramMic().catch(fallBackFromSpectrogram);
+    if (activeAudioSource === "mic") {
+      requestSpectrogramMic().catch(fallBackFromSpectrogram);
+    } else {
+      requestGenerativeMusic().catch(fallBackFromSpectrogram);
+    }
   });
 
   statusBar?.addEventListener("click", (event) => {
@@ -125,17 +268,34 @@ import { SITE_CONFIG } from "../lib/config";
     const mode = btn?.getAttribute("data-mode");
     if (!mode) return;
 
-    if (mode === "spectrogram") {
-      requestSpectrogramMic().catch(fallBackFromSpectrogram);
+    if (MIC_MODES.has(mode)) {
+      if (activeAudioSource === "mic") {
+        requestSpectrogramMic().catch(fallBackFromSpectrogram);
+      } else {
+        requestGenerativeMusic().catch(fallBackFromSpectrogram);
+      }
     }
 
     setActiveMode(mode);
+  });
+
+  musicEnable?.addEventListener("click", () => {
+    setAudioSourceActive("music");
+    if (!MIC_MODES.has(activeMode)) setActiveMode("spectrogram");
+    requestGenerativeMusic().catch(fallBackFromSpectrogram);
+  });
+
+  micSourceEnable?.addEventListener("click", () => {
+    setActiveMode("spectrogram");
+    requestSpectrogramMic().catch(fallBackFromSpectrogram);
   });
 
   micEnable?.addEventListener("click", () => {
     setActiveMode("spectrogram");
     requestSpectrogramMic().catch(fallBackFromSpectrogram);
   });
+
+  setAudioSourceActive("music");
 
   zenToggle?.addEventListener("click", () => {
     document.body.classList.toggle("zen-mode");

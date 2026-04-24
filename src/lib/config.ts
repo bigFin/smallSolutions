@@ -7,9 +7,6 @@ export const SITE_CONFIG = {
     "everforest-light",
   ],
   shaderModes: [
-    "smoke",
-    "grid",
-    "topo",
     "stochastic",
     "stochastic-plus",
     "spectrogram",

@@ -131,7 +131,6 @@
       if (!cleanMode) return SITE_CONFIG.defaultShaderMode;
       const lowerMode = cleanMode.toLowerCase();
       if (lowerMode === "syntheticspectrogram") return "syntheticSpectrogram";
-      if (lowerMode === "stochastic-plus") return SITE_CONFIG.defaultShaderMode;
       return lowerMode;
     };
     const initialMode = normalizeMode(localStorage.getItem("shader-mode"));
@@ -170,7 +169,7 @@
                       select(
                         modeIndex.equal(10),
                         Shaders.syntheticSpectrogramShader(noiseTime, mousePosUniform),
-                        Shaders.stochasticShader(noiseTime, mousePosUniform)
+                        Shaders.enhancedStochasticShader(noiseTime, mousePosUniform)
                       )
                     )
                   )
@@ -196,12 +195,12 @@
       variant: "perspective",
     });
 
-    window.addEventListener("spectrogram-microphone-stream", (event: any) => {
+    window.addEventListener("spectrogram-audio-stream", (event: any) => {
       spectrogramBackground.setStream(event.detail).catch((error) => {
-        console.warn("Could not connect microphone stream to spectrogram.", error);
+        console.warn("Could not connect audio stream to spectrogram.", error);
       });
       sonogramBackground.setStream(event.detail).catch((error) => {
-        console.warn("Could not connect microphone stream to sonogram.", error);
+        console.warn("Could not connect audio stream to sonogram.", error);
       });
     });
 
