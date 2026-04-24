@@ -17,9 +17,12 @@ export type ChromeLabSpectrogramOptions = {
   variant?: "topDown" | "perspective";
   width?: number;
   height?: number;
+  maxUpdateFps?: number;
+  wireOpacity?: number;
 };
 
 type AudioContextCtor = typeof AudioContext;
+type Rgb = { r: number; g: number; b: number };
 
 const hexToRgb = (hex: string) => {
   const normalized = hex.replace("#", "");
@@ -33,20 +36,21 @@ const hexToRgb = (hex: string) => {
 
 const mix = (a: number, b: number, t: number) => a + (b - a) * t;
 
-const samplePalette = (palette: ChromeLabSpectrogramOptions["palette"], signal: number) => {
-  const stops = [
-    { at: 0, color: hexToRgb(palette.low) },
-    { at: 0.05, color: hexToRgb(palette.deep ?? palette.lowMid ?? palette.mid) },
-    { at: 0.11, color: hexToRgb(palette.lowMid ?? palette.mid) },
-    { at: 0.19, color: hexToRgb(palette.cool ?? palette.mid) },
-    { at: 0.29, color: hexToRgb(palette.mid) },
-    { at: 0.41, color: hexToRgb(palette.upperMid ?? palette.high) },
-    { at: 0.54, color: hexToRgb(palette.high) },
-    { at: 0.68, color: hexToRgb(palette.warm ?? palette.hot ?? palette.peak) },
-    { at: 0.81, color: hexToRgb(palette.hot ?? palette.peak) },
-    { at: 0.92, color: hexToRgb(palette.ember ?? palette.peak) },
-    { at: 1, color: hexToRgb(palette.peak) },
-  ];
+const getPaletteStops = (palette: ChromeLabSpectrogramOptions["palette"]) => [
+  { at: 0, color: hexToRgb(palette.low) },
+  { at: 0.05, color: hexToRgb(palette.deep ?? palette.lowMid ?? palette.mid) },
+  { at: 0.11, color: hexToRgb(palette.lowMid ?? palette.mid) },
+  { at: 0.19, color: hexToRgb(palette.cool ?? palette.mid) },
+  { at: 0.29, color: hexToRgb(palette.mid) },
+  { at: 0.41, color: hexToRgb(palette.upperMid ?? palette.high) },
+  { at: 0.54, color: hexToRgb(palette.high) },
+  { at: 0.68, color: hexToRgb(palette.warm ?? palette.hot ?? palette.peak) },
+  { at: 0.81, color: hexToRgb(palette.hot ?? palette.peak) },
+  { at: 0.92, color: hexToRgb(palette.ember ?? palette.peak) },
+  { at: 1, color: hexToRgb(palette.peak) },
+];
+
+const samplePaletteStops = (stops: Array<{ at: number; color: Rgb }>, signal: number): Rgb => {
   const clamped = Math.max(0, Math.min(1, Math.pow(signal, 0.52) * 1.18));
 
   for (let i = 1; i < stops.length; i++) {
@@ -65,6 +69,18 @@ const samplePalette = (palette: ChromeLabSpectrogramOptions["palette"], signal: 
   return stops[stops.length - 1].color;
 };
 
+const buildPaletteLut = (palette: ChromeLabSpectrogramOptions["palette"]) => {
+  const stops = getPaletteStops(palette);
+  const lut = new Float32Array(256 * 3);
+  for (let i = 0; i < 256; i++) {
+    const color = samplePaletteStops(stops, i / 255);
+    lut[i * 3] = color.r;
+    lut[i * 3 + 1] = color.g;
+    lut[i * 3 + 2] = color.b;
+  }
+  return lut;
+};
+
 export class ChromeLabSpectrogram {
   readonly scene = new THREE.Scene();
   readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera;
@@ -76,8 +92,9 @@ export class ChromeLabSpectrogram {
   private readonly positions: Float32Array;
   private readonly colors: Float32Array;
   private readonly geometry: THREE.BufferGeometry;
-  private readonly palette: ChromeLabSpectrogramOptions["palette"];
+  private readonly paletteLut: Float32Array;
   private readonly variant: "topDown" | "perspective";
+  private readonly minUpdateInterval: number;
   private readonly visibleThreshold: number;
   private readonly terrainWidth: number;
   private readonly terrainDepth: number;
@@ -85,15 +102,17 @@ export class ChromeLabSpectrogram {
   private readonly smoothBins: Float32Array;
   private readonly noiseFloor: Float32Array;
   private readonly mesh: THREE.Mesh;
-  private readonly wire: THREE.Mesh;
+  private readonly wire: THREE.Mesh | null = null;
+  private lastUpdateTime = -Infinity;
 
   private audioContext: AudioContext | null = null;
   private analyser: AnalyserNode | null = null;
   private source: MediaStreamAudioSourceNode | null = null;
 
   constructor(options: ChromeLabSpectrogramOptions) {
-    this.palette = options.palette;
+    this.paletteLut = buildPaletteLut(options.palette);
     this.variant = options.variant ?? "topDown";
+    this.minUpdateInterval = options.maxUpdateFps ? 1000 / options.maxUpdateFps : 0;
     this.visibleThreshold = this.variant === "topDown" ? 0.004 : 0;
     this.frequencyBins = options.height ?? (this.variant === "topDown" ? 360 : 192);
     this.historyBins = options.width ?? (this.variant === "topDown" ? 420 : 256);
@@ -143,10 +162,9 @@ export class ChromeLabSpectrogram {
             ? (x / (this.frequencyBins - 1) - 0.5) * this.terrainDepth
             : (z / (this.historyBins - 1) - 0.5) * this.terrainDepth;
 
-        const color = samplePalette(this.palette, 0);
-        this.colors[index * 4] = color.r;
-        this.colors[index * 4 + 1] = color.g;
-        this.colors[index * 4 + 2] = color.b;
+        this.colors[index * 4] = this.paletteLut[0];
+        this.colors[index * 4 + 1] = this.paletteLut[1];
+        this.colors[index * 4 + 2] = this.paletteLut[2];
         this.colors[index * 4 + 3] = 0;
       }
     }
@@ -170,15 +188,18 @@ export class ChromeLabSpectrogram {
     if (this.variant === "perspective") this.mesh.rotation.x = -0.08;
     this.scene.add(this.mesh);
 
-    const wireMaterial = new THREE.MeshBasicMaterial({
-      color: 0xe9ffe5,
-      wireframe: true,
-      transparent: true,
-      opacity: this.variant === "topDown" ? 0 : 0.2,
-    });
-    this.wire = new THREE.Mesh(this.geometry, wireMaterial);
-    this.wire.rotation.copy(this.mesh.rotation);
-    this.scene.add(this.wire);
+    const wireOpacity = options.wireOpacity ?? (this.variant === "topDown" ? 0 : 0.2);
+    if (wireOpacity > 0) {
+      const wireMaterial = new THREE.MeshBasicMaterial({
+        color: 0xe9ffe5,
+        wireframe: true,
+        transparent: true,
+        opacity: wireOpacity,
+      });
+      this.wire = new THREE.Mesh(this.geometry, wireMaterial);
+      this.wire.rotation.copy(this.mesh.rotation);
+      this.scene.add(this.wire);
+    }
     this.addAxes();
   }
 
@@ -220,9 +241,16 @@ export class ChromeLabSpectrogram {
   }
 
   update(time: number) {
+    if (this.minUpdateInterval > 0 && time - this.lastUpdateTime < this.minUpdateInterval) return;
+    this.lastUpdateTime = time;
+
     this.pushAudioFrame(time);
     const positionAttr = this.geometry.getAttribute("position") as THREE.BufferAttribute;
     const colorAttr = this.geometry.getAttribute("color") as THREE.BufferAttribute;
+    const positions = positionAttr.array as Float32Array;
+    const colors = colorAttr.array as Float32Array;
+    const heightScale = this.variant === "topDown" ? 1.85 : 3.35;
+    const topDown = this.variant === "topDown";
 
     for (let z = 0; z < this.historyBins; z++) {
       const age = z / (this.historyBins - 1);
@@ -236,20 +264,21 @@ export class ChromeLabSpectrogram {
         const displayed = this.displayHistory[index] * 0.82 + target * 0.18;
         this.displayHistory[index] = displayed;
 
-        const height = Math.pow(displayed, 0.72) * (this.variant === "topDown" ? 1.85 : 3.35);
-        positionAttr.setY(index, height);
+        positions[index * 3 + 1] = Math.pow(displayed, 0.72) * heightScale;
 
-        if (this.variant === "topDown" && displayed < this.visibleThreshold) {
-          colorAttr.setXYZW(index, 0, 0, 0, 0);
+        const colorOffset = index * 4;
+        if (topDown && displayed < this.visibleThreshold) {
+          colors[colorOffset] = 0;
+          colors[colorOffset + 1] = 0;
+          colors[colorOffset + 2] = 0;
+          colors[colorOffset + 3] = 0;
         } else {
-          const color = samplePalette(this.palette, displayed);
-          colorAttr.setXYZW(
-            index,
-            color.r * depthFade,
-            color.g * depthFade,
-            color.b * depthFade,
-            this.variant === "topDown" ? Math.min(1, displayed * 7) : 1,
-          );
+          const paletteIndex = Math.max(0, Math.min(255, (displayed * 255) | 0));
+          const paletteOffset = paletteIndex * 3;
+          colors[colorOffset] = this.paletteLut[paletteOffset] * depthFade;
+          colors[colorOffset + 1] = this.paletteLut[paletteOffset + 1] * depthFade;
+          colors[colorOffset + 2] = this.paletteLut[paletteOffset + 2] * depthFade;
+          colors[colorOffset + 3] = topDown ? Math.min(1, displayed * 7) : 1;
         }
       }
     }

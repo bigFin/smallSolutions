@@ -52,7 +52,9 @@
       return;
     }
 
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const isMobileViewport = window.matchMedia("(max-width: 820px), (pointer: coarse)").matches;
+    const maxPixelRatio = isMobileViewport ? 1.15 : 1.5;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     const scene = new THREE.Scene();
@@ -189,10 +191,17 @@
     const spectrogramBackground = new ChromeLabSpectrogram({
       palette: SITE_CONFIG.spectrogramPalette,
       variant: "topDown",
+      width: isMobileViewport ? 288 : 420,
+      height: isMobileViewport ? 248 : 360,
+      maxUpdateFps: isMobileViewport ? 45 : undefined,
     });
     const sonogramBackground = new ChromeLabSpectrogram({
       palette: SITE_CONFIG.spectrogramPalette,
       variant: "perspective",
+      width: isMobileViewport ? 192 : 256,
+      height: isMobileViewport ? 144 : 192,
+      maxUpdateFps: isMobileViewport ? 40 : undefined,
+      wireOpacity: isMobileViewport ? 0 : undefined,
     });
 
     window.addEventListener("spectrogram-microphone-stream", (event: any) => {
