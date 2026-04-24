@@ -3,10 +3,18 @@ import * as THREE from "three/webgpu";
 export type ChromeLabSpectrogramOptions = {
   palette: {
     low: string;
+    deep?: string;
+    lowMid?: string;
+    cool?: string;
     mid: string;
+    upperMid?: string;
     high: string;
+    warm?: string;
+    hot?: string;
+    ember?: string;
     peak: string;
   };
+  variant?: "topDown" | "perspective";
   width?: number;
   height?: number;
 };
@@ -26,41 +34,40 @@ const hexToRgb = (hex: string) => {
 const mix = (a: number, b: number, t: number) => a + (b - a) * t;
 
 const samplePalette = (palette: ChromeLabSpectrogramOptions["palette"], signal: number) => {
-  const low = hexToRgb(palette.low);
-  const mid = hexToRgb(palette.mid);
-  const high = hexToRgb(palette.high);
-  const peak = hexToRgb(palette.peak);
-  const clamped = Math.max(0, Math.min(1, signal));
+  const stops = [
+    { at: 0, color: hexToRgb(palette.low) },
+    { at: 0.05, color: hexToRgb(palette.deep ?? palette.lowMid ?? palette.mid) },
+    { at: 0.11, color: hexToRgb(palette.lowMid ?? palette.mid) },
+    { at: 0.19, color: hexToRgb(palette.cool ?? palette.mid) },
+    { at: 0.29, color: hexToRgb(palette.mid) },
+    { at: 0.41, color: hexToRgb(palette.upperMid ?? palette.high) },
+    { at: 0.54, color: hexToRgb(palette.high) },
+    { at: 0.68, color: hexToRgb(palette.warm ?? palette.hot ?? palette.peak) },
+    { at: 0.81, color: hexToRgb(palette.hot ?? palette.peak) },
+    { at: 0.92, color: hexToRgb(palette.ember ?? palette.peak) },
+    { at: 1, color: hexToRgb(palette.peak) },
+  ];
+  const clamped = Math.max(0, Math.min(1, Math.pow(signal, 0.52) * 1.18));
 
-  if (clamped < 0.42) {
-    const t = clamped / 0.42;
+  for (let i = 1; i < stops.length; i++) {
+    const previous = stops[i - 1];
+    const next = stops[i];
+    if (clamped > next.at) continue;
+
+    const t = (clamped - previous.at) / (next.at - previous.at);
     return {
-      r: mix(low.r, mid.r, t),
-      g: mix(low.g, mid.g, t),
-      b: mix(low.b, mid.b, t),
+      r: mix(previous.color.r, next.color.r, t),
+      g: mix(previous.color.g, next.color.g, t),
+      b: mix(previous.color.b, next.color.b, t),
     };
   }
 
-  if (clamped < 0.78) {
-    const t = (clamped - 0.42) / 0.36;
-    return {
-      r: mix(mid.r, high.r, t),
-      g: mix(mid.g, high.g, t),
-      b: mix(mid.b, high.b, t),
-    };
-  }
-
-  const t = (clamped - 0.78) / 0.22;
-  return {
-    r: mix(high.r, peak.r, t),
-    g: mix(high.g, peak.g, t),
-    b: mix(high.b, peak.b, t),
-  };
+  return stops[stops.length - 1].color;
 };
 
 export class ChromeLabSpectrogram {
   readonly scene = new THREE.Scene();
-  readonly camera: THREE.PerspectiveCamera;
+  readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera;
 
   private readonly frequencyBins: number;
   private readonly historyBins: number;
@@ -70,8 +77,13 @@ export class ChromeLabSpectrogram {
   private readonly colors: Float32Array;
   private readonly geometry: THREE.BufferGeometry;
   private readonly palette: ChromeLabSpectrogramOptions["palette"];
+  private readonly variant: "topDown" | "perspective";
+  private readonly visibleThreshold: number;
+  private readonly terrainWidth: number;
+  private readonly terrainDepth: number;
   private readonly binData: Uint8Array<ArrayBuffer>;
   private readonly smoothBins: Float32Array;
+  private readonly noiseFloor: Float32Array;
   private readonly mesh: THREE.Mesh;
   private readonly wire: THREE.Mesh;
 
@@ -81,50 +93,69 @@ export class ChromeLabSpectrogram {
 
   constructor(options: ChromeLabSpectrogramOptions) {
     this.palette = options.palette;
-    this.frequencyBins = options.height ?? 192;
-    this.historyBins = options.width ?? 256;
+    this.variant = options.variant ?? "topDown";
+    this.visibleThreshold = this.variant === "topDown" ? 0.004 : 0;
+    this.frequencyBins = options.height ?? (this.variant === "topDown" ? 360 : 192);
+    this.historyBins = options.width ?? (this.variant === "topDown" ? 420 : 256);
     this.history = new Float32Array(this.frequencyBins * this.historyBins);
     this.displayHistory = new Float32Array(this.frequencyBins * this.historyBins);
     this.binData = new Uint8Array(1024) as Uint8Array<ArrayBuffer>;
     this.smoothBins = new Float32Array(1024);
+    this.noiseFloor = new Float32Array(1024);
+    this.noiseFloor.fill(28);
 
-    this.camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 120);
-    this.camera.position.set(0, 5.2, 10.5);
-    this.camera.lookAt(0, 0.65, 0);
+    if (this.variant === "topDown") {
+      const aspect = window.innerWidth / window.innerHeight;
+      const viewHeight = 8.9;
+      this.camera = new THREE.OrthographicCamera(
+        -viewHeight * aspect * 0.5,
+        viewHeight * aspect * 0.5,
+        viewHeight * 0.5,
+        -viewHeight * 0.5,
+        0.1,
+        50,
+      );
+      this.camera.position.set(0, 10, 2.2);
+      this.camera.up.set(0, 0, 1);
+      this.camera.lookAt(0, 0, 0);
+    } else {
+      this.camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 120);
+      this.camera.position.set(0, 5.2, 10.5);
+      this.camera.lookAt(0, 0.65, 0);
+    }
 
-    const terrainWidth = 11.2;
-    const terrainDepth = 9.2;
+    this.terrainWidth = this.variant === "topDown" ? 12.6 : 11.2;
+    this.terrainDepth = this.variant === "topDown" ? 7.2 : 9.2;
     this.positions = new Float32Array(this.frequencyBins * this.historyBins * 3);
-    this.colors = new Float32Array(this.frequencyBins * this.historyBins * 3);
+    this.colors = new Float32Array(this.frequencyBins * this.historyBins * 4);
     const indices: number[] = [];
 
     for (let z = 0; z < this.historyBins; z++) {
       for (let x = 0; x < this.frequencyBins; x++) {
         const index = z * this.frequencyBins + x;
-        this.positions[index * 3] = (x / (this.frequencyBins - 1) - 0.5) * terrainWidth;
+        this.positions[index * 3] =
+          this.variant === "topDown"
+            ? (z / (this.historyBins - 1) - 0.5) * this.terrainWidth
+            : (x / (this.frequencyBins - 1) - 0.5) * this.terrainWidth;
         this.positions[index * 3 + 1] = 0;
-        this.positions[index * 3 + 2] = (z / (this.historyBins - 1) - 0.5) * terrainDepth;
+        this.positions[index * 3 + 2] =
+          this.variant === "topDown"
+            ? (x / (this.frequencyBins - 1) - 0.5) * this.terrainDepth
+            : (z / (this.historyBins - 1) - 0.5) * this.terrainDepth;
 
         const color = samplePalette(this.palette, 0);
-        this.colors[index * 3] = color.r;
-        this.colors[index * 3 + 1] = color.g;
-        this.colors[index * 3 + 2] = color.b;
+        this.colors[index * 4] = color.r;
+        this.colors[index * 4 + 1] = color.g;
+        this.colors[index * 4 + 2] = color.b;
+        this.colors[index * 4 + 3] = 0;
       }
     }
 
-    for (let z = 0; z < this.historyBins - 1; z++) {
-      for (let x = 0; x < this.frequencyBins - 1; x++) {
-        const a = z * this.frequencyBins + x;
-        const b = a + 1;
-        const c = (z + 1) * this.frequencyBins + x + 1;
-        const d = (z + 1) * this.frequencyBins + x;
-        indices.push(a, b, c, a, c, d);
-      }
-    }
+    this.writeVisibleIndices(indices);
 
     this.geometry = new THREE.BufferGeometry();
     this.geometry.setAttribute("position", new THREE.BufferAttribute(this.positions, 3));
-    this.geometry.setAttribute("color", new THREE.BufferAttribute(this.colors, 3));
+    this.geometry.setAttribute("color", new THREE.BufferAttribute(this.colors, 4));
     this.geometry.setIndex(indices);
     this.geometry.computeVertexNormals();
 
@@ -133,20 +164,22 @@ export class ChromeLabSpectrogram {
       transparent: true,
       opacity: 0.7,
       side: THREE.DoubleSide,
+      alphaTest: this.variant === "topDown" ? 0.02 : 0,
     });
     this.mesh = new THREE.Mesh(this.geometry, material);
-    this.mesh.rotation.x = -0.08;
+    if (this.variant === "perspective") this.mesh.rotation.x = -0.08;
     this.scene.add(this.mesh);
 
     const wireMaterial = new THREE.MeshBasicMaterial({
       color: 0xe9ffe5,
       wireframe: true,
       transparent: true,
-      opacity: 0.2,
+      opacity: this.variant === "topDown" ? 0 : 0.2,
     });
     this.wire = new THREE.Mesh(this.geometry, wireMaterial);
     this.wire.rotation.copy(this.mesh.rotation);
     this.scene.add(this.wire);
+    this.addAxes();
   }
 
   async setStream(stream: MediaStream) {
@@ -163,12 +196,25 @@ export class ChromeLabSpectrogram {
     this.source?.disconnect();
     this.analyser = this.audioContext.createAnalyser();
     this.analyser.fftSize = 2048;
+    this.analyser.minDecibels = -82;
+    this.analyser.maxDecibels = -18;
     this.analyser.smoothingTimeConstant = 0.82;
     this.source = this.audioContext.createMediaStreamSource(stream);
     this.source.connect(this.analyser);
   }
 
   resize(width: number, height: number) {
+    if (this.camera instanceof THREE.OrthographicCamera) {
+      const aspect = width / height;
+      const viewHeight = 8.9;
+      this.camera.left = -viewHeight * aspect * 0.5;
+      this.camera.right = viewHeight * aspect * 0.5;
+      this.camera.top = viewHeight * 0.5;
+      this.camera.bottom = -viewHeight * 0.5;
+      this.camera.updateProjectionMatrix();
+      return;
+    }
+
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
   }
@@ -190,16 +236,39 @@ export class ChromeLabSpectrogram {
         const displayed = this.displayHistory[index] * 0.82 + target * 0.18;
         this.displayHistory[index] = displayed;
 
-        const height = Math.pow(displayed, 0.72) * 3.35;
+        const height = Math.pow(displayed, 0.72) * (this.variant === "topDown" ? 1.85 : 3.35);
         positionAttr.setY(index, height);
 
-        const color = samplePalette(this.palette, displayed);
-        colorAttr.setXYZ(index, color.r * depthFade, color.g * depthFade, color.b * depthFade);
+        if (this.variant === "topDown" && displayed < this.visibleThreshold) {
+          colorAttr.setXYZW(index, 0, 0, 0, 0);
+        } else {
+          const color = samplePalette(this.palette, displayed);
+          colorAttr.setXYZW(
+            index,
+            color.r * depthFade,
+            color.g * depthFade,
+            color.b * depthFade,
+            this.variant === "topDown" ? Math.min(1, displayed * 7) : 1,
+          );
+        }
       }
     }
 
     positionAttr.needsUpdate = true;
     colorAttr.needsUpdate = true;
+  }
+
+  private writeVisibleIndices(indices: number[]) {
+    for (let z = 0; z < this.historyBins - 1; z++) {
+      for (let x = 0; x < this.frequencyBins - 1; x++) {
+        const a = z * this.frequencyBins + x;
+        const b = a + 1;
+        const c = (z + 1) * this.frequencyBins + x + 1;
+        const d = (z + 1) * this.frequencyBins + x;
+
+        indices.push(a, b, c, a, c, d);
+      }
+    }
   }
 
   private pushAudioFrame(time: number) {
@@ -229,10 +298,95 @@ export class ChromeLabSpectrogram {
       this.smoothBins[low] = this.smoothBins[low] * 0.74 + this.binData[low] * 0.26;
       this.smoothBins[high] = this.smoothBins[high] * 0.74 + this.binData[high] * 0.26;
 
-      const floor = 5 + Math.sin(time * 0.0002 + freq * 5) * 2;
-      const signal = Math.max(0, (smoothed - floor) / 132);
-      this.history[writeOffset + x] = Math.min(1, Math.pow(signal, 0.74));
+      const floorBin = low;
+      const floorTarget = Math.max(10, value);
+      const floorRate = floorTarget < this.noiseFloor[floorBin] ? 0.035 : 0.0025;
+      this.noiseFloor[floorBin] = this.noiseFloor[floorBin] * (1 - floorRate) + floorTarget * floorRate;
+
+      const lowFrequencyGate = Math.pow(1 - freq, 4.4);
+      const subBassMute = freq < 0.018 ? 1 : 0;
+      const adaptiveFloor = this.noiseFloor[floorBin] + 2 + lowFrequencyGate * 44;
+      const gain = 94 + lowFrequencyGate * 100;
+      const signal = subBassMute ? 0 : Math.max(0, (smoothed - adaptiveFloor) / gain);
+      this.history[writeOffset + x] = Math.min(1, Math.pow(signal, 0.68));
     }
+  }
+
+  private addAxes() {
+    const tickColor = 0xcfe7ce;
+    const tickOpacity = this.variant === "topDown" ? 0.32 : 0.24;
+    const y = this.variant === "topDown" ? 0.035 : 0.045;
+    const xMin = -this.terrainWidth * 0.5;
+    const xMax = this.terrainWidth * 0.5;
+    const zMin = -this.terrainDepth * 0.5;
+    const zMax = this.terrainDepth * 0.5;
+    const positions: number[] = [];
+
+    const addLine = (x1: number, z1: number, x2: number, z2: number) => {
+      positions.push(x1, y, z1, x2, y, z2);
+    };
+
+    if (this.variant === "topDown") return;
+
+    for (let i = 0; i <= 8; i++) {
+      const z = zMin + (i / 8) * this.terrainDepth;
+      const major = i % 2 === 0;
+      addLine(xMin, z, xMin + (major ? 0.16 : 0.08), z);
+      if (major) this.scene.add(this.createLabel(i === 8 ? "now" : `-${8 - i}`, xMin - 0.28, y + 0.01, z, 0.2));
+    }
+
+    const freqLabels = [
+      { label: "100", ratio: 0.18 },
+      { label: "500", ratio: 0.38 },
+      { label: "1k", ratio: 0.52 },
+      { label: "4k", ratio: 0.72 },
+      { label: "8k", ratio: 0.86 },
+    ];
+    for (const item of freqLabels) {
+      const x = xMin + item.ratio * this.terrainWidth;
+      addLine(x, zMax, x, zMax - 0.13);
+      this.scene.add(this.createLabel(item.label, x, y + 0.01, zMax + 0.18, 0.18));
+    }
+
+    this.scene.add(this.createLineSegments(positions, tickColor, tickOpacity));
+  }
+
+  private createLineSegments(positions: number[], color: number, opacity: number) {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+    const material = new THREE.LineBasicMaterial({
+      color,
+      transparent: true,
+      opacity,
+    });
+    return new THREE.LineSegments(geometry, material);
+  }
+
+  private createLabel(text: string, x: number, y: number, z: number, scale: number) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 48;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.font = '500 12px "Iosevka Aile", "Iosevka", monospace';
+      ctx.fillStyle = "rgba(211, 198, 170, 0.82)";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+    const material = new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+      opacity: 0.72,
+      depthWrite: false,
+    });
+    const sprite = new THREE.Sprite(material);
+    sprite.position.set(x, y, z);
+    sprite.scale.set(scale * 2.2, scale * 0.82, 1);
+    return sprite;
   }
 }
 

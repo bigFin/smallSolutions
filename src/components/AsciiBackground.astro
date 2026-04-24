@@ -184,11 +184,19 @@
 
     const spectrogramBackground = new ChromeLabSpectrogram({
       palette: SITE_CONFIG.spectrogramPalette,
+      variant: "topDown",
+    });
+    const sonogramBackground = new ChromeLabSpectrogram({
+      palette: SITE_CONFIG.spectrogramPalette,
+      variant: "perspective",
     });
 
     window.addEventListener("spectrogram-microphone-stream", (event: any) => {
       spectrogramBackground.setStream(event.detail).catch((error) => {
         console.warn("Could not connect microphone stream to spectrogram.", error);
+      });
+      sonogramBackground.setStream(event.detail).catch((error) => {
+        console.warn("Could not connect microphone stream to sonogram.", error);
       });
     });
 
@@ -225,6 +233,7 @@
       if (mode === "stochastic") modeIndex.value = 7;
       if (mode === "nexus") modeIndex.value = 8;
       if (mode === "spectrogram") modeIndex.value = 9;
+      if (mode === "sonogram") modeIndex.value = 9;
       if (mode === "syntheticSpectrogram") modeIndex.value = 10;
     });
 
@@ -297,11 +306,13 @@
       currentMouseX += (targetMouseX - currentMouseX) * inputEase;
       currentMouseY += (targetMouseY - currentMouseY) * inputEase;
       emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
-      emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" ? 0 : 1;
+      emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" || activeMode === "sonogram" ? 0 : 1;
       mousePosUniform.value.set(currentMouseX, currentMouseY);
 
       if (activeMode === "spectrogram") {
         spectrogramBackground.update(time);
+      } else if (activeMode === "sonogram") {
+        sonogramBackground.update(time);
       } else {
         quad.material = material;
         renderer.setRenderTarget(noiseTarget);
@@ -311,6 +322,8 @@
 
       if (activeMode === "spectrogram") {
         renderer.render(spectrogramBackground.scene, spectrogramBackground.camera);
+      } else if (activeMode === "sonogram") {
+        renderer.render(sonogramBackground.scene, sonogramBackground.camera);
       } else {
         renderer.render(scene, camera);
       }
@@ -322,6 +335,7 @@
       const h = window.innerHeight;
       renderer.setSize(w, h);
       spectrogramBackground.resize(w, h);
+      sonogramBackground.resize(w, h);
       viewportSizeUniform.value.set(w, h);
       gridDisplaySizeUniform.value.set(w, h);
       gridSizeUniform.value.set(w / 8, h / 16);
