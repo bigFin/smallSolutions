@@ -40,6 +40,7 @@ export type AsciiMaterialOptions = {
   debugTimeUniform: any;
   emailDyeDebugEnabledUniform: any;
   emailDyeDebugModeUniform: any;
+  overlayEnabledUniform: any;
   emailDyeDebugCenterUniform: any;
   emailDyeDebugHalfSizeUniform: any;
   emailDyeColorLowUniform: any;
@@ -72,6 +73,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     debugTimeUniform,
     emailDyeDebugEnabledUniform: debugEnabled,
     emailDyeDebugModeUniform: debugMode,
+    overlayEnabledUniform: overlayEnabled,
     emailDyeDebugCenterUniform: debugCenter,
     emailDyeDebugHalfSizeUniform: debugHalfSize,
     emailDyeColorLowUniform: debugLow,
@@ -182,7 +184,7 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
     const overlayLocalUv = localUv.add(vec2(overlaySubX, overlaySubY)).div(overlayScale);
     const overlayGlyphMask = sampleGlyphMask(overlayGlyphIndex, overlayLocalUv);
     const overlayInk = overlayGlyphMask.mul(overlayGlyphState.g);
-    const overlayActive = overlayGlyphState.g.greaterThan(float(0.001));
+    const overlayActive = overlayGlyphState.g.greaterThan(float(0.001)).and(overlayEnabled.greaterThan(float(0.5)));
     const overlayCompositeMode = floor(overlayColorState.a.mul(float(255)).add(float(0.5)));
     const overlayFillBlack = overlayCompositeMode.greaterThan(float(31)).and(
       overlayCompositeMode.lessThan(float(96)),
@@ -326,16 +328,43 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .mul(debugModulation)
       .toVar();
 
-    const debugCursorRel = cellSampleUv.sub(debugCenter).toVar();
+    const debugCursorRel = sourceSampleUv.sub(debugCenter).toVar();
     const debugCursorRadius = debugCursorRel.length().toVar();
     const debugVeinBand = smoothstep(float(0.035), float(0.16), sourceSignal)
       .mul(float(1).sub(smoothstep(float(0.28), float(0.5), sourceSignal)))
       .toVar();
-    const debugPulseA = sin(debugCursorRadius.mul(float(72.0)).sub(debugTimeUniform.mul(float(6.2))))
+    const debugCurlA = debugCursorRel.x.mul(debugCursorRel.x).mul(float(92.0))
+      .add(debugCursorRel.y.mul(debugCursorRel.y).mul(float(57.0)))
+      .toVar();
+    const debugCurlB = debugCursorRel.x.mul(debugCursorRel.x).mul(float(44.0))
+      .sub(debugCursorRel.y.mul(debugCursorRel.y).mul(float(71.0)))
+      .toVar();
+    const debugSpinA = sin(
+      debugCursorRadius.mul(float(29.0))
+        .add(debugCurlA)
+        .sub(debugTimeUniform.mul(float(3.6))),
+    )
       .mul(float(0.5))
       .add(float(0.5))
       .toVar();
-    const debugPulseB = sin(debugCursorRadius.mul(float(43.0)).sub(debugTimeUniform.mul(float(3.7))).add(debugNoise.mul(float(0.9))))
+    const debugSpinB = sin(
+      debugCursorRadius.mul(float(21.0))
+        .add(debugCurlB)
+        .add(debugTimeUniform.mul(float(2.9))),
+    )
+      .mul(float(0.5))
+      .add(float(0.5))
+      .toVar();
+    const debugRadialPulse = sin(debugCursorRadius.mul(float(52.0)).sub(debugTimeUniform.mul(float(5.2))).add(debugNoise.mul(float(0.7))))
+      .mul(float(0.5))
+      .add(float(0.5))
+      .toVar();
+    const debugFlameNoise = sin(
+      debugCurlA.mul(float(0.42))
+        .add(debugCurlB.mul(float(0.31)))
+        .add(debugSpinA.mul(float(2.4)))
+        .sub(debugTimeUniform.mul(float(4.1))),
+    )
       .mul(float(0.5))
       .add(float(0.5))
       .toVar();
@@ -343,8 +372,14 @@ export function buildAsciiMaterial(opts: AsciiMaterialOptions): MeshBasicNodeMat
       .mul(float(0.5))
       .add(float(0.5))
       .toVar();
-    const debugPulseBand = smoothstep(float(0.54), float(0.9), debugPulseA.mul(float(0.62)).add(debugPulseB.mul(float(0.38))))
-      .mul(exp(debugCursorRadius.mul(debugCursorRadius).mul(float(-2.15))))
+    const debugEmanance = debugSpinA
+      .mul(float(0.34))
+      .add(debugSpinB.mul(float(0.24)))
+      .add(debugRadialPulse.mul(float(0.25)))
+      .add(debugFlameNoise.mul(float(0.17)))
+      .toVar();
+    const debugPulseBand = smoothstep(float(0.34), float(0.88), debugEmanance)
+      .mul(exp(debugCursorRadius.mul(debugCursorRadius).mul(float(-1.65))))
       .mul(float(0.72).add(debugBreath.mul(float(0.28))))
       .toVar();
     const debugCursorFeed = debugPulseBand

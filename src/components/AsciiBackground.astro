@@ -217,6 +217,7 @@
     const debugTimeUniform = uniform(float(0));
     const emailDyeDebugEnabledUniform = uniform(float(1.0));
     const emailDyeDebugModeUniform = uniform(float(0));
+    const overlayEnabledUniform = uniform(float(0));
     const emailDyeDebugCenterUniform = uniform(new THREE.Vector2(0.5, 0.5));
     const emailDyeDebugHalfSizeUniform = uniform(new THREE.Vector2(0.18, 0.18));
     const emailDyeColorLowUniform = uniform(new THREE.Vector3(0, 0, 0));
@@ -271,6 +272,7 @@
       debugTimeUniform,
       emailDyeDebugEnabledUniform,
       emailDyeDebugModeUniform,
+      overlayEnabledUniform,
       emailDyeDebugCenterUniform,
       emailDyeDebugHalfSizeUniform,
       emailDyeColorLowUniform,
@@ -309,14 +311,14 @@
       noiseTime.value = t;
       debugTimeUniform.value = t;
 
-      const inputEase = activeMode === "stochastic" || activeMode === "stochastic-plus" ? 0.18 : orientationActive ? 0.09 : 0.05;
+      const inputEase = activeMode === "stochastic" || activeMode === "stochastic-plus" ? 0.32 : orientationActive ? 0.09 : 0.05;
       currentMouseX += (targetMouseX - currentMouseX) * inputEase;
       currentMouseY += (targetMouseY - currentMouseY) * inputEase;
-      const dyeCenterY = activeMode === "stochastic" ? 1.0 - currentMouseY : currentMouseY;
-      emailDyeDebugCenterUniform.value.set(currentMouseX, dyeCenterY);
+      emailDyeDebugCenterUniform.value.set(currentMouseX, currentMouseY);
       emailDyeDebugEnabledUniform.value = activeMode === "spectrogram" || activeMode === "sonogram" || activeMode === "stochastic-plus" ? 0 : 1;
       emailDyeDebugModeUniform.value = activeMode === "stochastic" ? 1 : 0;
-      mousePosUniform.value.set(currentMouseX, currentMouseY);
+      const shaderMouseY = activeMode === "stochastic" ? 1.0 - currentMouseY : currentMouseY;
+      mousePosUniform.value.set(currentMouseX, shaderMouseY);
 
       if (activeMode === "spectrogram") {
         spectrogramBackground.update(time);
