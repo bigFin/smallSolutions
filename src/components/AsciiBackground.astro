@@ -10,7 +10,7 @@
   import { getTheme } from "../lib/themes";
   import { SITE_CONFIG } from "../lib/config";
   import * as Shaders from "../lib/shaders/modes";
-  import { ChromeLabSpectrogram } from "../lib/backgrounds/spectrogram/chrome-lab-spectrogram";
+  import { GpuSpectrogram } from "../lib/backgrounds/spectrogram/gpu-spectrogram";
 
   async function init() {
     const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
@@ -131,6 +131,7 @@
       if (!cleanMode) return SITE_CONFIG.defaultShaderMode;
       const lowerMode = cleanMode.toLowerCase();
       if (lowerMode === "syntheticspectrogram") return "syntheticSpectrogram";
+      if (lowerMode === "stochastic-plus") return SITE_CONFIG.defaultShaderMode;
       return lowerMode;
     };
     const initialMode = normalizeMode(localStorage.getItem("shader-mode"));
@@ -186,11 +187,11 @@
     const noiseQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), noiseMaterial);
     noiseScene.add(noiseQuad);
 
-    const spectrogramBackground = new ChromeLabSpectrogram({
+    const spectrogramBackground = new GpuSpectrogram({
       palette: SITE_CONFIG.spectrogramPalette,
       variant: "topDown",
     });
-    const sonogramBackground = new ChromeLabSpectrogram({
+    const sonogramBackground = new GpuSpectrogram({
       palette: SITE_CONFIG.spectrogramPalette,
       variant: "perspective",
     });

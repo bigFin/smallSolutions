@@ -31,6 +31,7 @@ import { SITE_CONFIG } from "../lib/config";
   const activeModeLabel = document.getElementById("active-mode");
   const micStatus = document.getElementById("mic-status");
   const MIC_MODES = new Set(["spectrogram", "sonogram"]);
+  const SESSION_ONLY_MODES = new Set(["stochastic-plus", ...MIC_MODES]);
   let spectrogramMicPromise = null;
 
   const setMicStatus = (message) => {
@@ -40,7 +41,7 @@ import { SITE_CONFIG } from "../lib/config";
   const setActiveMode = (mode, persist = true) => {
     if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
 
-    if (persist && !MIC_MODES.has(mode)) {
+    if (persist && !SESSION_ONLY_MODES.has(mode)) {
       try {
         localStorage.setItem("shader-mode", mode);
       } catch {}
@@ -101,17 +102,10 @@ import { SITE_CONFIG } from "../lib/config";
 
   // Load initial mode from localStorage
   const savedMode = localStorage.getItem("shader-mode");
-  if (savedMode && MIC_MODES.has(savedMode)) {
+  if (savedMode && SESSION_ONLY_MODES.has(savedMode)) {
     setActiveMode(FALLBACK_SHADER_MODE);
   } else if (savedMode && activeModeLabel) {
     activeModeLabel.textContent = savedMode.charAt(0).toUpperCase() + savedMode.slice(1);
-  }
-
-  // Load initial Zen mode state
-  const isZenSaved = localStorage.getItem("zen-mode") === "true";
-  if (isZenSaved) {
-    document.body.classList.add("zen-mode");
-    if (zenToggle) zenToggle.textContent = "Exit_Zen";
   }
 
   statusBar?.addEventListener("pointerdown", (event) => {
@@ -147,11 +141,6 @@ import { SITE_CONFIG } from "../lib/config";
     document.body.classList.toggle("zen-mode");
     const isZen = document.body.classList.contains("zen-mode");
     if (zenToggle) zenToggle.textContent = isZen ? "Exit_Zen" : "Zen_Mode";
-    
-    // Save Zen mode state
-    try {
-      localStorage.setItem("zen-mode", isZen.toString());
-    } catch {}
   });
 
   const updateFullscreenLabel = () => {
