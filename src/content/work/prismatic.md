@@ -1,6 +1,6 @@
 ---
 title: "Prismatic"
-summary: "Multi-channel LED system for photobiology experiments and spectral optimization."
+summary: "Programmable LED hardware for testing how plants respond to different light spectra."
 period: "2017-2019"
 order: 5
 featured: false
@@ -18,16 +18,14 @@ links:
     href: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8566924/"
 ---
 
-## System Overview
-Multi-channel LED hardware and control system for photobiology research and spectral optimization.
+## Light as an experimental variable
 
-## Architecture & Components
-- **Hardware:** Modular LED driver and array hardware. Multi-channel circuit design.
-- **Firmware:** Embedded C++ control logic for scheduling and spectral management.
-- **Control Surface:** Wi-Fi interface using HTML/JavaScript served from the microcontroller.
-- **Experimental Design:** Workflows based on Central Composite Rotatable Design (CCRD).
+Prismatic is a multi-channel LED system for photobiology research. It lets researchers vary the light spectrum and repeat conditions across experimental modules.
 
-## System Capabilities
-- **Spectral Precision:** High-resolution control over lighting spectra for specialized research.
-- **Research Fidelity:** Consistent, replicated conditions across multiple experimental modules.
-- **System Extensibility:** Open architecture designed for modular expansion and custom research integration.
+## Hardware and controls
+
+The system combines modular LED drivers and arrays with C++ firmware for scheduling and spectral control. A web interface, served directly from the microcontroller over Wi-Fi, provides the controls.
+
+The experimental work used a central composite rotatable design: a method for testing how several variables interact without trying every possible combination.
+
+The hardware and software are available on GitHub, and the linked publication describes the research. This is an earlier project that brought together electronics, browser-based controls, and plant experiments.

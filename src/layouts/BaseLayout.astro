@@ -13,63 +13,57 @@ interface Props {
 
 const {
   title,
-  description = "Finlay Small builds durable systems spanning embedded hardware, analytics, machine learning, and operational infrastructure.",
+  description = "Projects and writing by Finlay Small: hardware, software, plant science, and experiments along the way.",
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const currentPath = Astro.url.pathname.replace(basePath, "").replace(/\/$/, "") || "/";
-const homeHref = import.meta.env.BASE_URL;
-const resumeHref = `${baseUrl}resume/`;
+const homeHref = baseUrl;
+const contactHref = `${baseUrl}#contact`;
 ---
 
 <!doctype html>
-<html lang="en" data-theme={SITE_CONFIG.defaultTheme}>
+<html lang="en" data-theme={SITE_CONFIG.defaultTheme} data-themes={SITE_CONFIG.themes.join(",")}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <script is:inline define:vars={{ defaultTheme: SITE_CONFIG.defaultTheme }}>
+    <script is:inline>
       try {
-        const theme = localStorage.getItem("theme") || defaultTheme;
-        document.documentElement.dataset.theme = theme;
+        const root = document.documentElement;
+        const theme = localStorage.getItem("theme") || "";
+        if (root.dataset.themes?.split(",").includes(theme)) root.dataset.theme = theme;
       } catch {}
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="site-header">
         <a class="site-mark" href={homeHref}>
           <span class="site-mark__label">smallSolutions</span>
-          <span class="site-mark__sub">Finlay Small</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           <NavLink href="/" label="Home" currentPath={currentPath} />
           <NavLink href="/projects" label="Projects" currentPath={currentPath} />
           <NavLink href="/writing" label="Writing" currentPath={currentPath} />
+          <a href={contactHref}>Work with me</a>
         </nav>
-        <div class="header-audio-controls">
-          <span class="mic-status" id="audio-status">Audio: idle</span>
-          <div class="audio-source-toggle" aria-label="Audio source">
-            <button class="status-button audio-source-toggle__button" id="music-enable" type="button">Music</button>
-            <button class="status-button audio-source-toggle__button" id="mic-source-enable" type="button">Mic</button>
-          </div>
-        </div>
         <ThemeToggle />
       </header>
 
-      <main class="site-main">
+      <main class="site-main" id="main" tabindex="-1">
         <slot />
       </main>
 
       <footer class="site-footer">
-        <p class="site-footer__mark">smallSolutions</p>
+        <p class="site-footer__mark">Finlay Small</p>
         <div class="footer-links">
           <a href="https://github.com/bigFin">GitHub</a>
           <a href="mailto:fsmall90@gmail.com">Email</a>
-          <a href={resumeHref}>Resume</a>
         </div>
       </footer>
     </div>

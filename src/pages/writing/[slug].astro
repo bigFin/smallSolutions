@@ -12,10 +12,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 ---
 
 <BaseLayout title={`${entry.data.title} | smallSolutions`} description={entry.data.summary}>
   <article class="detail-page">
+    <a class="back-link" href={`${baseUrl}writing/`}>All writing</a>
     <header class="detail-page__header">
       <h1>{entry.data.title}</h1>
       <p class="detail-page__summary">{entry.data.summary}</p>

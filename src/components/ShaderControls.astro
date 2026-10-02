@@ -2,234 +2,247 @@
 import { SITE_CONFIG } from "../lib/config";
 ---
 
-<div
-  class="status-bar"
-  data-default-shader-mode={SITE_CONFIG.defaultShaderMode}
-  data-fallback-shader-mode={SITE_CONFIG.fallbackShaderMode}
->
-  <div class="status-bar__left">
-    <span class="status-label">Sys_Log</span>
-    <span class="status-value" id="active-mode">{SITE_CONFIG.defaultShaderMode}</span>
+<details class="shader-controls" data-default-mode={SITE_CONFIG.defaultShaderMode}>
+  <summary>Play with the background</summary>
+  <div class="shader-controls__body">
+    <p>
+      An experiment in shaders and sound. Try the visuals on their own,
+      add generated music, or use your microphone to drive the spectrogram.
+    </p>
+    <noscript>These experiments need JavaScript. The rest of the site doesn’t.</noscript>
+    <div class="shader-controls__row">
+      <button class="status-button" id="visuals-toggle" type="button" aria-pressed="false" disabled>Enable visuals</button>
+      <span class="shader-status" id="visuals-status" role="status">Visuals off</span>
+    </div>
+    <fieldset id="experiment-controls" disabled>
+      <legend>Background</legend>
+      <div class="shader-controls__row">
+        {SITE_CONFIG.shaderModes.map((mode) => (
+          <button class="status-button" type="button" data-mode={mode} aria-pressed={mode === SITE_CONFIG.defaultShaderMode}>
+            {mode === "stochastic" ? "Particles" : mode.charAt(0).toUpperCase() + mode.slice(1)}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+    <fieldset id="audio-controls" disabled>
+      <legend>Sound</legend>
+      <div class="shader-controls__row">
+        <button class="status-button" id="audio-off" type="button" aria-pressed="true">Off</button>
+        <button class="status-button" id="music-enable" type="button" aria-pressed="false">Generated music</button>
+        <button class="status-button" id="mic-source-enable" type="button" aria-pressed="false">Use microphone</button>
+        <span class="shader-status" id="audio-status" role="status">Audio off</span>
+      </div>
+    </fieldset>
+    <div class="shader-controls__row">
+      <button class="status-button" id="zen-toggle" type="button" aria-pressed="false" disabled>View visuals only</button>
+      <button class="status-button" id="fullscreen-toggle" type="button" hidden>Fullscreen</button>
+      <button class="status-button" id="motion-enable" type="button" hidden>Enable device tilt</button>
+      <span class="shader-status" id="motion-status" role="status"></span>
+    </div>
+    <p class="shader-controls__hint">
+      Visuals need WebGPU and HTTPS (or localhost). The microphone is optional
+      and its audio is processed in your browser. Closing this panel stops the experiment.
+    </p>
   </div>
-  <div class="status-bar__center">
-    {SITE_CONFIG.shaderModes.map((mode) => (
-      <button class="status-button" data-mode={mode}>
-        {mode.charAt(0).toUpperCase() + mode.slice(1)}
-      </button>
-    ))}
-  </div>
-  <div class="status-bar__right">
-    <button class="status-button status-button--fullscreen" id="fullscreen-toggle">Fullscreen</button>
-    <button class="status-button status-button--zen" id="zen-toggle">Zen_Mode</button>
-  </div>
-</div>
+</details>
 
 <script>
   import { createGenerativeMusic } from "../lib/music/generative";
 
-  const statusBar = document.querySelector(".status-bar");
-  const DEFAULT_SHADER_MODE = statusBar?.getAttribute("data-default-shader-mode") || "stochastic";
-  const FALLBACK_SHADER_MODE = statusBar?.getAttribute("data-fallback-shader-mode") || "stochastic";
-  const zenToggle = document.getElementById("zen-toggle");
-  const fullscreenToggle = document.getElementById("fullscreen-toggle");
-  const musicEnable = document.getElementById("music-enable");
-  const micSourceEnable = document.getElementById("mic-source-enable");
-  const activeModeLabel = document.getElementById("active-mode");
-  const audioStatus = document.getElementById("audio-status");
-  const modeButtons = document.querySelectorAll(".status-button[data-mode]");
-  const MIC_MODES = new Set(["spectrogram", "sonogram"]);
-  const SESSION_ONLY_MODES = new Set(["stochastic-plus", ...MIC_MODES]);
-  let spectrogramMicPromise = null;
-  let generativeMusic = null;
-  let activeAudioSource = "music";
-  let activeMode = DEFAULT_SHADER_MODE;
+  const panel = document.querySelector<HTMLDetailsElement>(".shader-controls")!;
+  const visualsToggle = document.querySelector<HTMLButtonElement>("#visuals-toggle")!;
+  const visualsStatus = document.querySelector<HTMLElement>("#visuals-status")!;
+  const experimentControls = document.querySelector<HTMLFieldSetElement>("#experiment-controls")!;
+  const audioControls = document.querySelector<HTMLFieldSetElement>("#audio-controls")!;
+  const zenToggle = document.querySelector<HTMLButtonElement>("#zen-toggle")!;
+  const fullscreenToggle = document.querySelector<HTMLButtonElement>("#fullscreen-toggle")!;
+  const musicEnable = document.querySelector<HTMLButtonElement>("#music-enable")!;
+  const micEnable = document.querySelector<HTMLButtonElement>("#mic-source-enable")!;
+  const audioOff = document.querySelector<HTMLButtonElement>("#audio-off")!;
+  const audioStatus = document.querySelector<HTMLElement>("#audio-status")!;
+  const modeButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-mode]")];
+  const audioWindow = window as Window & { __spectrogramAudioStream?: MediaStream };
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const motionEnable = document.querySelector<HTMLButtonElement>("#motion-enable")!;
+  const motionStatus = document.querySelector<HTMLElement>("#motion-status")!;
+  const orientation = (window as Window & {
+    DeviceOrientationEvent?: { requestPermission?: () => Promise<string> };
+  }).DeviceOrientationEvent;
+  let enabled = false;
+  let ready = false;
+  let activeMode = panel.dataset.defaultMode || "stochastic";
+  let music: ReturnType<typeof createGenerativeMusic> | undefined;
+  let micStream: MediaStream | undefined;
+  let audioRequest = 0;
 
-  const setAudioStatus = (message) => {
-    if (audioStatus) audioStatus.textContent = `Audio: ${message}`;
+  const setAudioSource = (source: "off" | "music" | "mic") => {
+    audioOff.setAttribute("aria-pressed", String(source === "off"));
+    musicEnable.setAttribute("aria-pressed", String(source === "music"));
+    micEnable.setAttribute("aria-pressed", String(source === "mic"));
   };
 
-  const setAudioSourceActive = (source) => {
-    activeAudioSource = source;
-    musicEnable?.toggleAttribute("data-active", source === "music");
-    micSourceEnable?.toggleAttribute("data-active", source === "mic");
+  const stopAudio = () => {
+    audioRequest += 1;
+    music?.mute();
+    micStream?.getTracks().forEach((track) => track.stop());
+    micStream = undefined;
+    delete audioWindow.__spectrogramAudioStream;
+    setAudioSource("off");
+    audioStatus.textContent = "Audio off";
   };
 
-  const setActiveMode = (mode, persist = true) => {
-    activeMode = mode;
-    if (activeModeLabel) activeModeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-    modeButtons.forEach((button) => {
-      button.toggleAttribute("data-active", button.getAttribute("data-mode") === mode);
-    });
+  const setZen = (zen: boolean) => {
+    document.body.classList.toggle("zen-mode", zen);
+    const shell = document.querySelector<HTMLElement>(".site-shell");
+    if (shell) shell.inert = zen;
+    zenToggle.setAttribute("aria-pressed", String(zen));
+    zenToggle.textContent = zen ? "Back to the site (Esc)" : "View visuals only";
+  };
 
-    if (persist && !SESSION_ONLY_MODES.has(mode)) {
-      try {
-        localStorage.setItem("shader-mode", mode);
-      } catch {}
+  const updateControls = () => {
+    visualsToggle.setAttribute("aria-pressed", String(enabled));
+    visualsToggle.textContent = enabled ? "Turn visuals off" : "Enable visuals";
+    experimentControls.disabled = !enabled || !ready;
+    audioControls.disabled = !enabled || !ready;
+    zenToggle.disabled = !enabled || !ready;
+  };
+
+  const setEnabled = (value: boolean) => {
+    enabled = value;
+    document.documentElement.dataset.backgroundEnabled = String(value);
+    if (!enabled) {
+      stopAudio();
+      setZen(false);
     }
+    visualsStatus.textContent = enabled ? (ready ? "Visuals on" : "Starting visuals…") : "Visuals off";
+    updateControls();
+    window.dispatchEvent(new CustomEvent("background-enabled-change", { detail: enabled }));
+  };
 
+  const setMode = (mode: string) => {
+    activeMode = mode;
+    modeButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.mode === mode)));
     window.dispatchEvent(new CustomEvent("background-mode-change", { detail: mode }));
   };
 
-  const fallBackFromSpectrogram = (error) => {
-    console.warn("Could not start spectrogram microphone input.", error);
-    setAudioSourceActive("music");
-    setActiveMode(FALLBACK_SHADER_MODE);
-  };
-
-  const handleMusicError = (error) => {
-    console.warn("Could not start generative music input.", error);
-    setAudioSourceActive("music");
-    setAudioStatus(error?.name || "music error");
-  };
-
-  const dispatchAudioStream = (stream) => {
-    window.__spectrogramAudioStream = stream;
+  const dispatchStream = (stream: MediaStream) => {
+    audioWindow.__spectrogramAudioStream = stream;
     window.dispatchEvent(new CustomEvent("spectrogram-audio-stream", { detail: stream }));
   };
 
-  const requestGenerativeMusic = () => {
-    setAudioStatus("starting music");
-    if (!generativeMusic) generativeMusic = createGenerativeMusic();
-    dispatchAudioStream(generativeMusic.stream);
-    return generativeMusic.resume().then(() => {
-      setAudioSourceActive("music");
-      setAudioStatus("music");
-      return generativeMusic.stream;
-    });
+  const audioError = (error: unknown) => {
+    stopAudio();
+    audioStatus.textContent = error instanceof Error && error.name === "NotAllowedError"
+      ? "Microphone permission was not granted. You can try generated music instead."
+      : "Could not start audio. Try again or leave sound off.";
+    console.warn("Could not start background audio.", error);
   };
 
-  const requestSpectrogramMic = async () => {
-    setAudioStatus("requesting mic");
-    generativeMusic?.mute();
-
-    if (!window.isSecureContext) {
-      setAudioStatus("mic insecure");
-      throw new Error("Microphone access requires localhost or HTTPS.");
-    }
-
-    if (!navigator.mediaDevices?.getUserMedia) {
-      setAudioStatus("mic unavailable");
-      throw new Error("navigator.mediaDevices.getUserMedia is unavailable.");
-    }
-
-    if (!spectrogramMicPromise) {
-      spectrogramMicPromise = navigator.mediaDevices
-        .getUserMedia({ audio: true })
-        .then((stream) => {
-          setAudioStatus("mic");
-          setAudioSourceActive("mic");
-          dispatchAudioStream(stream);
-          window.dispatchEvent(new CustomEvent("spectrogram-microphone-stream", { detail: stream }));
-          return stream;
-        })
-        .catch((error) => {
-          spectrogramMicPromise = null;
-          setAudioStatus(error?.name || "error");
-          window.dispatchEvent(new CustomEvent("spectrogram-microphone-error", { detail: error }));
-          throw error;
-        });
-    }
-
-    return spectrogramMicPromise;
-  };
-
-  const requestMotionInput = async () => {
-    const OrientationEvent = window.DeviceOrientationEvent;
-    if (!OrientationEvent || typeof OrientationEvent.requestPermission !== "function") return;
-
-    try {
-      await OrientationEvent.requestPermission();
-    } catch (error) {
-      console.warn("Could not enable device orientation input.", error);
-    }
-  };
-
-  const requestActiveAudioSource = () => {
-    if (!MIC_MODES.has(activeMode)) return;
-
-    if (activeAudioSource === "mic") {
-      requestSpectrogramMic().catch(fallBackFromSpectrogram);
+  visualsToggle.disabled = false;
+  if (motionPreference.matches) visualsStatus.textContent = "Visuals off — reduced motion preferred";
+  visualsToggle.addEventListener("click", () => setEnabled(!enabled));
+  motionPreference.addEventListener("change", () => {
+    if (motionPreference.matches) setEnabled(false);
+  });
+  window.addEventListener("background-state-change", ((event: CustomEvent<string>) => {
+    if (event.detail === "ready") {
+      ready = true;
+      visualsStatus.textContent = enabled ? "Visuals on" : "Visuals off";
+      updateControls();
     } else {
-      requestGenerativeMusic().catch(handleMusicError);
+      ready = false;
+      setEnabled(false);
+      visualsStatus.textContent = event.detail;
     }
-  };
+  }) as EventListener);
 
-  // Load initial mode from localStorage
-  const savedMode = localStorage.getItem("shader-mode");
-  if (savedMode && SESSION_ONLY_MODES.has(savedMode)) {
-    setActiveMode(FALLBACK_SHADER_MODE);
-  } else if (savedMode && activeModeLabel) {
-    setActiveMode(savedMode, false);
-  } else {
-    setActiveMode(DEFAULT_SHADER_MODE, false);
-  }
-
-  document.addEventListener(
-    "pointerdown",
-    () => {
-      requestMotionInput();
-      requestActiveAudioSource();
-    },
-    { capture: true },
-  );
-
-  statusBar?.addEventListener("pointerdown", (event) => {
-    requestMotionInput();
-
-    const target = event.target instanceof Element ? event.target : null;
-    const btn = target?.closest(".status-button[data-mode]");
-    const mode = btn?.getAttribute("data-mode");
-    if (!MIC_MODES.has(mode)) return;
-
-    if (mode && mode !== activeMode) setActiveMode(mode);
-    requestActiveAudioSource();
-  });
-
-  statusBar?.addEventListener("click", (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-    const btn = target?.closest(".status-button[data-mode]");
-    const mode = btn?.getAttribute("data-mode");
-    if (!mode) return;
-
-    setActiveMode(mode);
-    if (MIC_MODES.has(mode)) requestActiveAudioSource();
-  });
-
-  musicEnable?.addEventListener("click", () => {
-    setAudioSourceActive("music");
-    if (!MIC_MODES.has(activeMode)) setActiveMode("sonogram");
-    requestGenerativeMusic().catch(handleMusicError);
-  });
-
-  micSourceEnable?.addEventListener("click", () => {
-    setActiveMode("spectrogram");
-    requestSpectrogramMic().catch(fallBackFromSpectrogram);
-  });
-
-  setAudioSourceActive("music");
-
-  zenToggle?.addEventListener("click", () => {
-    document.body.classList.toggle("zen-mode");
-    const isZen = document.body.classList.contains("zen-mode");
-    if (zenToggle) zenToggle.textContent = isZen ? "Exit_Zen" : "Zen_Mode";
-  });
-
-  const updateFullscreenLabel = () => {
-    if (fullscreenToggle) fullscreenToggle.textContent = document.fullscreenElement ? "Exit_Fullscreen" : "Fullscreen";
-  };
-
-  fullscreenToggle?.addEventListener("click", async () => {
+  modeButtons.forEach((button) => button.addEventListener("click", () => {
+    const mode = button.dataset.mode!;
+    setMode(mode);
+    if (mode === "stochastic") stopAudio();
+  }));
+  audioOff.addEventListener("click", stopAudio);
+  musicEnable.addEventListener("click", async () => {
+    stopAudio();
+    const request = audioRequest;
+    audioStatus.textContent = "Starting music…";
     try {
-      if (document.fullscreenElement) {
-        await document.exitFullscreen();
-      } else {
-        await document.documentElement.requestFullscreen();
+      music ??= createGenerativeMusic();
+      await music.resume();
+      if (request !== audioRequest) {
+        if (musicEnable.getAttribute("aria-pressed") !== "true") music?.mute();
+        return;
       }
+      if (activeMode === "stochastic") setMode("sonogram");
+      dispatchStream(music.stream);
+      setAudioSource("music");
+      audioStatus.textContent = "Generated music on";
+    } catch (error) {
+      if (request === audioRequest) audioError(error);
+    }
+  });
+  micEnable.addEventListener("click", async () => {
+    stopAudio();
+    const request = audioRequest;
+    if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
+      audioStatus.textContent = "Microphone access needs HTTPS and a supported browser.";
+      return;
+    }
+    audioStatus.textContent = "Waiting for microphone permission…";
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      if (request !== audioRequest) {
+        stream.getTracks().forEach((track) => track.stop());
+        return;
+      }
+      micStream = stream;
+      if (activeMode === "stochastic") setMode("spectrogram");
+      dispatchStream(stream);
+      setAudioSource("mic");
+      audioStatus.textContent = "Microphone on";
+    } catch (error) {
+      if (request === audioRequest) audioError(error);
+    }
+  });
+
+  zenToggle.addEventListener("click", () => setZen(!document.body.classList.contains("zen-mode")));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("zen-mode")) {
+      setZen(false);
+      zenToggle.focus();
+    }
+  });
+  panel.addEventListener("toggle", () => {
+    if (!panel.open) setEnabled(false);
+  });
+  window.addEventListener("pagehide", () => {
+    setEnabled(false);
+    music?.stop();
+    music = undefined;
+  });
+
+  // iOS requires a separate user gesture for device-orientation permission.
+  motionEnable.hidden = !orientation?.requestPermission;
+  motionEnable.addEventListener("click", async () => {
+    try {
+      const permission = await orientation?.requestPermission?.();
+      motionStatus.textContent = permission === "granted" ? "Device tilt enabled" : "Device tilt permission was not granted";
+      motionEnable.disabled = permission === "granted";
+    } catch {
+      motionStatus.textContent = "Device tilt is unavailable";
+    }
+  });
+
+  fullscreenToggle.hidden = !document.fullscreenEnabled;
+  fullscreenToggle.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
     } catch (error) {
       console.warn("Could not toggle fullscreen.", error);
     }
   });
-
-  document.addEventListener("fullscreenchange", updateFullscreenLabel);
-  updateFullscreenLabel();
+  document.addEventListener("fullscreenchange", () => {
+    fullscreenToggle.textContent = document.fullscreenElement ? "Exit fullscreen" : "Fullscreen";
+  });
 </script>

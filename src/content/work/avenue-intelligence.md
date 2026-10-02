@@ -1,6 +1,6 @@
 ---
 title: "Avenue Intelligence"
-summary: "Distributed sensing and analytics platform combining low-power hardware, geospatial context, and decision support."
+summary: "Low-power pedestrian traffic sensors and the software that turns their readings into useful data."
 period: "2023-Present"
 order: 1
 featured: true
@@ -14,18 +14,18 @@ links:
     href: "https://avenueintelligence.com/"
 ---
 
-## System Overview
-Pedestrian traffic sensing platform built for privacy-preserving analytics and weak connectivity environments.
+## Counting foot traffic outside the lab
 
-## Architecture & Components
-- **Hardware:** Low-power sensing devices. Custom PCB design for power integrity and manufacturability.
-- **Firmware:** Power management and radio behavior tuned for sparse signal environments.
-- **Communications:** Multi-path deployment model including AWS IoT Core.
-- **Data Infrastructure:** Object-storage architecture utilizing ClickHouse and DuckDB for analytical workloads.
-- **Analytics:** Integration of geospatial and spatiotemporal data for signal reliability.
+A pedestrian traffic sensor needs to work where it is installed—not just where power and connectivity are convenient. Avenue combines low-power sensing hardware with software for understanding how people move through a place.
 
-## System Capabilities
-- **Off-grid Autonomy:** Engineered for remote operation without local power infrastructure.
-- **Network Resilience:** Data consistency across weak or intermittent communication paths.
-- **Privacy by Design:** Localized edge processing to preserve signal privacy.
-- **Production Scale:** Designed for stable transition from prototype to production deployment.
+My work spans the circuit boards, firmware, and data infrastructure. Those pieces have to work together: power use affects how often a device can report, and unreliable connections affect how the readings are collected and interpreted.
+
+## What’s involved
+
+- Custom circuit boards designed for low power use and manufacturing.
+- Firmware that manages power and radio communication when connectivity is weak.
+- Multiple communication paths, including AWS IoT Core.
+- Object storage, ClickHouse, and DuckDB for storing and analysing readings.
+- Location and time data to put the sensor readings in context.
+
+Processing at the device is part of the privacy approach. The system is designed for off-grid deployments and intermittent connections, with a path from prototypes to production hardware.

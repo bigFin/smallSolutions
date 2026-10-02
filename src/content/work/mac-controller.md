@@ -1,6 +1,6 @@
 ---
 title: "MAC: Modular Agriculture Controller"
-summary: "Modular environmental control system for plant production, built around instrumentation, sensor fusion, and plant-response feedback."
+summary: "A modular controller for lighting, climate, and sensing, with feedback from the plants themselves."
 period: "Ongoing"
 order: 2
 featured: true
@@ -15,16 +15,14 @@ coverAlt: "MAC controller hardware and dashboard"
 links: []
 ---
 
-## System Overview
-Modular environmental control platform combining custom electronics, embedded firmware, and data logging.
+## Climate control with plant feedback
 
-## Architecture & Components
-- **Hardware:** Custom PCB design based on ESP32-class hardware. Integrated sensing and actuation for HVAC and lighting.
-- **Firmware:** Control logic and sensor fusion for environmental management.
-- **Sensing:** Environmental sensors and thermal imaging for canopy temperature monitoring.
-- **Observation:** InfluxDB and Grafana for telemetry and performance tracking.
+Room conditions don’t tell the whole story of what a plant is experiencing. MAC brings environmental measurements and canopy temperature into the same control system as lighting, heating, ventilation, and air conditioning.
 
-## System Capabilities
-- **Unified Control:** Integration of HVAC, lighting, and sensing into a single feedback loop.
-- **Environmental Resilience:** Hardened hardware and firmware for continuous operation in high-humidity environments.
-- **Operational Legibility:** Clear system architecture and interfaces built for long-term maintenance.
+## The build
+
+Custom ESP32-based circuit boards connect sensors and equipment. The firmware combines readings to guide environmental control, while thermal imaging adds a view of plant canopy temperature.
+
+InfluxDB stores the measurements and Grafana makes them available to inspect. That gives the controls a useful companion: a record of what the environment was doing and how the system responded.
+
+This is an ongoing project, with continuous operation in humid environments and long-term maintenance shaping the hardware and software.

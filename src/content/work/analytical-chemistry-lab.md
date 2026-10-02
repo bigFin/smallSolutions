@@ -1,9 +1,9 @@
 ---
 title: "Analytical Chemistry Lab"
-summary: "Analytical chemistry lab and data pipeline for evaluating plant material, metabolite composition, and production outcomes."
+summary: "A lab and analysis workflow for connecting plant chemistry with cultivation decisions."
 period: "2022"
 order: 6
-featured: true
+featured: false
 tags:
   - analytical-chemistry
   - lab-systems
@@ -14,16 +14,17 @@ coverAlt: "Analytical chemistry lab bench and instrumentation"
 links: []
 ---
 
-## System Overview
-Analytical chemistry laboratory and data pipeline for chemical characterization of cultivation and genotype variables.
+## Measuring what the plants produce
 
-## Architecture & Components
-- **Instrumentation:** Waters Acquity ARC uHPLC platform.
-- **Methods:** uHPLC methods for simultaneous quantitation of target compounds.
-- **Workflows:** Lab procedures for sample preparation, instrument operation, and reporting.
-- **Data Integration:** Feedback loops connecting chemical profiles to cultivation conditions.
+This lab work focused on measuring compounds in plant material and connecting those measurements to genetics and growing conditions.
 
-## System Capabilities
-- **Technical Validation:** Repeatable characterization through rigorous instrument qualification.
-- **High-Throughput Workflows:** Process design optimized for routine, high-volume analytical characterization.
-- **Operational Intelligence:** Rapid translation of chemical data into production decisions.
+The instrument was only one part of the work. Sample preparation, instrument qualification, methods, and reporting all needed to support repeatable analysis.
+
+## The workflow
+
+- A Waters Acquity ARC ultra-high-performance liquid chromatography (uHPLC) platform.
+- Methods for measuring multiple target compounds in one analysis.
+- Procedures for preparing samples, operating the instrument, and reporting results.
+- A data pipeline connecting chemical profiles to cultivation conditions.
+
+The purpose was to make chemical analysis useful for routine production decisions, not leave the results isolated in the lab.

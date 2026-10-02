@@ -1,16 +1,16 @@
 ---
 ---
 
-<canvas id="ascii-canvas"></canvas>
+<canvas id="ascii-canvas" aria-hidden="true"></canvas>
 
 <script>
-  import * as THREE from "three/webgpu";
-  import { buildAsciiMaterial } from "../lib/ascii-material.ts";
-  import { uniform, float, select } from "three/tsl";
   import { getTheme } from "../lib/themes";
   import { SITE_CONFIG } from "../lib/config";
-  import * as Shaders from "../lib/shaders/modes";
-  import { GpuSpectrogram } from "../lib/backgrounds/spectrogram/gpu-spectrogram";
+
+  let initialized = false;
+  let initializing = false;
+  let renderFailure: string | undefined;
+  let setRendering: ((enabled: boolean) => void) | undefined;
 
   async function init() {
     const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
@@ -26,19 +26,19 @@
     })());
 
     if (!supportsWebGPU) {
-      console.warn("WebGPU not supported or secure context required.");
-      const msg = document.createElement("div");
-      msg.style.position = "fixed";
-      msg.style.bottom = "10px";
-      msg.style.right = "10px";
-      msg.style.padding = "5px 10px";
-      msg.style.background = "rgba(255, 0, 0, 0.1)";
-      msg.style.color = "var(--muted)";
-      msg.style.fontSize = "10px";
-      msg.innerText = "WEBGL/STATIC FALLBACK";
-      document.body.appendChild(msg);
-      return;
+      throw new Error(window.isSecureContext
+        ? "WebGPU isn’t available in this browser or on this device. The site works without it."
+        : "Visuals need HTTPS or localhost. The site works without them.");
     }
+
+    // Keep the graphics engine out of the initial page download.
+    const [THREE, { buildAsciiMaterial }, { uniform, float, select }, Shaders, { GpuSpectrogram }] = await Promise.all([
+      import("three/webgpu"),
+      import("../lib/ascii-material.ts"),
+      import("three/tsl"),
+      import("../lib/shaders/modes"),
+      import("../lib/backgrounds/spectrogram/gpu-spectrogram"),
+    ]);
 
     const renderer = new THREE.WebGPURenderer({
       canvas,
@@ -48,11 +48,23 @@
     try {
       await renderer.init();
     } catch (e) {
-      console.error("WebGPU Renderer init failed:", e);
-      return;
+      renderer.dispose();
+      throw new Error("The graphics renderer couldn’t start. The site works without it.", { cause: e });
     }
 
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const stopAfterRenderFailure = (error: unknown) => {
+      renderFailure = "The graphics engine stopped. You can still read the site; reload the page to retry visuals.";
+      setRendering?.(false);
+      console.warn("Background rendering stopped.", error);
+      window.dispatchEvent(new CustomEvent("background-state-change", { detail: renderFailure }));
+    };
+    const onDeviceLost = renderer.onDeviceLost.bind(renderer);
+    renderer.onDeviceLost = (info: unknown) => {
+      onDeviceLost(info);
+      stopAfterRenderFailure(info);
+    };
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     const scene = new THREE.Scene();
@@ -125,7 +137,7 @@
     const noiseTime = uniform(float(0));
     const mousePosUniform = uniform(new THREE.Vector2(0.5, 0.5));
     
-    // Initial mode from localStorage or config
+    // Each visit starts quietly; experimental modes are explicitly selected.
     const normalizeMode = (mode: string | null | undefined) => {
       const cleanMode = mode?.trim();
       if (!cleanMode) return SITE_CONFIG.defaultShaderMode;
@@ -133,7 +145,7 @@
       if (lowerMode === "syntheticspectrogram") return "syntheticSpectrogram";
       return lowerMode;
     };
-    const initialMode = normalizeMode(localStorage.getItem("shader-mode"));
+    const initialMode = SITE_CONFIG.defaultShaderMode;
     const modeMap: Record<string, number> = { smoke: 0, warp: 1, grid: 2, topo: 3, lines: 4, lines2: 5, vibe: 6, stochastic: 7, nexus: 8, spectrogram: 9, syntheticSpectrogram: 10, "stochastic-plus": 11 };
     let activeMode = initialMode;
     const modeIndex = uniform(float(modeMap[initialMode] ?? 0)); 
@@ -252,7 +264,7 @@
     });
 
     // Initialize theme
-    const savedTheme = localStorage.getItem("theme") || SITE_CONFIG.defaultTheme;
+    const savedTheme = document.documentElement.dataset.theme || SITE_CONFIG.defaultTheme;
     updateThemeAssets(savedTheme);
 
     // 5. Material
@@ -345,7 +357,6 @@
       } else {
         renderer.render(scene, camera);
       }
-      requestAnimationFrame(animate);
     }
 
     window.addEventListener("resize", () => {
@@ -370,8 +381,51 @@
     });
     observer.observe(document.documentElement, { attributes: true });
 
-    requestAnimationFrame(animate);
+    const renderFrame = (time: number) => {
+      try {
+        animate(time);
+      } catch (error) {
+        stopAfterRenderFailure(error);
+      }
+    };
+    let renderingEnabled = false;
+    const updateAnimation = () => {
+      renderer.setAnimationLoop(renderingEnabled && !document.hidden && !renderFailure ? renderFrame : null);
+    };
+    setRendering = (enabled) => {
+      renderingEnabled = enabled;
+      updateAnimation();
+    };
+    document.addEventListener("visibilitychange", updateAnimation);
   }
 
-  init().catch((err) => console.error("WebGPU Init failed:", err));
+  window.addEventListener("background-enabled-change", async (event) => {
+    if (!(event as CustomEvent<boolean>).detail) {
+      setRendering?.(false);
+      return;
+    }
+    if (renderFailure) {
+      window.dispatchEvent(new CustomEvent("background-state-change", { detail: renderFailure }));
+      return;
+    }
+    if (initialized) {
+      setRendering?.(true);
+      return;
+    }
+    if (initializing) return;
+    initializing = true;
+    try {
+      await init();
+      if (renderFailure) return;
+      initialized = true;
+      setRendering?.(document.documentElement.dataset.backgroundEnabled === "true");
+      window.dispatchEvent(new CustomEvent("background-state-change", { detail: "ready" }));
+    } catch (error) {
+      console.warn("Could not start background visuals.", error);
+      const detail = error instanceof Error ? error.message : "Visuals are unavailable. The site works without them.";
+      window.dispatchEvent(new CustomEvent("background-state-change", { detail }));
+    } finally {
+      initializing = false;
+    }
+  });
 </script>

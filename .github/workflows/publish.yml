@@ -17,14 +17,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io
-      PUBLIC_SITE_BASE: /${{ github.event.repository.name }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        id: pages
       - uses: cachix/install-nix-action@v31
       - name: Build site
+        env:
+          PUBLIC_SITE_URL: ${{ steps.pages.outputs.origin }}
+          PUBLIC_SITE_BASE: ${{ steps.pages.outputs.base_path || '/' }}
         run: nix run .#build
       - name: Add nojekyll marker
         run: touch dist/.nojekyll

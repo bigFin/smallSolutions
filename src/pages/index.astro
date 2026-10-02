@@ -6,73 +6,69 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const featuredWork = (await getCollection("work"))
   .filter((entry) => entry.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
-
 const writing = (await getCollection("writing"))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 2);
-const baseUrl = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const resumeHref = `${baseUrl}resume/`;
+const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 ---
 
-<BaseLayout title="smallSolutions">
-  <section class="hero-panel">
-    <div class="hero-panel__inner">
-      <h1>Hardware, data, and production systems.</h1>
-    </div>
-    <div class="hero-panel__grid">
-      <div>
-        <p class="stat-label">Links</p>
-        <p class="stat-copy">
-          <a href="https://github.com/bigFin">GitHub</a>,
-          <a href="mailto:fsmall90@gmail.com">email</a>,
-          <a href={resumeHref}>resume</a>
-        </p>
-      </div>
+<BaseLayout title="Finlay Small | smallSolutions">
+  <section class="hero-panel" aria-labelledby="intro-heading">
+    <h1 id="intro-heading">I’m Finlay Small.</h1>
+    <p class="hero-copy">I build hardware, software, and things that connect the two.</p>
+    <p class="hero-note">
+      My work ranges from pedestrian traffic sensors to plant science and lab tools.
+      This is a collection of projects, notes, and experiments along the way.
+    </p>
+    <div class="hero-links">
+      <a href="#projects">Explore the projects</a>
+      <a href="#contact">Work with me</a>
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="section-heading">
-      <h2>Projects</h2>
+  <section class="content-section" id="projects" aria-labelledby="projects-heading">
+    <div class="section-heading section-heading--row">
+      <h2 id="projects-heading">Selected projects</h2>
+      <a href={`${baseUrl}projects/`}>All projects</a>
     </div>
-    <div class="card-grid">
+    <div class="project-list">
       {featuredWork.map((entry) => (
         <SectionCard
           href={`/projects/${entry.slug}/`}
+          headingLevel="h3"
           title={entry.data.title}
           summary={entry.data.summary}
           meta={entry.data.period}
-          tags={entry.data.tags}
         />
       ))}
     </div>
   </section>
 
-  <section class="content-section">
-    <div class="section-heading">
-      <h2>Writing</h2>
+  <section class="content-section" aria-labelledby="writing-heading">
+    <div class="section-heading section-heading--row">
+      <h2 id="writing-heading">Writing</h2>
+      <a href={`${baseUrl}writing/`}>All writing</a>
     </div>
-    <div class="card-grid">
+    <div class="project-list">
       {writing.map((entry) => (
         <SectionCard
           href={`/writing/${entry.slug}/`}
+          headingLevel="h3"
           title={entry.data.title}
           summary={entry.data.summary}
           meta={entry.data.date}
-          tags={entry.data.tags}
         />
       ))}
     </div>
   </section>
 
-  <section class="content-section content-section--fun">
-    <div class="section-heading">
-      <h2>Just for fun</h2>
-      <p class="section-copy">
-        Shells, shaders, and other detours live on GitHub.
-      </p>
-    </div>
+  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Work with me</h2>
+    <p>
+      Have a role or a project in mind? I’m interested in work that brings
+      hardware, software, and practical research together.
+      Tell me what you’re working on.
+    </p>
+    <a class="contact-link" href="mailto:fsmall90@gmail.com">fsmall90@gmail.com</a>
   </section>
 </BaseLayout>

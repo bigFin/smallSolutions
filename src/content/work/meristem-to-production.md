@@ -1,6 +1,6 @@
 ---
 title: "Meristem to Production"
-summary: "End-to-end propagation pipeline spanning pathogen elimination, long term storage, media optimization, and acclimatization."
+summary: "Connecting tissue culture, clean plant stock, and greenhouse production in one propagation process."
 period: "2019-2023"
 order: 4
 featured: false
@@ -15,18 +15,18 @@ coverCaption: "Plantlets three weeks after meristem dissection."
 links: []
 ---
 
-## System Overview
-Plant propagation system integrating meristem remediation, stock maintenance, and acclimatization.
+## Connecting the lab to production
 
-## Architecture & Components
-- **Pathogen Elimination:** Meristem tip dissection and screening protocols.
-- **Long term storage:** Genetic preservation and gene bank management.
-- **Media & Process:** Custom tissue culture media and propagation protocols.
-- **Acclimatization:** Transition systems from sterile environments to greenhouse settings.
-- **Feedback Loops:** Data connecting lab choices (nutrition, hormones, light) to production performance.
+A propagation process has to do more than produce healthy plants in a culture vessel. Those plants need to survive the move to a greenhouse, and the lab needs to maintain clean stock for the next cycle.
 
-## System Capabilities
-- **Production Integration:** Seamless operation within existing facility HVAC and irrigation infrastructure.
-- **Biosecurity Rigor:** Maintenance of clean genetic pipelines under real-world facility pressures.
-- **Commercial Scalability:** Scaled transition from research protocols to commercial production volumes.
-- **Genetic Preservation:** High-fidelity propagation ensuring long-term genetic integrity.
+This work connected meristem tip dissection and pathogen screening with stock storage, tissue culture media, and acclimatization.
+
+## The connected pieces
+
+- Meristem dissection and screening for pathogen elimination.
+- Long-term storage and maintenance of plant genetic material.
+- Media and propagation protocols adjusted through experimentation.
+- Acclimatization from sterile culture to greenhouse conditions.
+- Records linking nutrition, hormones, and light in the lab to later production performance.
+
+The process also had to fit the facility’s existing climate control and irrigation. Treating the lab and greenhouse as one system made production performance part of the feedback for lab decisions.

@@ -11,11 +11,10 @@ const writing = (await getCollection("writing")).sort((a, b) => a.data.order - b
     <div class="section-heading">
       <h1>Writing</h1>
       <p class="section-copy">
-        Short writing adapted from older material that still feels structurally useful. 
-        Notes on technical operations, biological systems, and the implementation of field-ready infrastructure.
+        Notes from research, building things, and figuring out how they work.
       </p>
     </div>
-    <div class="card-grid">
+    <div class="project-list">
       {writing.map((entry) => (
         <SectionCard
           href={`/writing/${entry.slug}/`}

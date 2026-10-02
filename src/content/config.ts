@@ -34,15 +34,4 @@ const writing = defineCollection({
   }),
 });
 
-const resume = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    audience: z.string(),
-    order: z.number(),
-    tags: z.array(z.string()).default([]),
-  }),
-});
-
-export const collections = { work, writing, resume };
+export const collections = { work, writing };

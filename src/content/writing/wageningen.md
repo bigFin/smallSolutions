@@ -1,6 +1,6 @@
 ---
-title: "Wageningen UR"
-summary: "A short note on the exchange year that pushed biotech and organic agriculture into the same frame."
+title: "An exchange year at Wageningen"
+summary: "What studying biotech alongside organic agriculture changed for me."
 date: "2012-2013"
 order: 1
 tags:
@@ -9,9 +9,9 @@ tags:
   - biotech
 ---
 
-The exchange at Wageningen was less important as a credential than as a conceptual shift.
+My exchange year at Wageningen changed how I thought about biotech and organic agriculture. I started seeing them as approaches I could use together, rather than separate camps.
 
-It was the point where biotech stopped looking separate from organic agriculture and started looking like part of the same practical toolkit. That framing stuck. The interesting work was not ideological purity in either direction, but knowing how to take the strongest methods from both and use them where they actually improved outcomes.
+The useful question became: which method helps with this particular problem? That left more room for experimentation than choosing a side first.
 
-That period set up a lot of what came afterward: applied plant science, process-minded experimentation, and a preference for systems that can move from theory into field or production use.
+I carried that approach into later plant-science work—trying methods in the lab, then finding out whether they were useful in a greenhouse or production setting.
 

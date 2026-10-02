@@ -1,6 +1,6 @@
 ---
 title: "Plantlet Finishing Chambers"
-summary: "Acclimatization infrastructure for plant tissue cultures."
+summary: "Controlled environments that help tissue-cultured plants make the transition from lab to greenhouse."
 period: "2021-2022"
 order: 3
 featured: true
@@ -14,17 +14,17 @@ coverAlt: "Plantlet finishing chamber"
 links: []
 ---
 
-## System Overview
-Environmental control chambers and bioreactors for the transition of plant tissue cultures to photoautotrophic growth.
+## From tissue culture to greenhouse
 
-## Architecture & Components
-- **Hardware:** Custom PCB design with ESP8266 control logic. Modular chamber construction.
-- **Firmware:** Embedded C++ control logic for humidity, irrigation, and ventilation.
-- **Sensing:** Integrated monitoring of temperature, humidity, and CO2.
-- **Infrastructure:** InfluxDB and Grafana for telemetry and process validation.
+Plants grown in tissue culture have to adjust to life outside a sterile container. These chambers control that transition, helping plantlets move towards growth supported by photosynthesis.
 
-## System Capabilities
-- **Acclimatization Stability:** Robust transition of plant material from sterile lab environments to greenhouse conditions.
-- **Operational Reliability:** Engineered for 24/7 continuous operation in agricultural environments.
-- **Modular Scale:** Transition from individual research units to high-volume production modules.
-- **Data-Driven Validation:** Integrated instrumentation for verifiable, repeatable biological protocols.
+The work brings plant science and embedded controls together. Humidity, irrigation, and ventilation need to be controllable, but the conditions also need to be recorded so a successful process can be repeated.
+
+## Inside the chambers
+
+- Custom circuit boards with ESP8266 controllers and C++ firmware.
+- Controls for humidity, irrigation, and ventilation.
+- Temperature, humidity, and CO₂ monitoring.
+- InfluxDB and Grafana for recording and reviewing conditions.
+
+The modular design supports both individual research chambers and larger production setups. The aim is to make acclimatization a repeatable part of production, rather than a separate experiment each time.

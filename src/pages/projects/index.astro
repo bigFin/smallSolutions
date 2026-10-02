@@ -11,10 +11,11 @@ const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.
     <div class="section-heading">
       <h1>Projects</h1>
       <p class="section-copy">
-        Systems, instruments, and translational builds.
+        Sensors, controllers, lab tools, and the software behind them.
+        A selection of my work across engineering and plant science.
       </p>
     </div>
-    <div class="card-grid">
+    <div class="project-list">
       {work.map((entry) => (
         <SectionCard
           href={`/projects/${entry.slug}/`}
