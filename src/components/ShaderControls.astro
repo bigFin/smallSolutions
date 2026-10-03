@@ -41,7 +41,8 @@ import { SITE_CONFIG } from "../lib/config";
     </div>
     <p class="shader-controls__hint">
       Visuals need WebGPU and HTTPS (or localhost). The microphone is optional
-      and its audio is processed in your browser. Closing this panel stops the experiment.
+      and its audio is processed in your browser. Closing this panel stops sound;
+      use “Turn visuals off” to pause the background.
     </p>
   </div>
 </details>
@@ -107,8 +108,11 @@ import { SITE_CONFIG } from "../lib/config";
     zenToggle.disabled = !enabled || !ready;
   };
 
-  const setEnabled = (value: boolean) => {
+  const setEnabled = (value: boolean, persist = false) => {
     enabled = value;
+    if (persist) {
+      try { localStorage.setItem("background-enabled", String(value)); } catch {}
+    }
     document.documentElement.dataset.backgroundEnabled = String(value);
     if (!enabled) {
       stopAudio();
@@ -140,7 +144,7 @@ import { SITE_CONFIG } from "../lib/config";
 
   visualsToggle.disabled = false;
   if (motionPreference.matches) visualsStatus.textContent = "Visuals off — reduced motion preferred";
-  visualsToggle.addEventListener("click", () => setEnabled(!enabled));
+  visualsToggle.addEventListener("click", () => setEnabled(!enabled, true));
   motionPreference.addEventListener("change", () => {
     if (motionPreference.matches) setEnabled(false);
   });
@@ -213,12 +217,29 @@ import { SITE_CONFIG } from "../lib/config";
     }
   });
   panel.addEventListener("toggle", () => {
-    if (!panel.open) setEnabled(false);
+    if (!panel.open) {
+      stopAudio();
+      setZen(false);
+    }
   });
   window.addEventListener("pagehide", () => {
     setEnabled(false);
     music?.stop();
     music = undefined;
+  });
+
+  const startDefaultBackground = () => {
+    let savedPreference: string | null = null;
+    try { savedPreference = localStorage.getItem("background-enabled"); } catch {}
+    if (window.isSecureContext && navigator.gpu && !motionPreference.matches && savedPreference !== "false") {
+      setEnabled(true);
+    }
+  };
+  // Wait for both deferred component scripts to install their event listeners.
+  if (document.readyState === "complete") startDefaultBackground();
+  else document.addEventListener("DOMContentLoaded", startDefaultBackground, { once: true });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) startDefaultBackground();
   });
 
   // iOS requires a separate user gesture for device-orientation permission.

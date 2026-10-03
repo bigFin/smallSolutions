@@ -46,7 +46,17 @@ test("local links, fragments, images, scripts, and styles resolve under the conf
   }
 });
 
-test("contact and optional experiments are present in the static homepage", () => {
+test("the self-hosted Gallant font and its license are published", () => {
+  const font = filesIn(output).find((file) => /gallant\.[^/]+\.woff2$/.test(file));
+  assert.ok(font, "bundled Gallant WOFF2 font");
+  assert.equal(readFileSync(font).toString("ascii", 0, 4), "wOF2");
+  assert.match(readFileSync(join(output, "fonts/gallant-LICENSE.txt"), "utf8"), /BSD 2-Clause License/);
+  for (const page of pages) {
+    assert.match(readFileSync(page, "utf8"), /<link[^>]*rel="preload"[^>]*as="font"/);
+  }
+});
+
+test("contact and silent experiment controls are present in the static homepage", () => {
   const html = readFileSync(join(output, "index.html"), "utf8");
   assert.match(html, /id="contact"/);
   assert.match(html, /href="mailto:fsmall90@gmail\.com"/);

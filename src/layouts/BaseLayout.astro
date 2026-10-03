@@ -4,6 +4,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import AsciiBackground from "../components/AsciiBackground.astro";
 import ShaderControls from "../components/ShaderControls.astro";
 import { SITE_CONFIG } from "../lib/config";
+import gallantFont from "../assets/fonts/gallant.woff2?url";
 import "../styles/global.css";
 
 interface Props {
@@ -31,6 +32,7 @@ const contactHref = `${baseUrl}#contact`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="preload" href={gallantFont} as="font" type="font/woff2" crossorigin="anonymous" />
     <script is:inline>
       try {
         const root = document.documentElement;
