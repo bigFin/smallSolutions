@@ -56,6 +56,16 @@ test("the self-hosted Gallant font and its license are published", () => {
   }
 });
 
+test("page typography uses the single Gallant font system", () => {
+  const css = filesIn(output).filter((file) => file.endsWith(".css"))
+    .map((file) => readFileSync(file, "utf8")).join("\n");
+  const families = [...css.matchAll(/(?:^|[;{])\s*font-family:\s*([^;}]+)/g)]
+    .map((match) => match[1].replace(/["']/g, "").trim());
+  assert.ok(families.includes("var(--font-site)"), "page text inherits the shared font");
+  assert.ok(families.every((family) => ["Sun Gallant", "var(--font-site)", "inherit"].includes(family)),
+    `unexpected font family: ${families.join(", ")}`);
+});
+
 test("contact and silent experiment controls are present in the static homepage", () => {
   const html = readFileSync(join(output, "index.html"), "utf8");
   assert.match(html, /id="contact"/);
