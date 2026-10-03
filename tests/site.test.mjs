@@ -114,6 +114,22 @@ test("the site keeps email contact without a hiring pitch, and exposes backgroun
   }
 });
 
+test("writing pages link to their neighbours in the index order without wrapping at the ends", () => {
+  const index = readFileSync(join(output, "writing/index.html"), "utf8");
+  const slugs = [...index.matchAll(/href="[^"]*\/writing\/([^"/]+)\/"/g)].map((match) => match[1]);
+  assert.ok(slugs.length > 1);
+  for (const [position, slug] of slugs.entries()) {
+    const html = readFileSync(join(output, "writing", slug, "index.html"), "utf8");
+    const nav = html.match(/<nav class="writing-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+    assert.ok(nav, `${slug}: end-of-post navigation`);
+    const links = [...nav.matchAll(/href="([^"]+)" rel="(prev|next)"/g)];
+    const expected = [];
+    if (position > 0) expected.push([`${base}writing/${slugs[position - 1]}/`, "prev"]);
+    if (position < slugs.length - 1) expected.push([`${base}writing/${slugs[position + 1]}/`, "next"]);
+    assert.deepEqual(links.map((match) => [match[1], match[2]]), expected, slug);
+  }
+});
+
 test("the four Nepal posts retain their dates, source links, and local photographs", () => {
   const posts = [
     ["2015-himalayan-earthquake", "2015-04-28", 10],

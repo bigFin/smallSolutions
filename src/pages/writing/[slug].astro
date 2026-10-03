@@ -3,14 +3,14 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
-  const entries = await getCollection("writing");
-  return entries.map((entry) => ({
+  const entries = (await getCollection("writing")).sort((a, b) => a.data.order - b.data.order);
+  return entries.map((entry, index) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: { entry, previous: entries[index - 1], next: entries[index + 1] },
   }));
 }
 
-const { entry } = Astro.props;
+const { entry, previous, next } = Astro.props;
 const { Content } = await render(entry);
 const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 ---
@@ -40,5 +40,21 @@ const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
     <div class="prose">
       <Content />
     </div>
+    {(previous || next) && (
+      <nav class="writing-nav" aria-label="More writing">
+        {previous && (
+          <a href={`${baseUrl}writing/${previous.slug}/`} rel="prev">
+            <span class="writing-nav__direction">Previous entry</span>
+            <span>{previous.data.title}</span>
+          </a>
+        )}
+        {next && (
+          <a class="writing-nav__next" href={`${baseUrl}writing/${next.slug}/`} rel="next">
+            <span class="writing-nav__direction">Next entry</span>
+            <span>{next.data.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
   </article>
 </BaseLayout>
