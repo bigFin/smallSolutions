@@ -23,6 +23,8 @@ const work = (await getCollection("work")).sort((a, b) => a.data.order - b.data.
           summary={entry.data.summary}
           meta={entry.data.period}
           tags={entry.data.tags}
+          image={entry.data.cover}
+          imageAlt={entry.data.coverAlt}
         />
       ))}
     </div>

@@ -9,8 +9,16 @@ tags:
   - automation
   - controls
   - process
-cover: "/assets/plantlet-finishing.jpg"
-coverAlt: "Plantlet finishing chamber"
+cover: "../../assets/projects/plantlet-chambers.webp"
+coverAlt: "Clear plantlet finishing chambers on a wire rack, with fans, tubing, and control hardware attached"
+coverCaption: "The chamber build: plantlets, ventilation, tubing, and control hardware together on the production rack."
+gallery:
+  - src: "../../assets/projects/plantlet-room.webp"
+    alt: "A room with rows of clear plant chambers on benches beneath strip lighting"
+    caption: "The wider setup, with chambers arranged on benches under lights."
+  - src: "../../assets/projects/plantlet-roots.webp"
+    alt: "Side view through a clear chamber showing plantlets held in propagation plugs"
+    caption: "Plantlets in propagation plugs inside the chamber."
 links: []
 ---
 
@@ -22,9 +30,9 @@ The work brings plant science and embedded controls together. Humidity, irrigati
 
 ## Inside the chambers
 
-- Custom circuit boards with ESP8266 controllers and C++ firmware.
+- Custom circuit boards designed in KiCad, with ESP8266 controllers and C++ firmware.
 - Controls for humidity, irrigation, and ventilation.
 - Temperature, humidity, and CO₂ monitoring.
-- InfluxDB and Grafana for recording and reviewing conditions.
+- InfluxDB and Grafana, running in Docker on Linux, for recording and reviewing conditions.
 
 The modular design supports both individual research chambers and larger production setups. The aim is to make acclimatization a repeatable part of production, rather than a separate experiment each time.

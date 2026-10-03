@@ -32,7 +32,12 @@ test("local links, fragments, images, scripts, and styles resolve under the conf
   for (const page of pages) {
     const html = readFileSync(page, "utf8");
     const url = new URL(base + relative(output, page).replace(/index\.html$/, ""), origin);
-    for (const [, value] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+    const targets = [
+      ...[...html.matchAll(/\b(?:href|src)="([^"]+)"/g)].map((match) => match[1]),
+      ...[...html.matchAll(/\bsrcset="([^"]+)"/g)].flatMap((match) =>
+        match[1].split(",").map((candidate) => candidate.trim().split(/\s+/)[0])),
+    ];
+    for (const value of targets) {
       const target = new URL(value.replaceAll("&amp;", "&"), url);
       if (target.origin !== origin) continue;
       assert.ok(target.pathname.startsWith(base), `${page}: link escapes base: ${value}`);
@@ -42,6 +47,37 @@ test("local links, fragments, images, scripts, and styles resolve under the conf
         const id = decodeURIComponent(target.hash.slice(1));
         assert.ok(readFileSync(path, "utf8").includes(`id="${id}"`), `${page}: missing fragment: ${value}`);
       }
+    }
+  }
+});
+
+test("project images are local, responsive, described, and dimensioned", () => {
+  const projectPages = pages.filter((page) => relative(output, page).startsWith("projects/"));
+  for (const page of [join(output, "index.html"), ...projectPages]) {
+    const html = readFileSync(page, "utf8");
+    const images = [...html.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
+    assert.ok(images.length > 0, `${page}: project imagery is present`);
+    for (const image of images) {
+      const attributes = Object.fromEntries([...image.matchAll(/([\w:-]+)="([^"]*)"/g)]
+        .map((match) => [match[1], match[2]]));
+      assert.ok(attributes.src.startsWith(`${base}_astro/`), `${page}: self-hosted image`);
+      assert.ok(attributes.alt.trim(), `${page}: meaningful alternative text`);
+      assert.ok(Number(attributes.width) > 0 && Number(attributes.height) > 0, `${page}: intrinsic dimensions`);
+      assert.ok(attributes.srcset && attributes.sizes, `${page}: responsive sources`);
+    }
+    if (page === join(output, "index.html") || page === join(output, "projects/index.html")) {
+      assert.ok(images.every((image) => image.includes('loading="lazy"')), `${page}: previews load lazily`);
+      continue;
+    }
+    const cover = html.match(/<figure class="detail-page__cover">([\s\S]*?)<\/figure>/)?.[1];
+    assert.ok(cover, `${page}: project cover`);
+    assert.match(cover, /loading="eager"/);
+    assert.match(cover, /<figcaption>/);
+    assert.match(cover, /aria-label="View full-size image:/);
+    for (const [, figure] of html.matchAll(/<figure class="project-gallery__figure[^\"]*">([\s\S]*?)<\/figure>/g)) {
+      assert.match(figure, /loading="lazy"/, `${page}: gallery images load lazily`);
+      assert.match(figure, /<figcaption>/, `${page}: gallery images have captions`);
+      assert.match(figure, /aria-label="View full-size image:/, `${page}: full-size image link`);
     }
   }
 });

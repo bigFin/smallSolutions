@@ -9,6 +9,9 @@ tags:
   - analytics
   - operations
   - ML
+cover: "../../assets/projects/avenue-dashboard.webp"
+coverAlt: "Early people-counter dashboard with northbound and southbound traffic plotted over several days"
+coverCaption: "An early prototype dashboard, May–June 2023. Directional counts and daily patterns made the sensor output visible."
 links:
   - label: "Website"
     href: "https://avenueintelligence.com/"
@@ -18,7 +21,7 @@ links:
 
 A pedestrian traffic sensor needs to work where it is installed—not just where power and connectivity are convenient. Avenue combines low-power sensing hardware with software for understanding how people move through a place.
 
-My work spans the circuit boards, firmware, and data infrastructure. Those pieces have to work together: power use affects how often a device can report, and unreliable connections affect how the readings are collected and interpreted.
+I co-founded Avenue Intelligence. My work spans the circuit boards, firmware, and data infrastructure. Those pieces have to work together: power use affects how often a device can report, and unreliable connections affect how the readings are collected and interpreted.
 
 ## What’s involved
 

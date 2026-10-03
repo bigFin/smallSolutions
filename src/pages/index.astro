@@ -39,6 +39,8 @@ const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
           title={entry.data.title}
           summary={entry.data.summary}
           meta={entry.data.period}
+          image={entry.data.cover}
+          imageAlt={entry.data.coverAlt}
         />
       ))}
     </div>

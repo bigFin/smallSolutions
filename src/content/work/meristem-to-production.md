@@ -9,9 +9,13 @@ tags:
   - propagation
   - biotech
   - process
-cover: "/assets/meristem-3-weeks.png"
-coverAlt: "Plantlets three weeks after meristem dissection"
-coverCaption: "Plantlets three weeks after meristem dissection."
+cover: "../../assets/projects/meristem-three-weeks.webp"
+coverAlt: "Small plantlets in individual culture vessels three weeks after meristem dissection"
+coverCaption: "Three weeks after meristem dissection, with the developing plantlets held in individual culture vessels."
+gallery:
+  - src: "../../assets/projects/meristem-two-weeks.webp"
+    alt: "A rack of labelled culture tubes containing plant material two weeks after meristem dissection"
+    caption: "An earlier stage from the archive: labelled cultures two weeks after dissection."
 links: []
 ---
 
@@ -19,7 +23,7 @@ links: []
 
 A propagation process has to do more than produce healthy plants in a culture vessel. Those plants need to survive the move to a greenhouse, and the lab needs to maintain clean stock for the next cycle.
 
-This work connected meristem tip dissection and pathogen screening with stock storage, tissue culture media, and acclimatization.
+This work connected meristem tip dissection and pathogen screening with stock storage, tissue culture media, and acclimatization. The photographs record the small, early stages of that process: labelled cultures at two weeks and developing plantlets at three weeks after dissection.
 
 ## The connected pieces
 

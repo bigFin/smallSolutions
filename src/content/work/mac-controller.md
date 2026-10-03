@@ -10,8 +10,9 @@ tags:
   - HVAC
   - sensing
   - sensor-fusion
-cover: "/assets/mac-controller.png"
-coverAlt: "MAC controller hardware and dashboard"
+cover: "../../assets/projects/mac-telemetry.webp"
+coverAlt: "Controller telemetry showing fan output, vapour pressure deficit, light output, and plant temperature over time"
+coverCaption: "A control run in Grafana: fan output and vapour pressure deficit above; lighting and temperature measurements below."
 links: []
 ---
 
@@ -21,7 +22,7 @@ Room conditions don’t tell the whole story of what a plant is experiencing. MA
 
 ## The build
 
-Custom ESP32-based circuit boards connect sensors and equipment. The firmware combines readings to guide environmental control, while thermal imaging adds a view of plant canopy temperature.
+I designed the ESP32-based circuit boards in KiCad to connect sensors and equipment. The firmware combines readings to guide environmental control, while thermal imaging adds a view of plant canopy temperature.
 
 InfluxDB stores the measurements and Grafana makes them available to inspect. That gives the controls a useful companion: a record of what the environment was doing and how the system responded.
 
