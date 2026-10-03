@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
+---
+
+<BaseLayout title="Page not found | smallSolutions" description="Find your way back to the projects and writing archive.">
+  <section class="content-section" aria-labelledby="missing-page-heading">
+    <div class="section-heading">
+      <h1 id="missing-page-heading">That page isn’t here.</h1>
+      <p class="section-copy">
+        If you followed an old link, the projects and writing archive are a good place to look.
+      </p>
+    </div>
+    <nav class="link-list" aria-label="Find a page">
+      <a href={baseUrl}>Home</a>
+      <a href={`${baseUrl}projects/`}>Projects</a>
+      <a href={`${baseUrl}writing/`}>Writing</a>
+    </nav>
+  </section>
+</BaseLayout>

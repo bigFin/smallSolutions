@@ -28,6 +28,24 @@ test("the site builds its main sections without publishing résumé routes or dr
   }
 });
 
+test("GitHub Pages gets a custom 404 with recovery links that work from nested missing URLs", () => {
+  const html = readFileSync(join(output, "404.html"), "utf8");
+  assert.match(html, /<title>Page not found \| smallSolutions<\/title>/);
+  const navigation = html.match(/<nav class="link-list" aria-label="Find a page">([\s\S]*?)<\/nav>/)?.[1];
+  assert.ok(navigation);
+  const links = [...navigation.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(links, [base, `${base}projects/`, `${base}writing/`]);
+  const missingUrl = new URL(`${base}old/blog/missing-post/`, origin);
+  for (const [, value] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
+    if (value.startsWith("#")) continue;
+    const target = new URL(value.replaceAll("&amp;", "&"), missingUrl);
+    if (target.origin !== origin) continue;
+    assert.ok(target.pathname.startsWith(base), value);
+    const path = join(output, decodeURIComponent(target.pathname.slice(base.length)), target.pathname.endsWith("/") ? "index.html" : "");
+    assert.ok(existsSync(path), `404 resource breaks at a nested URL: ${value}`);
+  }
+});
+
 test("local links, fragments, images, scripts, and styles resolve under the configured base", () => {
   for (const page of pages) {
     const html = readFileSync(page, "utf8");
