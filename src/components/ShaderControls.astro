@@ -2,12 +2,12 @@
 import { SITE_CONFIG } from "../lib/config";
 ---
 
-<details class="shader-controls" data-default-mode={SITE_CONFIG.defaultShaderMode}>
-  <summary>Play with the background</summary>
+<details id="background" class="shader-controls" data-default-mode={SITE_CONFIG.defaultShaderMode}>
+  <summary>Background & sound</summary>
   <div class="shader-controls__body">
     <p>
-      An experiment in shaders and sound. Try the visuals on their own,
-      add generated music, or use your microphone to drive the spectrogram.
+      The background is an experiment too. Try another pattern, add some music,
+      or let your microphone drive the spectrogram.
     </p>
     <noscript>These experiments need JavaScript. The rest of the site doesn’t.</noscript>
     <div class="shader-controls__row">
@@ -40,9 +40,9 @@ import { SITE_CONFIG } from "../lib/config";
       <span class="shader-status" id="motion-status" role="status"></span>
     </div>
     <p class="shader-controls__hint">
-      Visuals need WebGPU and HTTPS (or localhost). The microphone is optional
-      and its audio is processed in your browser. Closing this panel stops sound;
-      use “Turn visuals off” to pause the background.
+      Visuals start on and sound starts off. Reduced motion and your saved
+      on/off choice are respected. Microphone audio stays in your browser
+      and needs HTTPS. Closing this panel stops sound.
     </p>
   </div>
 </details>
@@ -51,6 +51,12 @@ import { SITE_CONFIG } from "../lib/config";
   import { createGenerativeMusic } from "../lib/music/generative";
 
   const panel = document.querySelector<HTMLDetailsElement>(".shader-controls")!;
+  document.querySelector<HTMLAnchorElement>("[data-open-background]")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    panel.open = true;
+    panel.scrollIntoView({ block: "start" });
+    panel.querySelector("summary")?.focus({ preventScroll: true });
+  });
   const visualsToggle = document.querySelector<HTMLButtonElement>("#visuals-toggle")!;
   const visualsStatus = document.querySelector<HTMLElement>("#visuals-status")!;
   const experimentControls = document.querySelector<HTMLFieldSetElement>("#experiment-controls")!;
@@ -231,7 +237,7 @@ import { SITE_CONFIG } from "../lib/config";
   const startDefaultBackground = () => {
     let savedPreference: string | null = null;
     try { savedPreference = localStorage.getItem("background-enabled"); } catch {}
-    if (window.isSecureContext && navigator.gpu && !motionPreference.matches && savedPreference !== "false") {
+    if (!motionPreference.matches && savedPreference !== "false") {
       setEnabled(true);
     }
   };

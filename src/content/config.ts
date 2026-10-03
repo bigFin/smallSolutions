@@ -35,6 +35,12 @@ const writing = defineCollection({
     title: z.string(),
     summary: z.string(),
     date: z.string(),
+    source: z.object({
+      label: z.string(),
+      href: z.string().url(),
+      published: z.string().date(),
+    }).optional(),
+    archiveNote: z.string().optional(),
     order: z.number(),
     tags: z.array(z.string()),
   }),

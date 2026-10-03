@@ -22,7 +22,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 const currentPath = Astro.url.pathname.replace(basePath, "").replace(/\/$/, "") || "/";
 const homeHref = baseUrl;
-const contactHref = `${baseUrl}#contact`;
 ---
 
 <!doctype html>
@@ -49,10 +48,9 @@ const contactHref = `${baseUrl}#contact`;
           <span class="site-mark__label">smallSolutions</span>
         </a>
         <nav class="site-nav" aria-label="Primary">
-          <NavLink href="/" label="Home" currentPath={currentPath} />
           <NavLink href="/projects" label="Projects" currentPath={currentPath} />
           <NavLink href="/writing" label="Writing" currentPath={currentPath} />
-          <a href={contactHref}>Work with me</a>
+          <a href="#background" data-open-background>Background</a>
         </nav>
         <ThemeToggle />
       </header>
@@ -65,7 +63,7 @@ const contactHref = `${baseUrl}#contact`;
         <p class="site-footer__mark">Finlay Small</p>
         <div class="footer-links">
           <a href="https://github.com/bigFin">GitHub</a>
-          <a href="mailto:fsmall90@gmail.com">Email</a>
+          <a href="mailto:fsmall90@gmail.com">fsmall90@gmail.com</a>
         </div>
       </footer>
     </div>

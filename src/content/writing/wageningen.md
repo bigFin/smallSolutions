@@ -1,17 +1,15 @@
 ---
 title: "An exchange year at Wageningen"
-summary: "What studying biotech alongside organic agriculture changed for me."
+summary: "A short note from my exchange year in the Netherlands."
 date: "2012-2013"
-order: 1
+order: 6
 tags:
   - education
   - agriculture
   - biotech
 ---
 
-My exchange year at Wageningen changed how I thought about biotech and organic agriculture. I started seeing them as approaches I could use together, rather than separate camps.
+A short note from the old site, about my 2012–2013 exchange at Wageningen:
 
-The useful question became: which method helps with this particular problem? That left more room for experimentation than choosing a side first.
-
-I carried that approach into later plant-science work—trying methods in the lab, then finding out whether they were useful in a greenhouse or production setting.
+> International exchange program was a transformative experience. This is where I was first introduced to the fusion of biotech and organic agriculture. Here I learned to take the best of both worlds and apply it for our future.
 

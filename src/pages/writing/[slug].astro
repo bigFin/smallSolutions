@@ -22,12 +22,21 @@ const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
       <h1>{entry.data.title}</h1>
       <p class="detail-page__summary">{entry.data.summary}</p>
       <div class="detail-page__meta-row">
-        <span>{entry.data.date}</span>
+        {entry.data.source
+          ? <time datetime={entry.data.source.published}>{entry.data.date}</time>
+          : <span>{entry.data.date}</span>}
         <ul class="tag-list">
           {entry.data.tags.map((tag) => <li>{tag}</li>)}
         </ul>
       </div>
     </header>
+    {entry.data.source && (
+      <aside class="archive-note" aria-label="About this archived post">
+        <p>Originally published on <a href={entry.data.source.href}>{entry.data.source.label}</a>.
+          Restored here with the original text and photographs.</p>
+        {entry.data.archiveNote && <p>{entry.data.archiveNote}</p>}
+      </aside>
+    )}
     <div class="prose">
       <Content />
     </div>

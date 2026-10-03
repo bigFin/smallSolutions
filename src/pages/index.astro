@@ -14,21 +14,17 @@ const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
 
 <BaseLayout title="Finlay Small | smallSolutions">
   <section class="hero-panel" aria-labelledby="intro-heading">
-    <h1 id="intro-heading">I’m Finlay Small.</h1>
-    <p class="hero-copy">I build hardware, software, and things that connect the two.</p>
+    <h1 id="intro-heading">Hi, I’m Finlay.</h1>
+    <p class="hero-copy">I make hardware and software.</p>
     <p class="hero-note">
-      My work ranges from pedestrian traffic sensors to plant science and lab tools.
-      This is a collection of projects, notes, and experiments along the way.
+      This is where I keep a record of my projects and experiments,
+      with some older writing from my time in the lab and on the road.
     </p>
-    <div class="hero-links">
-      <a href="#projects">Explore the projects</a>
-      <a href="#contact">Work with me</a>
-    </div>
   </section>
 
   <section class="content-section" id="projects" aria-labelledby="projects-heading">
     <div class="section-heading section-heading--row">
-      <h2 id="projects-heading">Selected projects</h2>
+      <h2 id="projects-heading">Projects</h2>
       <a href={`${baseUrl}projects/`}>All projects</a>
     </div>
     <div class="project-list">
@@ -62,15 +58,5 @@ const baseUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/`;
         />
       ))}
     </div>
-  </section>
-
-  <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-    <h2 id="contact-heading">Work with me</h2>
-    <p>
-      Have a role or a project in mind? I’m interested in work that brings
-      hardware, software, and practical research together.
-      Tell me what you’re working on.
-    </p>
-    <a class="contact-link" href="mailto:fsmall90@gmail.com">fsmall90@gmail.com</a>
   </section>
 </BaseLayout>

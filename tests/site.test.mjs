@@ -102,11 +102,39 @@ test("page typography uses the single Gallant font system", () => {
     `unexpected font family: ${families.join(", ")}`);
 });
 
-test("contact and silent experiment controls are present in the static homepage", () => {
-  const html = readFileSync(join(output, "index.html"), "utf8");
-  assert.match(html, /id="contact"/);
-  assert.match(html, /href="mailto:fsmall90@gmail\.com"/);
-  assert.match(html, /<details class="shader-controls"[^>]*>/);
-  assert.doesNotMatch(html, /<details class="shader-controls"[^>]*\bopen\b/);
-  assert.match(html, /id="visuals-toggle"[^>]*aria-pressed="false"/);
+test("the site keeps email contact without a hiring pitch, and exposes background controls", () => {
+  for (const page of pages) {
+    const html = readFileSync(page, "utf8");
+    assert.doesNotMatch(html, /Work with me|contact-section|id="contact"/);
+    assert.match(html, /href="mailto:fsmall90@gmail\.com"/);
+    assert.match(html, /href="#background" data-open-background/);
+    assert.match(html, /<details id="background" class="shader-controls"[^>]*>/);
+    assert.doesNotMatch(html, /<details id="background"[^>]*\bopen\b/);
+    assert.match(html, /id="audio-off"[^>]*aria-pressed="true"/);
+  }
+});
+
+test("the four Nepal posts retain their dates, source links, and local photographs", () => {
+  const posts = [
+    ["2015-himalayan-earthquake", "2015-04-28", 10],
+    ["high-up-in-the-hills", "2015-02-18", 16],
+    ["swayambhunath", "2015-02-18", 9],
+    ["down-the-rabbit-hole", "2015-02-10", 2],
+  ];
+  for (const [slug, date, count] of posts) {
+    const html = readFileSync(join(output, "writing", slug, "index.html"), "utf8");
+    assert.ok(html.includes(`<time datetime="${date}">`), `${slug}: original publication date`);
+    assert.match(html, /href="https:\/\/nepalcando\.blogspot\.com\/2015\//);
+    assert.match(html, /About this archived post/);
+    const images = [...html.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
+    assert.equal(images.length, count, `${slug}: all original photos restored`);
+    for (const image of images) {
+      assert.ok(image.includes(`src="${base}_astro/`), `${slug}: locally hosted photo`);
+      assert.match(image, /alt="[^"]+"/);
+      assert.match(image, /width="\d+"/);
+      assert.match(image, /height="\d+"/);
+      assert.match(image, /loading="lazy"/);
+    }
+    assert.doesNotMatch(html, /href="[^"]*(?:youcaring|goo\.gl)/);
+  }
 });

@@ -16,21 +16,6 @@
     const canvas = document.getElementById("ascii-canvas") as HTMLCanvasElement;
     if (!canvas) return;
 
-    const supportsWebGPU = !!navigator.gpu && (await (async () => {
-      try {
-        const adapter = await navigator.gpu.requestAdapter();
-        return !!adapter;
-      } catch (e) {
-        return false;
-      }
-    })());
-
-    if (!supportsWebGPU) {
-      throw new Error(window.isSecureContext
-        ? "WebGPU isn’t available in this browser or on this device. The site works without it."
-        : "Visuals need HTTPS or localhost. The site works without them.");
-    }
-
     // Keep the graphics engine out of the initial page download.
     const [THREE, { buildAsciiMaterial }, { uniform, float, select }, Shaders, { GpuSpectrogram }] = await Promise.all([
       import("three/webgpu"),
@@ -44,12 +29,17 @@
       canvas,
       antialias: false,
       alpha: true,
+      // These are fragment shaders, not GPU compute. Use Three's WebGL2
+      // backend so the background also works in browsers without WebGPU.
+      forceWebGL: true,
     });
     try {
       await renderer.init();
     } catch (e) {
-      renderer.dispose();
-      throw new Error("The graphics renderer couldn’t start. The site works without it.", { cause: e });
+      // Disposing an uninitialized Three renderer calls init() again through
+      // setAnimationLoop(), leaving the failed init promise unhandled.
+      if (renderer.initialized) renderer.dispose();
+      throw new Error("This browser couldn’t start WebGL2. The site works without the background.", { cause: e });
     }
 
     const stopAfterRenderFailure = (error: unknown) => {
