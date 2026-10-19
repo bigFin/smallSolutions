@@ -135,24 +135,31 @@ test("project image viewers enhance full-size links without replacing their fall
   }
 });
 
-test("the self-hosted Gallant font and its license are published", () => {
-  const font = filesIn(output).find((file) => /gallant\.[^/]+\.woff2$/.test(file));
-  assert.ok(font, "bundled Gallant WOFF2 font");
-  assert.equal(readFileSync(font).toString("ascii", 0, 4), "wOF2");
+test("the self-hosted reading and display fonts are published with their licenses", () => {
+  for (const name of ["gallant", "ibm-plex-sans-regular", "ibm-plex-sans-italic", "ibm-plex-sans-semibold"]) {
+    const font = filesIn(output).find((file) => new RegExp(`/${name}\\.[^/]+\\.woff2$`).test(file));
+    assert.ok(font, `bundled ${name} WOFF2 font`);
+    assert.equal(readFileSync(font).toString("ascii", 0, 4), "wOF2");
+  }
   assert.match(readFileSync(join(output, "fonts/gallant-LICENSE.txt"), "utf8"), /BSD 2-Clause License/);
+  assert.match(readFileSync(join(output, "fonts/ibm-plex-sans-LICENSE.txt"), "utf8"), /SIL OPEN FONT LICENSE Version 1\.1/);
   for (const page of pages) {
-    assert.match(readFileSync(page, "utf8"), /<link[^>]*rel="preload"[^>]*as="font"/);
+    const html = readFileSync(page, "utf8");
+    for (const name of ["gallant", "ibm-plex-sans-regular"]) {
+      assert.match(html, new RegExp(`<link[^>]*rel="preload"[^>]*href="${base}_astro/${name}\\.[^"]+\\.woff2"[^>]*as="font"`),
+        `${page}: preload the reading and display faces`);
+    }
   }
 });
 
-test("page typography uses the single Gallant font system", () => {
+test("page typography separates reading text from display headings", () => {
   const css = filesIn(output).filter((file) => file.endsWith(".css"))
     .map((file) => readFileSync(file, "utf8")).join("\n");
-  const families = [...css.matchAll(/(?:^|[;{])\s*font-family:\s*([^;}]+)/g)]
-    .map((match) => match[1].replace(/["']/g, "").trim());
-  assert.ok(families.includes("var(--font-site)"), "page text inherits the shared font");
-  assert.ok(families.every((family) => ["Sun Gallant", "var(--font-site)", "inherit"].includes(family)),
-    `unexpected font family: ${families.join(", ")}`);
+  assert.match(css, /--font-body:\s*["']?IBM Plex Sans/);
+  assert.match(css, /--font-heading:\s*["']?Sun Gallant/);
+  assert.match(css, /body\s*\{[^}]*font-family:\s*var\(--font-body\)/);
+  assert.match(css, /h1(?:\s*,\s*h[1-6])+\s*\{[^}]*font-family:\s*var\(--font-heading\)/);
+  assert.match(css, /code(?:\s*,\s*(?:kbd|pre|samp))+\s*\{[^}]*font-family:\s*var\(--font-code\)/);
 });
 
 test("the site keeps email contact and exposes background controls", () => {

@@ -7,5 +7,8 @@ export default defineConfig({
   output: "static",
   site,
   base,
+  server: {
+    allowedHosts: ["sika.bone-scylla.ts.net"],
+  },
 });
 
