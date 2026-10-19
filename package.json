@@ -14,5 +14,8 @@
     "astro": "^5.7.4",
     "three": "^0.183.2",
     "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/three": "~0.183.1"
   }
 }

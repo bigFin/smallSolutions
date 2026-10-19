@@ -49,7 +49,7 @@
       window.dispatchEvent(new CustomEvent("background-state-change", { detail: renderFailure }));
     };
     const onDeviceLost = renderer.onDeviceLost.bind(renderer);
-    renderer.onDeviceLost = (info: unknown) => {
+    renderer.onDeviceLost = (info) => {
       onDeviceLost(info);
       stopAfterRenderFailure(info);
     };

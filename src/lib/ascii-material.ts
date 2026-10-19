@@ -22,7 +22,7 @@ export type AsciiMaterialOptions = {
   glyphTexture: THREE.Texture;
   colorTexture: THREE.Texture;
   sourceTexture: THREE.Texture;
-  gradientTexture: THREE.DataTexture;
+  gradientTexture: THREE.Texture;
   gradientRowCount: number;
   useRampDither: boolean;
   useGradientSignal: boolean;

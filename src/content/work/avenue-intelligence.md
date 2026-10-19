@@ -1,6 +1,6 @@
 ---
 title: "Avenue Intelligence"
-summary: "Low-power pedestrian traffic sensors and the software that turns their readings into useful data."
+summary: "An analytics app that presents pedestrian traffic information and helps manage a fleet of devices."
 period: "2023-Present"
 order: 1
 featured: true
@@ -10,25 +10,30 @@ tags:
   - operations
   - ML
 cover: "../../assets/projects/avenue-dashboard.webp"
-coverAlt: "Early people-counter dashboard with northbound and southbound traffic plotted over several days"
-coverCaption: "An early prototype dashboard, May–June 2023. Directional counts and daily patterns made the sensor output visible."
+coverAlt: "Avenue Intelligence dashboard showing traffic totals, location comparisons, daily counts, and a deployment map, with location names masked"
+coverCaption: "Avenue Intelligence’s analytics dashboard, with location names masked. Select the image to view it at full size."
 links:
   - label: "Website"
     href: "https://avenueintelligence.com/"
 ---
 
-## Counting foot traffic outside the lab
+I’m technical co-founder of Avenue Intelligence. The system routinely counts 4 to 5 million people a month and has counted hundreds of millions in total, with customer deployments across Canada and the US.
 
-A pedestrian traffic sensor needs to work where it is installed—not just where power and connectivity are convenient. Avenue combines low-power sensing hardware with software for understanding how people move through a place.
+## The rebuild
 
-I co-founded Avenue Intelligence. My work spans the circuit boards, firmware, and data infrastructure. Those pieces have to work together: power use affects how often a device can report, and unreliable connections affect how the readings are collected and interpreted.
+The first version was a small team effort, built as we grew. Running it helped me understand what mattered in production. I have since rebuilt the stack myself, following experiments with different storage and analytics options.
 
-## What’s involved
+The rebuilt platform reflects what worked best at our scale:
 
-- Custom circuit boards designed for low power use and manufacturing.
-- Firmware that manages power and radio communication when connectivity is weak.
-- Multiple communication paths, including AWS IoT Core.
-- Object storage, ClickHouse, and DuckDB for storing and analysing readings.
-- Location and time data to put the sensor readings in context.
+- ChirpStack for ingestion from the sensor fleet.
+- Delta Lake on Azure Blob for storage.
+- Postgres for day-to-day application transactions (OLTP).
+- DuckDB for analytical queries (OLAP).
 
-Processing at the device is part of the privacy approach. The system is designed for off-grid deployments and intermittent connections, with a path from prototypes to production hardware.
+I keep ClickHouse as an experimental second backend, which I may return to if customer numbers and workloads grow. Some infrastructure still runs on AWS.
+
+## Building and operating it
+
+The devices are designed for low power use, long battery life, and long-range LoRa radio communication. My work spans the custom sensor hardware, firmware, data pipeline, ML layer, and web app.
+
+I maintain the rebuilt stack in a monorepo and run it on NixOS and Kubernetes. I build and operate it as a team of one, including diagnosing failures.

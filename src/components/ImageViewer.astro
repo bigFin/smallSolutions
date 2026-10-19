@@ -1,0 +1,210 @@
+---
+import "../styles/image-viewer.css";
+---
+
+<dialog
+  id="image-viewer"
+  class="image-viewer"
+  aria-labelledby="image-viewer-title"
+  data-mode="fit"
+>
+  <div class="image-viewer__toolbar">
+    <h2 class="image-viewer__title" id="image-viewer-title">Project image</h2>
+    <div class="image-viewer__controls" role="group" aria-label="Image view">
+      <button type="button" data-image-viewer-mode="fit" aria-pressed="true">Fit width</button>
+      <button type="button" data-image-viewer-mode="actual" aria-pressed="false">Actual size</button>
+      <a class="image-viewer__original" href="#">Open original</a>
+      <button type="button" class="image-viewer__close" data-image-viewer-close autofocus>Close</button>
+    </div>
+  </div>
+  <div
+    class="image-viewer__stage"
+    tabindex="0"
+    role="region"
+    aria-label="Image viewport. Use the arrow keys to scroll."
+  ></div>
+  <p class="image-viewer__caption" id="image-viewer-caption" hidden></p>
+  <p class="image-viewer__status" role="status"></p>
+</dialog>
+
+<script>
+  function initializeImageViewer() {
+    const dialog = document.querySelector<HTMLDialogElement>("dialog.image-viewer");
+    if (!dialog || typeof dialog.showModal !== "function") return;
+
+    const title = dialog.querySelector<HTMLElement>(".image-viewer__title");
+    const stage = dialog.querySelector<HTMLElement>(".image-viewer__stage");
+    const caption = dialog.querySelector<HTMLElement>(".image-viewer__caption");
+    const status = dialog.querySelector<HTMLElement>(".image-viewer__status");
+    const original = dialog.querySelector<HTMLAnchorElement>(".image-viewer__original");
+    const close = dialog.querySelector<HTMLButtonElement>("[data-image-viewer-close]");
+    const modeButtons = dialog.querySelectorAll<HTMLButtonElement>("[data-image-viewer-mode]");
+    if (!title || !stage || !caption || !status || !original || !close) return;
+
+    let opener: HTMLAnchorElement | null = null;
+    let image: HTMLImageElement | null = null;
+    let request = 0;
+    let loadingTimer: number | undefined;
+    let restoreOverflow: (() => void) | undefined;
+
+    const resetScroll = () => {
+      stage.scrollTop = 0;
+      stage.scrollLeft = 0;
+    };
+
+    const setMode = (mode: "fit" | "actual") => {
+      dialog.dataset.mode = mode;
+      modeButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.imageViewerMode === mode));
+      });
+      resetScroll();
+    };
+
+    const lockPageScroll = () => {
+      // Save only overflow declarations, including longhands and !important,
+      // so closing does not overwrite unrelated inline style changes.
+      const snapshots = [document.documentElement, document.body].map((element) => {
+        const properties = Array.from(element.style)
+          .filter((name) => ["overflow", "overflow-x", "overflow-y"].includes(name))
+          .map((name) => ({
+            name,
+            value: element.style.getPropertyValue(name),
+            priority: element.style.getPropertyPriority(name),
+          }));
+        element.style.setProperty("overflow", "hidden", "important");
+        return { element, properties };
+      });
+
+      restoreOverflow = () => {
+        snapshots.forEach(({ element, properties }) => {
+          ["overflow", "overflow-x", "overflow-y"].forEach((name) => {
+            element.style.removeProperty(name);
+          });
+          properties.forEach(({ name, value, priority }) => {
+            element.style.setProperty(name, value, priority);
+          });
+        });
+      };
+    };
+
+    const discardImage = () => {
+      request += 1;
+      window.clearTimeout(loadingTimer);
+      loadingTimer = undefined;
+      if (image) {
+        image.onload = null;
+        image.onerror = null;
+        image.remove();
+        image = null;
+      }
+    };
+
+    dialog.addEventListener("close", () => {
+      // A queued close event must not tear down an immediately reopened viewer.
+      if (dialog.open) return;
+      discardImage();
+      stage.setAttribute("aria-busy", "false");
+      status.textContent = "";
+      restoreOverflow?.();
+      restoreOverflow = undefined;
+      const previousOpener = opener;
+      opener = null;
+      if (previousOpener?.isConnected) previousOpener.focus({ preventScroll: true });
+    });
+
+    close.addEventListener("click", () => dialog.close());
+    modeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.imageViewerMode;
+        if (mode === "fit" || mode === "actual") setMode(mode);
+      });
+    });
+
+    document.querySelectorAll<HTMLAnchorElement>("a.project-image-link").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented || event.button !== 0 ||
+          event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+          link.hasAttribute("download") ||
+          (link.target && link.target.toLowerCase() !== "_self") ||
+          !link.getAttribute("href")?.trim()
+        ) return;
+
+        const thumbnail = link.querySelector<HTMLImageElement>("img");
+        if (!thumbnail) return;
+
+        title.textContent = link.closest("article")?.querySelector("h1")?.textContent?.trim() || "Project image";
+        caption.textContent = link.closest("figure")?.querySelector("figcaption")?.textContent?.trim() || "";
+        caption.hidden = !caption.textContent;
+        if (caption.textContent) dialog.setAttribute("aria-describedby", caption.id);
+        else dialog.removeAttribute("aria-describedby");
+        original.href = link.href;
+        setMode("fit");
+        status.textContent = "Loading image…";
+        stage.setAttribute("aria-busy", "true");
+
+        try {
+          if (!dialog.open) dialog.showModal();
+        } catch {
+          // Do not cancel the anchor's normal navigation if modal opening fails.
+          return;
+        }
+        event.preventDefault();
+        opener = link;
+        if (!restoreOverflow) lockPageScroll();
+        discardImage();
+
+        // Keep server HTML free of an empty image; only request the original
+        // after the dialog has successfully opened.
+        const nextImage = new Image();
+        image = nextImage;
+        const currentRequest = request;
+        const isCurrent = () => request === currentRequest && image === nextImage && dialog.open;
+        nextImage.className = "image-viewer__image";
+        nextImage.alt = thumbnail.alt;
+        nextImage.decoding = "async";
+        nextImage.hidden = true;
+
+        const setDimensions = (width: number, height: number) => {
+          if (Number.isFinite(width) && width > 0) {
+            nextImage.width = width;
+            nextImage.style.setProperty("--image-width", `${width}px`);
+          }
+          if (Number.isFinite(height) && height > 0) nextImage.height = height;
+        };
+        setDimensions(Number(link.dataset.imageWidth), Number(link.dataset.imageHeight));
+
+        const showError = () => {
+          if (!isCurrent()) return;
+          window.clearTimeout(loadingTimer);
+          nextImage.hidden = true;
+          stage.setAttribute("aria-busy", "false");
+          status.textContent = "The image could not be loaded. Try the original image link.";
+        };
+        nextImage.onload = () => {
+          if (!isCurrent()) return;
+          if (!nextImage.naturalWidth || !nextImage.naturalHeight) {
+            showError();
+            return;
+          }
+          window.clearTimeout(loadingTimer);
+          setDimensions(nextImage.naturalWidth, nextImage.naturalHeight);
+          nextImage.hidden = false;
+          stage.setAttribute("aria-busy", "false");
+          status.textContent = "";
+        };
+        nextImage.onerror = showError;
+        loadingTimer = window.setTimeout(() => {
+          if (!isCurrent()) return;
+          status.textContent = "This image is taking longer than expected. You can use the original image link.";
+        }, 12000);
+
+        stage.append(nextImage);
+        resetScroll();
+        nextImage.src = link.href;
+      });
+    });
+  }
+
+  initializeImageViewer();
+</script>

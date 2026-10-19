@@ -76,6 +76,30 @@ Source: [GitHub's custom-domain guide](https://docs.github.com/en/pages/configur
 
 ## Local build checks
 
+### Pre-commit checks
+
+With Bun, Node.js, prek, and the project dependencies installed, enable the
+repository's local Git hook once per checkout:
+
+```sh
+prek install
+```
+
+Before relevant commits, `.pre-commit-config.yaml` runs `bun run check`, then
+`bun run test` (the production build and structural tests). Both commands check
+the whole site without filename arguments. They run for source, Markdown
+content, styles, static assets, tests, scripts, and configuration changes,
+including package/lock files and the hook config itself. Deletions also trigger
+the checks; documentation-only changes outside those paths do not.
+
+Run the same checks manually before deployment:
+
+```sh
+prek run --all-files
+```
+
+### Deployment paths
+
 Custom domain:
 
 ```sh

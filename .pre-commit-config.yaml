@@ -1,0 +1,32 @@
+default_stages: [pre-commit]
+
+# Both commands check the whole site, including Markdown content and binary assets.
+# Root configuration files include this hook config, package.json and tsconfig.json.
+files: >-
+  (?x)^(
+    (?:src|public|tests|scripts|config|\.github)/|
+    [^/]+\.(?:astro|[cm]?[jt]sx?|css|scss|sass|less|styl|jsonc?|ya?ml|toml|nix)$|
+    (?:bun\.lockb?|flake\.lock|\.env(?:\.[^/]+)?)$
+  )
+
+repos:
+  - repo: local
+    hooks:
+      - id: astro-check
+        name: Check Astro and TypeScript
+        entry: bun run check
+        language: system
+        pass_filenames: false
+        include_deleted: true
+        require_serial: true
+        priority: 0
+
+      - id: site-test
+        name: Build site and run structural tests
+        entry: bun run test
+        language: system
+        pass_filenames: false
+        include_deleted: true
+        require_serial: true
+        # Astro check and build both generate state; do not run them together.
+        priority: 1

@@ -1,6 +1,6 @@
 ---
 title: "Analytical Chemistry Lab"
-summary: "A lab and analysis workflow for connecting plant chemistry with cultivation decisions."
+summary: "I set up a chemistry lab from scratch around a Waters UHPLC to bring potency testing in house for medicinal cannabis."
 period: "2022"
 order: 6
 featured: false
@@ -19,22 +19,17 @@ gallery:
     wide: true
   - src: "../../assets/projects/analytical-chromatogram.webp"
     alt: "Chromatogram with separated, labelled peaks across the analysis run"
-    caption: "An example chromatogram from the archived lab work. Method development covered simultaneous measurement of 14 target compounds."
+    caption: "Chromatogram showing 14 cannabinoids plus a diazepam calibration peak."
     wide: true
 links: []
 ---
 
-## Measuring what the plants produce
+Before the lab, we relied on third-party labs. Results varied enough from lab to lab that they were hard to use for day-to-day decisions. Sending samples out also meant cost and paperwork, plus waiting for results. That made it hard to respond quickly or to gather enough data to improve.
 
-This lab work focused on measuring compounds in plant material and connecting those measurements to genetics and growing conditions.
+The in-house lab changed that. We could run more measurements, screen material cost-effectively, and get results fast. That let us make business decisions from our own data: pricing, production volumes, which plant material to keep, cultivation practices, and harvest timing. It also helped us spot plants with unusual medicinal profiles.
 
-My work included the lab layout, equipment procurement, setup, and checks that the instruments were installed and operating correctly. Sample preparation, methods, and reporting all needed to support repeatable analysis.
+Building the lab was more than setting up the instrument. I researched methods from the literature, tried several, and adapted one to our UHPLC system and column chemistry. I optimized the solvent gradient to get clean peak separation in minimal time, with accurate simultaneous detection and quantitation of 14 cannabinoids. That work was part of qualifying the instrument and the method together, so the numbers stayed trustworthy run after run.
 
-## The workflow
+I developed a single-tube extraction method to replace the multi-step mortar-and-pestle workflow. I dried the material before extraction and adjusted measurements for water content through the process. With the material dry enough, we could run the full extraction in one tube, simplifying pelleting, filtering, and sample dilution. I tested it against the by-the-books method on time, materials, steps, and measurement quality. The single-tube method gave a better potency measurement, in part by avoiding resin left behind on the mortar and pestle.
 
-- A Waters Acquity ARC ultra-high-performance liquid chromatography (uHPLC) platform.
-- Method development for measuring 14 target compounds in one analysis.
-- Procedures for preparing samples, operating the instrument, and reporting results.
-- A data pipeline connecting chemical profiles to cultivation conditions.
-
-The purpose was to make chemical analysis useful for routine production decisions, not leave the results isolated in the lab.
+The lab worked alongside tissue culture and micro/pathology, and with the cultivation and production team. Chemistry gave those teams a shared source of truth for what was changing in the plants and whether it mattered.

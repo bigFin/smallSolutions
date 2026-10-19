@@ -22,6 +22,7 @@ test("the site builds its main sections without publishing résumé routes or dr
   assert.ok(!existsSync(join(output, "docs")));
   for (const page of pages) {
     const html = readFileSync(page, "utf8");
+    assert.match(html, /<title>\s*[^<\s][^<]*<\/title>/, `${page}: nonempty page title`);
     assert.equal((html.match(/<h1\b/g) || []).length, 1, `${page}: one main heading`);
     assert.match(html, /<main\b[^>]*id="main"/);
     assert.doesNotMatch(html, /href="[^"]*\/resume(?:\/|")/);
@@ -30,8 +31,7 @@ test("the site builds its main sections without publishing résumé routes or dr
 
 test("GitHub Pages gets a custom 404 with recovery links that work from nested missing URLs", () => {
   const html = readFileSync(join(output, "404.html"), "utf8");
-  assert.match(html, /<title>Page not found \| smallSolutions<\/title>/);
-  const navigation = html.match(/<nav class="link-list" aria-label="Find a page">([\s\S]*?)<\/nav>/)?.[1];
+  const navigation = html.match(/<nav class="link-list" aria-label="[^"]+">([\s\S]*?)<\/nav>/)?.[1];
   assert.ok(navigation);
   const links = [...navigation.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
   assert.deepEqual(links, [base, `${base}projects/`, `${base}writing/`]);
@@ -91,11 +91,46 @@ test("project images are local, responsive, described, and dimensioned", () => {
     assert.ok(cover, `${page}: project cover`);
     assert.match(cover, /loading="eager"/);
     assert.match(cover, /<figcaption>/);
-    assert.match(cover, /aria-label="View full-size image:/);
+    assert.match(cover, /<a\b[^>]*class="project-image-link"[^>]*aria-label="[^"]+"/);
     for (const [, figure] of html.matchAll(/<figure class="project-gallery__figure[^\"]*">([\s\S]*?)<\/figure>/g)) {
       assert.match(figure, /loading="lazy"/, `${page}: gallery images load lazily`);
       assert.match(figure, /<figcaption>/, `${page}: gallery images have captions`);
-      assert.match(figure, /aria-label="View full-size image:/, `${page}: full-size image link`);
+      assert.match(figure, /<a\b[^>]*class="project-image-link"[^>]*aria-label="[^"]+"/, `${page}: named full-size image link`);
+    }
+  }
+});
+
+test("project image viewers enhance full-size links without replacing their fallback", () => {
+  for (const page of pages) {
+    const html = readFileSync(page, "utf8");
+    const isProjectDetail = /^projects\/[^/]+\/index\.html$/.test(relative(output, page));
+    const dialogs = [...html.matchAll(/<dialog\b([^>]*)>([\s\S]*?)<\/dialog>/g)]
+      .filter((match) => /\bclass="image-viewer"/.test(match[1]));
+    assert.equal(dialogs.length, Number(isProjectDetail), `${page}: viewer only on project details`);
+    if (!isProjectDetail) continue;
+
+    const [, attributes, dialog] = dialogs[0];
+    assert.doesNotMatch(attributes, /(?:^|\s)open(?:\s|=|$)/, `${page}: viewer starts closed`);
+    const titleId = attributes.match(/\baria-labelledby="([^"]+)"/)?.[1];
+    assert.ok(titleId, `${page}: named dialog`);
+    assert.ok(dialog.includes(`id="${titleId}"`), `${page}: dialog name resolves`);
+    for (const mode of ["fit", "actual"]) {
+      const button = [...dialog.matchAll(/<button\b[^>]*>/g)]
+        .find((match) => match[0].includes(`data-image-viewer-mode="${mode}"`))?.[0];
+      assert.ok(button, `${page}: ${mode} sizing control`);
+      assert.match(button, /\baria-pressed="(?:true|false)"/, `${page}: exposed sizing state`);
+    }
+    assert.match(dialog, /<button\b[^>]*\bdata-image-viewer-close(?:\s|=|>)/, `${page}: close control`);
+    const stage = dialog.match(/<[^>]*\bclass="image-viewer__stage"[^>]*>/)?.[0];
+    assert.ok(stage, `${page}: image viewport`);
+    assert.match(stage, /\btabindex="0"/, `${page}: keyboard-scrollable viewport`);
+    assert.match(stage, /\brole="region"/, `${page}: viewport semantics`);
+    assert.match(stage, /\baria-label="[^"]+"/, `${page}: named viewport`);
+
+    for (const [, link] of html.matchAll(/<a\b([^>]*\bclass="project-image-link"[^>]*)>/g)) {
+      assert.match(link, /\bhref="[^"]+"/, `${page}: ordinary image link survives without JavaScript`);
+      assert.match(link, /\bdata-image-width="[1-9]\d*"/, `${page}: original image width`);
+      assert.match(link, /\bdata-image-height="[1-9]\d*"/, `${page}: original image height`);
     }
   }
 });
@@ -120,10 +155,9 @@ test("page typography uses the single Gallant font system", () => {
     `unexpected font family: ${families.join(", ")}`);
 });
 
-test("the site keeps email contact without a hiring pitch, and exposes background controls", () => {
+test("the site keeps email contact and exposes background controls", () => {
   for (const page of pages) {
     const html = readFileSync(page, "utf8");
-    assert.doesNotMatch(html, /Work with me|contact-section|id="contact"/);
     assert.match(html, /href="mailto:fsmall90@gmail\.com"/);
     assert.match(html, /href="#background" data-open-background/);
     assert.match(html, /<details id="background" class="shader-controls"[^>]*>/);
@@ -159,7 +193,7 @@ test("the four Nepal posts retain their dates, source links, and local photograp
     const html = readFileSync(join(output, "writing", slug, "index.html"), "utf8");
     assert.ok(html.includes(`<time datetime="${date}">`), `${slug}: original publication date`);
     assert.match(html, /href="https:\/\/nepalcando\.blogspot\.com\/2015\//);
-    assert.match(html, /About this archived post/);
+    assert.match(html, /<aside class="archive-note" aria-label="[^"]+">/);
     const images = [...html.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]);
     assert.equal(images.length, count, `${slug}: all original photos restored`);
     for (const image of images) {

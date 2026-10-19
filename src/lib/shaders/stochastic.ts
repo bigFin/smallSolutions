@@ -16,26 +16,28 @@ import {
   sin,
   smoothstep,
 } from "three/tsl";
+import type { Node } from "three/webgpu";
 
-type Node = any;
+type FloatNode = Node<"float">;
+type Vec2Node = Node<"vec2">;
 
 const TAU = 6.2831853;
 
 // Port of Dave Hoskins' hash21B
-const hash21B = Fn(([p, time]) => {
+const hash21B = Fn(([p, time]: [Vec2Node, FloatNode]) => {
   const p3 = p.xyx.mul(0.1031).fract();
   p3.assign(p3.add(dot(p3, p3.yzx.add(39.123))));
   return p3.x.add(p3.y).mul(p3.z).fract().mul(TAU).add(time).sin().mul(0.225);
 });
 
-const distLineS = (p: Node, a: Node, b: Node) => {
+const distLineS = (p: Vec2Node, a: Vec2Node, b: Vec2Node) => {
   const ba = b.sub(a);
   const pa = p.sub(a);
   const ortho = vec2(ba.y.negate(), ba.x).div(ba.length());
   return dot(pa, ortho);
 };
 
-const lineIntersect = (ro: Node, rd: Node, a: Node, b: Node) => {
+const lineIntersect = (ro: Vec2Node, rd: Vec2Node, a: Vec2Node, b: Vec2Node) => {
   const v1 = ro.sub(a);
   const v2 = b.sub(a);
   const v3 = vec2(rd.y.negate(), rd.x);
@@ -43,12 +45,12 @@ const lineIntersect = (ro: Node, rd: Node, a: Node, b: Node) => {
   return v2.x.mul(v1.y).sub(v2.y.mul(v1.x)).div(dotP);
 };
 
-const smin = (a: Node, b: Node, k: Node) => {
+const smin = (a: FloatNode, b: FloatNode, k: FloatNode) => {
   const f = max(float(0), float(1).sub(abs(b.sub(a)).div(k)));
   return min(a, b).sub(k.mul(0.25).mul(f).mul(f));
 };
 
-const sdPoly = (p: Node, v: Node[]) => {
+const sdPoly = (p: Vec2Node, v: Vec2Node[]) => {
   let d = length(p.sub(v[0]));
   for (let i = 0; i < 4; i++) {
     const j = (i + 3) % 4;
@@ -60,7 +62,7 @@ const sdPoly = (p: Node, v: Node[]) => {
   return d.negate();
 };
 
-export const stochasticShader = Fn(([noiseTime, mousePos]) => {
+export const stochasticShader = Fn(([noiseTime, mousePos]: [FloatNode, Vec2Node]) => {
   const pOrig = uv().sub(0.5);
   const gSc = vec2(1, 1).div(8);
   const ip = floor(pOrig.div(gSc)).add(0.5);
@@ -75,12 +77,12 @@ export const stochasticShader = Fn(([noiseTime, mousePos]) => {
     vec2(0, -0.5)
   ];
 
-  const getOffs = (offs: Node, ip: Node, e: Node) => {
+  const getOffs = (offs: Vec2Node, ip: Vec2Node, e: Vec2Node) => {
     return offs.add(e.mul(hash21B(ip.add(offs), noiseTime))).mul(gSc);
   };
 
-  const vOffs: Node[] = [];
-  const vOffs2: Node[] = [];
+  const vOffs: Vec2Node[] = [];
+  const vOffs2: Vec2Node[] = [];
   
   // Unroll vertices
   vOffs.push(getOffs(eID[0], ip, vec2(0, 1)));
@@ -104,7 +106,7 @@ export const stochasticShader = Fn(([noiseTime, mousePos]) => {
   return abs(d).mul(10).add(mPeak).clamp(0, 1);
 });
 
-export const enhancedStochasticShader = Fn(([noiseTime, mousePos]) => {
+export const enhancedStochasticShader = Fn(([noiseTime, mousePos]: [FloatNode, Vec2Node]) => {
   const uvNode = uv();
   const centeredUv = uvNode.sub(0.5);
   const centeredMouse = mousePos.sub(0.5);
@@ -128,7 +130,7 @@ export const enhancedStochasticShader = Fn(([noiseTime, mousePos]) => {
     vec2(0, -0.5)
   ];
 
-  const getOffs = (offs: Node, ip: Node, e: Node) => {
+  const getOffs = (offs: Vec2Node, ip: Vec2Node, e: Vec2Node) => {
     const localMouse = centeredMouse.div(gSc).sub(ip).length();
     const cellMouse = float(1.0).sub(smoothstep(0.0, 5.0, localMouse)).mul(0.18);
     return offs
@@ -136,7 +138,7 @@ export const enhancedStochasticShader = Fn(([noiseTime, mousePos]) => {
       .mul(gSc);
   };
 
-  const vOffs: Node[] = [];
+  const vOffs: Vec2Node[] = [];
   vOffs.push(getOffs(eID[0], ip, vec2(0, 1)));
   vOffs.push(getOffs(eID[1], ip, vec2(1, 0)));
   vOffs.push(getOffs(eID[2], ip, vec2(0, 1)));
